@@ -19,10 +19,10 @@ class StrategyConfig:
 
     # Model Parameters
     window: int = 60                                 # Rolling window size for estimating priors and posteriors (in trading days)
-    min_prob_threshold: float = 0.69                 # Minimum posterior probability P(mu > 0 | data) threshold to take a position (e.g. 0.67 = 67% confidence)
+    min_prob_threshold: float = 0.67                 # Minimum posterior probability P(mu > 0 | data) threshold to take a position (e.g. 0.67 = 67% confidence)
 
     # Risk Parameters
-    target_vol: float = 0.15                         # Target annualized portfolio volatility
+    target_vol: float = 0.20                         # Target annualized portfolio volatility
     max_position: float = 0.20                       # Maximum position size as a fraction of portfolio (e.g. 0.20 = 20% max allocation to any single stock)
 
     # Drawdown Protection

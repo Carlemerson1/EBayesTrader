@@ -1,0 +1,22 @@
+[
+  {
+    "timestamp": "2026-02-22 00:43:14",
+    "event": "Portfolio rebalanced (4 orders)"
+  },
+  {
+    "timestamp": "2026-02-22 00:43:14",
+    "event": "Bought 247 shares of XOM"
+  },
+  {
+    "timestamp": "2026-02-22 00:43:14",
+    "event": "Bought 228 shares of TLT"
+  },
+  {
+    "timestamp": "2026-02-22 00:43:14",
+    "event": "Bought 409 shares of OXY"
+  },
+  {
+    "timestamp": "2026-02-22 00:43:14",
+    "event": "Bought 8 shares of MSFT"
+  }
+]

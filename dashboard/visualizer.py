@@ -2,10 +2,11 @@
 dashboard/visualizer.py
 
 Professional trading dashboard for Bayesian hierarchical strategy.
-
-Clean, minimal design inspired by academic research papers.
-Color scheme: Blue (#00539B) and white.
 """
+
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent))
 
 import streamlit as st
 import plotly.graph_objects as go
@@ -20,8 +21,15 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 from execution.trader import AlpacaTrader
-from config.settings import AlpacaConfig
+from config.settings import AlpacaConfig, StrategyConfig
 from backtest.metrics import compute_drawdowns
+from dashboard.data_loader import (
+    load_live_portfolio,
+    get_live_signals,
+    load_trade_history,
+    compute_live_metrics,
+    get_portfolio_history_from_alpaca
+)
 
 # Color palette
 PRIMARY_BLUE = '#00539B'
@@ -138,25 +146,32 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 
-def load_live_data():
-    """Load current portfolio data from Alpaca."""
-    try:
-        config = AlpacaConfig()
-        trader = AlpacaTrader(config)
-        
-        account = trader.get_account()
-        positions = trader.get_positions()
-        portfolio_value = float(account.equity)
-        
-        return {
-            'portfolio_value': portfolio_value,
-            'cash': float(account.cash),
-            'positions': positions,
-            'buying_power': float(account.buying_power),
-        }
-    except Exception as e:
-        st.error(f"Error loading data: {e}")
-        return None
+def load_all_data():
+    """Load all data for dashboard (live + historical)."""
+    # Live portfolio
+    live_data = load_live_portfolio()
+    
+    # Historical equity curve
+    portfolio_history = get_portfolio_history_from_alpaca()
+    
+    # Compute metrics from history
+    metrics = None
+    if portfolio_history is not None and len(portfolio_history) > 1:
+        metrics = compute_live_metrics(portfolio_history)
+    
+    # Live signals
+    signals = get_live_signals()
+    
+    # Trade history
+    events = load_trade_history()
+    
+    return {
+        'live': live_data,
+        'history': portfolio_history,
+        'metrics': metrics,
+        'signals': signals,
+        'events': events
+    }
 
 
 def create_equity_curve(equity_data, benchmark_data=None):
@@ -381,7 +396,8 @@ def main():
     st.markdown("<hr>", unsafe_allow_html=True)
     
     # Load data
-    live_data = load_live_data()
+    data = load_all_data()
+    live_data = data['live']
     
     if live_data:
         # Top metrics
@@ -420,12 +436,16 @@ def main():
         
         with col_left:
             st.markdown("### Equity Curve")
-            # Demo data (replace with actual backtest results)
-            dates = pd.date_range('2024-01-01', periods=100, freq='D')
-            equity = pd.Series(
-                100000 * np.exp(np.cumsum(np.random.normal(0.001, 0.02, 100))),
-                index=dates
-            )
+            # Use real portfolio history if available
+            if data['history'] is not None:
+                equity = data['history']
+            else:
+                # Fallback to demo data
+                dates = pd.date_range('2024-01-01', periods=100, freq='D')
+                equity = pd.Series(
+                    100000 * np.exp(np.cumsum(np.random.normal(0.001, 0.02, 100))),
+                    index=dates
+                )
             fig_equity = create_equity_curve(equity)
             st.plotly_chart(fig_equity, use_container_width=True)
         
@@ -461,17 +481,43 @@ def main():
         
         with col_right:
             st.markdown("### Performance Metrics")
-            # Placeholder metrics
-            metrics_data = pd.DataFrame({
-                'Metric': [
-                    'Sharpe Ratio',
-                    'Sortino Ratio',
-                    'Calmar Ratio',
-                    'Maximum Drawdown',
-                    'Win Rate'
-                ],
-                'Value': ['1.64', '2.34', '2.09', '-13.0%', '54.3%']
-            })
+            # Use real metrics if available
+            if data['metrics'] is not None:
+                m = data['metrics']
+                metrics_data = pd.DataFrame({
+                    'Metric': [
+                        'Sharpe Ratio',
+                        'Sortino Ratio',
+                        'Calmar Ratio',
+                        'Maximum Drawdown',
+                        'Win Rate',
+                        'Average Win',
+                        'Average Loss'
+                    ],
+                    'Value': [
+                        f"{m['sharpe']:.2f}",
+                        f"{m['sortino']:.2f}",
+                        f"{m['calmar']:.2f}",
+                        f"{m['max_dd']:.2%}",
+                        f"{m['win_rate']:.1%}",
+                        f"{m['avg_win']:.2%}",
+                        f"{m['avg_loss']:.2%}"
+                    ]
+                })
+            else:
+                # Fallback to placeholder
+                metrics_data = pd.DataFrame({
+                    'Metric': [
+                        'Sharpe Ratio',
+                        'Sortino Ratio',
+                        'Calmar Ratio',
+                        'Maximum Drawdown',
+                        'Win Rate',
+                        'Average Win',
+                        'Average Loss'
+                    ],
+                    'Value': ['--', '--', '--', '--', '--', '--', '--']
+                })
             st.dataframe(
                 metrics_data,
                 use_container_width=True,
@@ -491,38 +537,37 @@ def main():
         
         with col_left:
             st.markdown("### Signal Strength")
-            # Demo signal data
-            sample_signals = {
-                'XOM': {'prob': 0.955},
-                'OXY': {'prob': 0.893},
-                'TLT': {'prob': 0.815},
-                'AAPL': {'prob': 0.450},
-                'MSFT': {'prob': 0.261},
-            }
-            fig_signals = create_signal_bars(sample_signals)
+            # Use real signals if available
+            if data['signals']:
+                fig_signals = create_signal_bars(data['signals'])
+            else:
+                # Fallback to demo
+                sample_signals = {
+                    'XOM': {'prob': 0.955},
+                    'OXY': {'prob': 0.893},
+                    'TLT': {'prob': 0.815},
+                }
+                fig_signals = create_signal_bars(sample_signals)
             st.plotly_chart(fig_signals, use_container_width=True)
         
         with col_right:
             st.markdown("### Recent Activity")
-            activity_data = pd.DataFrame({
-                'Timestamp': [
-                    '2026-02-21 09:35',
-                    '2026-02-21 09:36',
-                    '2026-02-14 14:23'
-                ],
-                'Event': [
-                    'Portfolio rebalanced',
-                    'Executed 4 orders',
-                    'Stop-loss: AAPL (-1.2%)'
-                ]
-            })
+            # Use real events if available
+            if data['events']:
+                activity_data = pd.DataFrame(data['events'])
+            else:
+                # Fallback to placeholder
+                activity_data = pd.DataFrame({
+                    'timestamp': ['--'],
+                    'event': ['No recent activity']
+                })
             st.dataframe(
                 activity_data,
                 use_container_width=True,
                 hide_index=True,
                 column_config={
-                    "Timestamp": st.column_config.TextColumn("Time", width="small"),
-                    "Event": st.column_config.TextColumn("Event", width="large"),
+                    "timestamp": st.column_config.TextColumn("Time", width="small"),
+                    "event": st.column_config.TextColumn("Event", width="large"),
                 }
             )
     

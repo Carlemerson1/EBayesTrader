@@ -37,6 +37,9 @@ from config.settings import (
 from backtest.engine import run_backtest, BacktestConfig
 from backtest.metrics import compute_metrics, print_metrics_report
 
+# Logging
+from utils.logger import get_logger
+
 
 def run_backtest_mode(config: StrategyConfig):
     """
@@ -126,6 +129,8 @@ def run_paper_mode(config: StrategyConfig):
     """
     Runs the strategy live in paper trading mode.
     """
+    logger = get_logger()
+
     print("\n" + "="*70)
     print(" "*20 + "PAPER TRADING MODE")
     print("="*70 + "\n")
@@ -139,6 +144,9 @@ def run_paper_mode(config: StrategyConfig):
     print(f"Account Status: {account.status}")
     print(f"Portfolio Value: ${float(account.equity):,.2f}")
     print(f"Cash: ${float(account.cash):,.2f}\n")
+
+    #log portfolio value
+    logger.log_portfolio_value(datetime.now(), float(account.equity))
     
     # Fetch recent data
     print("Fetching recent market data...")
@@ -224,8 +232,17 @@ def run_paper_mode(config: StrategyConfig):
         print(f"\n{len(successful)} orders submitted successfully")
         if failed:
             print(f"{len(failed)} orders failed")
+
+        # log the rebalence
+        logger.log_rebalance(len(successful))
+
+        #log individual trades
+        for order in successful:
+            logger.log_trade(order.symbol, order.side, order.qty)
+
     else:
         print("Orders cancelled.")
+        logger.log_event("Rebalance cancelled by user.")
 
 
 def run_live_mode(config: StrategyConfig):
