@@ -6,10 +6,70 @@ Robust parameter analysis framework.
 Runs backtests across multiple parameter combinations and time periods
 to identify stable, robust configurations.
 
-Usage:
-    python3 analysis/parameter_study.py --sweep <parameter>
-    python3 analysis/parameter_study.py --full-grid 
-    python3 analysis/parameter_study.py --walk-forward <parameter>
+================================================================================
+USAGE EXAMPLES (copy-paste these commands):
+================================================================================
+
+# FULL GRID SEARCH (tests many parameter combinations)
+# ----------------------------------------------------
+# Default: 2020-2024, 50 random combinations
+python analysis/parameter_study.py --full-grid
+
+# Custom period with more combinations
+python analysis/parameter_study.py --full-grid --start-date 2020-01-01 --end-date 2026-02-01 --max-combos 100
+
+# Bear market only (2022)
+python analysis/parameter_study.py --full-grid --start-date 2022-01-01 --end-date 2022-12-31 --max-combos 25
+
+
+# SINGLE PARAMETER SWEEP (test one parameter, hold others constant)
+# ------------------------------------------------------------------
+# Test different window sizes
+python analysis/parameter_study.py --sweep window
+
+# Test probability thresholds on custom period
+python analysis/parameter_study.py --sweep threshold --start-date 2021-01-01 --end-date 2024-12-31
+
+# Test volatility targets
+python analysis/parameter_study.py --sweep vol
+
+# Test position limits
+python analysis/parameter_study.py --sweep position
+
+# Test drawdown thresholds
+python analysis/parameter_study.py --sweep drawdown
+
+
+# WALK-FORWARD ANALYSIS (test stability across multiple periods)
+# ---------------------------------------------------------------
+# Test window parameter across 2020-21, 2021-22, 2022-23, 2023-24, 2020-24
+python analysis/parameter_study.py --walk-forward window
+
+# Test probability threshold stability
+python analysis/parameter_study.py --walk-forward threshold
+
+# Test volatility target stability
+python analysis/parameter_study.py --walk-forward vol
+
+
+# COMMAND LINE ARGUMENTS
+# ----------------------
+# --full-grid              Run full grid sweep (tests many combinations)
+# --sweep PARAM            Sweep single parameter (window/threshold/vol/position/drawdown)
+# --walk-forward PARAM     Walk-forward analysis across multiple periods
+# --start-date YYYY-MM-DD  Backtest start date (default: 2020-01-01)
+# --end-date YYYY-MM-DD    Backtest end date (default: 2024-12-31)
+# --max-combos N           Max combinations for grid search (default: 50)
+
+
+# OUTPUT FILES (saved in analysis/results/)
+# ------------------------------------------
+# grid_sweep/2020-2024_n50_grid.csv        - Full grid results
+# sweeps/2020-2024_window.csv              - Single parameter sweep
+# walk_forward/window_walk_forward.csv     - Walk-forward raw results
+# stability/window_stability.csv           - Stability metrics
+
+================================================================================
 """
 
 import sys
@@ -324,18 +384,33 @@ class ParameterStudy:
 
         return pd.DataFrame(stability_report).sort_values('sharpe_mean', ascending=False)
     
-    def save_results(self, df, filename):
-        """Save results to CSV with timestamp."""
-        # Add timestamp to filename
-        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        base_name = filename.rsplit('.', 1)[0]
-        ext = filename.rsplit('.', 1)[1] if '.' in filename else 'csv'
+    def save_results(self, df, base_name, subfolder=''):
+        """
+        Save results with descriptive naming and optional subfolders.
         
-        timestamped_filename = f"{base_name}_{timestamp}.{ext}"
-        filepath = self.output_dir / timestamped_filename
+        Args:
+            df: DataFrame to save
+            base_name: Descriptive name (e.g., '2020-2024_window')
+            subfolder: Optional subfolder ('grid_sweep', 'walk_forward', 'stability', 'sweeps')
+        """
+        # Create subfolder if specified
+        if subfolder:
+            save_dir = self.output_dir / subfolder
+            save_dir.mkdir(exist_ok=True, parents=True)
+        else:
+            save_dir = self.output_dir
+        
+        filepath = save_dir / f"{base_name}.csv"
+        
+        # If file exists, add version suffix
+        if filepath.exists():
+            counter = 1
+            while (save_dir / f"{base_name}_v{counter}.csv").exists():
+                counter += 1
+            filepath = save_dir / f"{base_name}_v{counter}.csv"
         
         df.to_csv(filepath, index=False)
-        print(f"\nResults saved to: {filepath}")
+        print(f"\n💾 Results saved to: {filepath}")
         return filepath
     
     def generate_report(self, stability_df):
@@ -409,9 +484,19 @@ def main():
     parser.add_argument('--sweep', type=str, choices=['window', 'threshold', 'vol', 'position', 'drawdown'],
                        help='Sweep a single parameter')
     parser.add_argument('--full-grid', action='store_true',
-                       help='Run full grid sweep (slow!)')
+                       help='Run full grid search (slow!)')
     parser.add_argument('--walk-forward', type=str,
                        help='Walk-forward analysis for parameter (e.g., "window")')
+    
+    # Date range parameters
+    parser.add_argument('--start-date', type=str, default='2020-01-01',
+                       help='Start date for backtest (YYYY-MM-DD)')
+    parser.add_argument('--end-date', type=str, default='2024-12-31',
+                       help='End date for backtest (YYYY-MM-DD)')
+    
+    # Grid search size
+    parser.add_argument('--max-combos', type=int, default=50,
+                       help='Max combinations for grid search')
     
     args = parser.parse_args()
     
@@ -431,8 +516,11 @@ def main():
         'drawdown_scaling': 0.75,
     }
     
+    # Create descriptive period name
+    period_name = f"{args.start_date[:4]}-{args.end_date[:4]}"
+    
     if args.sweep:
-        # Single parameter sweep on full period
+        # Single parameter sweep
         param_map = {
             'window': 'window',
             'threshold': 'min_prob_threshold',
@@ -442,35 +530,44 @@ def main():
         }
         param_name = param_map[args.sweep]
         
-        log_returns = study.load_data('2020-01-01', '2024-12-31')
-        results = study.sweep_single_parameter(param_name, baseline, log_returns, '2020-2024')
+        log_returns = study.load_data(args.start_date, args.end_date)
+        results = study.sweep_single_parameter(param_name, baseline, log_returns, period_name)
         
-        study.save_results(results, f'sweep_{args.sweep}.csv')
+        study.save_results(
+            results, 
+            base_name=f'{period_name}_{args.sweep}',
+            subfolder='sweeps'
+        )
         
         print("\n" + "="*70)
         print(results[['value', 'sharpe', 'calmar', 'max_dd']].to_string(index=False))
     
     elif args.full_grid:
-        # Full grid sweep
-        log_returns = study.load_data('2020-01-01', '2026-02-20')
-        results = study.full_grid_sweep(log_returns, '2020-2024', max_combinations=200)
+        # Full grid search
+        log_returns = study.load_data(args.start_date, args.end_date)
+        results = study.full_grid_sweep(log_returns, period_name, max_combinations=args.max_combos)
         
-        study.save_results(results, 'full_grid_sweep.csv')
-        
-        # Show top 10
-        print("\nTop 10 configurations by Sharpe:")
-        top10 = results.nlargest(10, 'sharpe')[[
-            'window', 
-            'min_prob_threshold', 
-            'target_vol', 
-            'max_position',
-            'drawdown_threshold',
-            'total_return', 
-            'sharpe', 
-            'calmar'
-        ]]
-        top10['total_return'] = (top10['total_return'] * 100).round(1).astype(str) + '%' # Format as percentage
-        print(top10.to_string(index=False))
+        if len(results) > 0:
+            study.save_results(
+                results,
+                base_name=f'{period_name}_n{len(results)}_grid',
+                subfolder='grid_sweep'
+            )
+            
+            # Show top 10
+            print("\nTop 10 configurations by Sharpe:")
+            top10 = results.nlargest(10, 'sharpe')[[
+                'window', 
+                'min_prob_threshold', 
+                'target_vol', 
+                'max_position',
+                'drawdown_threshold',
+                'total_return', 
+                'sharpe', 
+                'calmar'
+            ]]
+            top10['total_return'] = top10['total_return'].apply(lambda x: f"{x:.1%}")
+            print(top10.to_string(index=False))
     
     elif args.walk_forward:
         # Walk-forward analysis
@@ -484,11 +581,19 @@ def main():
         param_name = param_map[args.walk_forward]
         
         results = study.walk_forward_analysis(param_name, baseline)
-        study.save_results(results, f'walk_forward_{args.walk_forward}.csv')
+        study.save_results(
+            results,
+            base_name=f'{args.walk_forward}_walk_forward',
+            subfolder='walk_forward'
+        )
         
         # Stability analysis
         stability = study.analyze_stability(results)
-        study.save_results(stability, f'stability_{args.walk_forward}.csv')
+        study.save_results(
+            stability,
+            base_name=f'{args.walk_forward}_stability',
+            subfolder='stability'
+        )
         
         study.generate_report(stability)
     
