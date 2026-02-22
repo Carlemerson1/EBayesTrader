@@ -194,11 +194,18 @@ def run_paper_mode(config: StrategyConfig):
     # Get current prices for order sizing
     print("\n--- Fetching current prices ---")
     current_prices = {}
-    latest_bars = raw.loc[raw.index.get_level_values('timestamp') == raw.index.get_level_values('timestamp')[-1]]
+
+    # Get the most recent timestamp
+    latest_timestamp = raw.index.get_level_values('timestamp')[-1]
+
     for symbol in config.symbols:
-        if symbol in latest_bars.index.get_level_values('symbol'):
-            current_prices[symbol] = float(latest_bars.loc[symbol, 'close'])
-            print(f"{symbol}: ${current_prices[symbol]:.2f}")
+        try:
+            # Use tuple indexing to get exact row
+            price = float(raw.loc[(symbol, latest_timestamp), 'close'])
+            current_prices[symbol] = price
+            print(f"{symbol}: ${price:.2f}")
+        except KeyError:
+            print(f"No price data for {symbol}")
     
     # Submit orders
     print("\n--- Submitting Orders to Alpaca ---")

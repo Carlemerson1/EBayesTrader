@@ -36,6 +36,12 @@ class BacktestConfig:
     drawdown_recovery: float = 0.10 # If drawdown recovers to this level, we can restore full risk (e.g. 0.10 = recover at -10% drawdown)
     stop_loss_threshold: float = -0.01 # If an individual position loses more than this in a day, we close it (e.g. -0.02 = 2% loss)
 
+    def __post_init__(self):
+        if self.window <= 0:
+            raise ValueError("Window must be positive")
+        if self.initial_capital <= 0:
+            raise ValueError("Initial capital must be positive")
+        
 @dataclass
 class BacktestResult:
     """
