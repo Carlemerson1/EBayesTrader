@@ -1,0 +1,31 @@
+# Environment and secrets
+config/.env
+venv/
+env/
+*.pyc
+__pycache__/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Data and outputs
+data/cache/
+*.csv
+*.parquet
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Logs
+*.log
+config/.env
+config/.env
+**/.env
