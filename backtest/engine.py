@@ -217,6 +217,16 @@ def run_backtest(
             asset_return = day_returns[symbol] if not pd.isna(day_returns[symbol]) else 0.0
             portfolio_return += weight * asset_return
 
+        # add transaction costs - we can estimate this as proportional to the turnover (sum of absolute weight changes) multiplied by a fixed cost per dollar traded (e.g. 5 bps = 0.0005)
+        total_turnover = 0.0
+        for symbol in symbols:
+            old_w = current_weights.get(symbol, 0.0)
+            new_w = new_weights.get(symbol, 0.0)
+            total_turnover += abs(new_w - old_w)
+
+        transaction_cost = total_turnover * 0.0005  # 5 bps per dollar traded
+        portfolio_return -= transaction_cost
+
         #update portfolio value (exponential for log returns)
         portfolio_value *= np.exp(portfolio_return)
 

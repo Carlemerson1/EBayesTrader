@@ -50,7 +50,6 @@ class StrategyConfig:
                 "TLT",      # Bond
             ]
 
-
 @dataclass
 class AlpacaConfig:
     """
@@ -101,10 +100,30 @@ CONSERVATIVE_CONFIG = StrategyConfig(
 )
 
 # Aggressive configuration (higher vol, looser stops)
-AGGRESSIVE_CONFIG = StrategyConfig(
-    target_vol=0.20,
-    min_prob_threshold=0.65,
-    stop_loss_threshold=-0.015
+AGGRESSIVE_GROWTH_CONFIG = StrategyConfig(
+    symbols=[
+        # Tech Growth
+        'NVDA', 'AMD', 'AVGO', 'PLTR', 'CRWD', 'SNOW',
+        # Mega-cap Tech
+        'AAPL', 'GOOGL', 'MSFT', 'META',
+        # Energy
+        'XOM', 'CVX', 'COP', 'HL',
+        # Consumer
+        'AMZN',
+        # ETFs
+        'VOO', 'QQQ',
+        # Bonds
+        'TLT', 'IEF',
+    ],
+    window=60,                    # These are defaults - will be optimized
+    min_prob_threshold=0.67,
+    target_vol=0.18,              # Bumped up for aggressive
+    max_position=0.20,
+    initial_capital=100000.0,
+    drawdown_threshold=0.15,
+    drawdown_scaling=0.75,
+    drawdown_recovery=0.13,
+    rebalance_frequency=5,
 )
 
 # ---------------------------------------------------------

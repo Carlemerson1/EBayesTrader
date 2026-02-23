@@ -255,8 +255,10 @@ if __name__ == "__main__":
     
     print("Running backtest for metrics calculation...\n")
     
+    from config.settings import AGGRESSIVE_GROWTH_CONFIG
+
     raw = fetch_daily_bars(
-        symbols=["AAPL", "MSFT", "GOOG", "OXY", "XOM", "VOO", "TLT"],
+        symbols=AGGRESSIVE_GROWTH_CONFIG.symbols,
         start_date=datetime(2020, 1, 1),
         end_date=datetime(2024, 12, 31),
     )

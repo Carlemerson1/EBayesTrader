@@ -111,7 +111,7 @@ class ParameterStudy:
             'window': [40, 50, 60, 70, 90],
             'min_prob_threshold': [0.60, 0.65, 0.67, 0.70, 0.75],
             'target_vol': [0.12, 0.15, 0.18, 0.20],
-            'max_position': [0.15, 0.20, 0.25],
+            'max_position': [0.05, 0.075, 0.10, 0.15, 0.20, 0.25],
             'drawdown_threshold': [0.10, 0.15, 0.20],
         }
 
@@ -410,7 +410,7 @@ class ParameterStudy:
             filepath = save_dir / f"{base_name}_v{counter}.csv"
         
         df.to_csv(filepath, index=False)
-        print(f"\n💾 Results saved to: {filepath}")
+        print(f"\nResults saved to: {filepath}")
         return filepath
     
     def generate_report(self, stability_df):
@@ -500,8 +500,9 @@ def main():
     
     args = parser.parse_args()
     
-    # Default universe
-    symbols = ['AAPL', 'GOOG', 'MSFT', 'OXY', 'XOM', 'TLT', 'VOO']
+    # CHOOSE SYMBOL UNIVERSE FROM CONFIG (can be customized)
+    from config.settings import AGGRESSIVE_GROWTH_CONFIG
+    symbols = AGGRESSIVE_GROWTH_CONFIG.symbols
     
     study = ParameterStudy(symbols)
     
@@ -509,8 +510,8 @@ def main():
     baseline = {
         'window': 60,
         'min_prob_threshold': 0.67,
-        'target_vol': 0.15,
-        'max_position': 0.20,
+        'target_vol': 0.20,
+        'max_position': 0.10,
         'initial_capital': 100000.0,
         'drawdown_threshold': 0.15,
         'drawdown_scaling': 0.75,
