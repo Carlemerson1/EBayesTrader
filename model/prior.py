@@ -62,6 +62,72 @@ def estimate_prior(log_returns:pd.DataFrame) -> GroupPrior:
 
     return GroupPrior(mu_0=mu_0, tau_0=tau_0, sigma_bar=sigma_bar)
 
+def estimate_sector_priors(
+    returns_window: pd.DataFrame,
+    sector_map: dict[str, str],
+    verbose: bool=False
+) -> dict[str, GroupPrior]:
+    """
+    Estimate separate priors for each sector.
+    
+    For sectors with only 1 stock, we use that stock's sample mean
+    but borrow the global tau_0 for shrinkage strength.
+    
+    Args:
+        returns_window: DataFrame of returns (dates x symbols)
+        sector_map: Dict mapping {symbol: sector}
+        
+    Returns:
+        Dict mapping {sector: GroupPrior}
+    """
+    from data.sector_mapping import get_symbols_by_sector
+    
+    symbols = returns_window.columns.tolist()
+    sector_groups = get_symbols_by_sector(symbols)
+    sector_priors = {}
+    
+    # First, estimate global prior for fallback
+    global_prior = estimate_prior(returns_window)
+    
+    if verbose:
+        print("\nEstimating sector-specific priors:")
+        print("="*60)
+    
+    for sector, sector_symbols in sorted(sector_groups.items()):
+        # Only use stocks actually in returns_window
+        available = [s for s in sector_symbols if s in returns_window.columns]
+        
+        if not available:
+            continue
+        
+        sector_returns = returns_window[available]
+        
+        # Handle single-stock sectors specially
+        if len(available) == 1:
+            # Use stock's mean but borrow global tau_0
+            stock_mean = sector_returns[available[0]].mean()
+            stock_std = sector_returns[available[0]].std()
+            
+            prior = GroupPrior(
+                mu_0=stock_mean,
+                tau_0=global_prior.tau_0,  # ← Borrow from global
+                sigma_bar=stock_std if stock_std > 0 else global_prior.sigma_bar
+            )
+            if verbose:
+                print(f"  [{sector.upper():<12}] μ₀={prior.mu_0:>8.5f}, τ₀={prior.tau_0:>8.6f} ({len(available)} stock, using global τ₀)")
+        
+        else:
+            # Multi-stock sector: estimate normally
+            prior = estimate_prior(sector_returns)
+            if verbose:
+                print(f"  [{sector.upper():<12}] μ₀={prior.mu_0:>8.5f}, τ₀={prior.tau_0:>8.6f} ({len(available)} stocks)")
+        
+        sector_priors[sector] = prior
+    
+    if verbose:
+        print("="*60 + "\n")
+    return sector_priors
+
 
 #This block only runs when you execute file directly:
 #   python3 model/prior.py
@@ -71,50 +137,109 @@ if __name__ == "__main__":
     from datetime import datetime
     from data.fetcher import fetch_daily_bars
     from data.processor import compute_log_returns, clean_returns
+    from scipy import stats
+    import matplotlib.pyplot as plt
 
-    print("Fetching data for prior estimation...\n")
-    raw=fetch_daily_bars(
-        symbols=["AAPL", "MSFT", "GOOG", "AMZN", "TSLA", "NVDA"],
-        start_date=datetime(2024,7,1),
-        end_date=datetime(2024,10,31)
+    print("="*70)
+    print("PRIOR ESTIMATION SANITY CHECK")
+    print("="*70)
+
+    # Fetch diverse stocks across sectors
+    symbols = ["AAPL", "MSFT", "NVDA", "XOM", "CVX", "JPM", "BAC", "TLT"]
+    
+    print("\nFetching data for prior estimation...\n")
+    raw, sector_map = fetch_daily_bars(
+        symbols=symbols,
+        start_date=datetime(2024, 7, 1),
+        end_date=datetime(2024, 10, 31)
     )
 
     log_returns = compute_log_returns(raw)
     log_returns = clean_returns(log_returns)
 
-    prior = estimate_prior(log_returns)
+    # TEST 1: Global prior (old way)
+    print("\n" + "="*70)
+    print("TEST 1: GLOBAL PRIOR (treats all stocks the same)")
+    print("="*70)
+    
+    global_prior = estimate_prior(log_returns)
 
-    print("--- Estimated Group Prior ---")
-    print(f"mu_0 (group mean):        {prior.mu_0:.6f}  ({prior.mu_0 * 252:.2%} annualized)")
-    print(f"tau_0 (group std):        {prior.tau_0:.6f}")
-    print(f"sigma_bar (typical vol):  {prior.sigma_bar:.6f}  ({prior.sigma_bar * (252**0.5):.2%} annualized)")
+    print(f"μ₀ (group mean):        {global_prior.mu_0:.6f}  ({global_prior.mu_0 * 252:.2%} annualized)")
+    print(f"τ₀ (group std):         {global_prior.tau_0:.6f}")
+    print(f"σ̄ (typical vol):       {global_prior.sigma_bar:.6f}  ({global_prior.sigma_bar * (252**0.5):.2%} annualized)")
 
-    print("\n--- Interpretation ---")
-    print(f"The 'average stock' in this universe has a daily return around {prior.mu_0:.4f}.")
-    print(f"Individual stocks deviate from this mean with a std of {prior.tau_0:.4f}.")
-    print(f"When we have very little data on a stock, we'll assume it looks like this prior.")
+    # TEST 2: Sector-specific priors (new way)
+    print("\n" + "="*70)
+    print("TEST 2: SECTOR-SPECIFIC PRIORS (each sector gets its own)")
+    print("="*70)
+    
+    sector_priors = estimate_sector_priors(log_returns, sector_map)
 
-    print("\n--- Normality Check: QQ-Plot of Sample Means ---")
-    print("If points lie on the diagonal, Normal assumption is reasonable.\n")
-
-    from scipy import stats
-    import matplotlib.pyplot as plt
-
-    #QQ
-    sample_means=log_returns.mean(axis=0)
-    fig, ax = plt.subplots(figsize=(8,6))
-    stats.probplot(sample_means,dist="norm",plot=ax)
-    ax.set_title("QQ: Sample Means vs Gaussian PDF")
-    ax.grid(True, alpha=0.3)
+    # Compare sectors
+    print("\n" + "="*70)
+    print("COMPARISON: Why sector priors matter")
+    print("="*70)
+    
+    for sector, prior in sorted(sector_priors.items()):
+        sector_stocks = [s for s, sec in sector_map.items() if sec == sector]
+        print(f"\n{sector.upper()}: {', '.join(sector_stocks)}")
+        print(f"  μ₀ = {prior.mu_0:>8.6f} ({prior.mu_0 * 252:>7.1%} annual)")
+        print(f"  τ₀ = {prior.tau_0:>8.6f}")
+    
+    print("\n" + "="*70)
+    print("KEY INSIGHT:")
+    print("="*70)
+    print("With GLOBAL prior: All stocks shrink toward same mean")
+    print("With SECTOR prior: Each sector preserves its own characteristics ✓")
+    
+    # TEST 3: Normality checks
+    print("\n" + "="*70)
+    print("TEST 3: NORMALITY ASSUMPTION CHECKS")
+    print("="*70)
+    
+    sample_means = log_returns.mean(axis=0)
+    
+    # QQ Plot
+    print("\nGenerating QQ-Plot...")
+    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+    
+    # Global QQ plot
+    stats.probplot(sample_means, dist="norm", plot=axes[0])
+    axes[0].set_title("QQ Plot: All Sample Means vs Normal", fontweight='bold')
+    axes[0].grid(True, alpha=0.3)
+    
+    # Sector-colored scatter
+    for sector in sector_priors.keys():
+        sector_stocks = [s for s, sec in sector_map.items() if sec == sector]
+        sector_means = log_returns[sector_stocks].mean(axis=0)
+        axes[1].scatter(sector_means.index, sector_means.values, 
+                       label=sector, s=100, alpha=0.7)
+    
+    axes[1].axhline(global_prior.mu_0, color='red', linestyle='--', 
+                   label='Global μ₀', linewidth=2)
+    axes[1].set_xlabel('Stock', fontweight='bold')
+    axes[1].set_ylabel('Mean Return', fontweight='bold')
+    axes[1].set_title('Sample Means by Sector', fontweight='bold')
+    axes[1].legend()
+    axes[1].grid(True, alpha=0.3)
+    axes[1].tick_params(axis='x', rotation=45)
+    
     plt.tight_layout()
     plt.show()
-
-    #Shapiro-Wilk test
-    stat, p_val=stats.shapiro(sample_means)
-    print(f"Shapiro-Wilk test:")
-    print(f" Test statistic: {stat:.4f}")
-    print(f" p-value: {p_val:.4f}")
-    if p_val>0.05:
-        print("\nFTR Normality assumtion, p>0.05")
+    
+    # Shapiro-Wilk test
+    print("\nShapiro-Wilk Normality Test:")
+    stat, p_val = stats.shapiro(sample_means)
+    print(f"  Test statistic: {stat:.4f}")
+    print(f"  P-value: {p_val:.4f}")
+    
+    if p_val > 0.05:
+        print("  ✓ Fail to reject normality assumption (p > 0.05)")
+        print("  → Normal prior is reasonable")
     else: 
-        print("\nReject normality assumption, p<0.05")
+        print("  ✗ Reject normality assumption (p < 0.05)")
+        print("  → Consider robust prior or larger universe")
+    
+    print("\n" + "="*70)
+    print("SANITY CHECK COMPLETE")
+    print("="*70)

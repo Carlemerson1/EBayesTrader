@@ -168,24 +168,113 @@ class AlpacaTrader:
                 continue
 
             # determine order side
+            # Determine order side and handle transition from long to short
             if delta > 0:
                 side = OrderSide.BUY
                 qty = abs(delta)
             else:
+                # Selling or shorting
                 side = OrderSide.SELL
                 qty = abs(delta)
+                
+                # SPECIAL CASE: Going from long to short requires TWO orders
+                if current_qty > 0 and target_qty < 0:
+                    # Split into two orders:
+                    # 1. Close long position
+                    # 2. Open short position
+                    
+                    print(f"[SPLIT ORDER] {symbol}: Closing {current_qty} long, then shorting {abs(target_qty)}")
+                    
+                    # Order 1: Close the long
+                    try:
+                        close_request = MarketOrderRequest(
+                            symbol=symbol,
+                            qty=current_qty,
+                            side=OrderSide.SELL,
+                            time_in_force=TimeInForce.DAY
+                        )
+                        close_order = self.client.submit_order(close_request)
+                        print(f"  → Closed long: SELL {current_qty} (Order ID: {close_order.id})")
 
-            if dry_run:
-                print(f"   [DRY RUN] {side.value} {qty} shares of {symbol} "
-                      f"(current: {current_qty}, target: {target_qty})")
-                orders.append(OrderResult(
-                    symbol=symbol,
-                    side=side.value,
-                    qty=qty,
-                    success=True,
-                    order_id="DRY_RUN"
-                ))
-                continue
+                        # WAIT for close order to fill before submitting short
+                        import time
+                        max_wait = 10  # seconds
+                        waited = 0
+                        while waited < max_wait:
+                            order_status = self.client.get_order_by_id(close_order.id)
+                            if order_status.status in ['filled', 'partially_filled']:
+                                print(f"  → Close order filled")
+                                break
+                            time.sleep(0.5)
+                            waited += 0.5
+                        
+                        if order_status.status not in ['filled', 'partially_filled']:
+                            print(f"  → Warning: Close order still pending after {max_wait}s")
+
+                    except Exception as e:
+                        print(f"  → Error closing long: {e}")
+                        orders.append(OrderResult(symbol=symbol, side="SELL", qty=current_qty, success=False, error=str(e)))
+                        continue
+                    
+                    # Order 2: Open the short
+                    try:
+                        short_request = MarketOrderRequest(
+                            symbol=symbol,
+                            qty=abs(target_qty),
+                            side=OrderSide.SELL,
+                            time_in_force=TimeInForce.DAY
+                        )
+                        short_order = self.client.submit_order(short_request)
+                        print(f"  → Opened short: SELL {abs(target_qty)} (Order ID: {short_order.id})")
+                        
+                        orders.append(OrderResult(symbol=symbol, side="SELL+SHORT", qty=abs(delta), success=True, order_id=short_order.id))
+                    except Exception as e:
+                        print(f"  → Error opening short: {e}")
+                        orders.append(OrderResult(symbol=symbol, side="SHORT", qty=abs(target_qty), success=False, error=str(e)))
+                    
+                    continue  # Skip normal order submission below
+
+                # SPECIAL CASE 2: Going from short to long (cover + buy)
+                if current_qty < 0 and target_qty > 0:
+                    # This works in one order, but let's log it clearly
+                    print(f"[COVER + BUY] {symbol}: Covering {abs(current_qty)} short, then buying {target_qty} long")
+                    
+                    try:
+                        order_request = MarketOrderRequest(
+                            symbol=symbol,
+                            qty=qty,  # Total delta
+                            side=OrderSide.BUY,
+                            time_in_force=TimeInForce.DAY
+                        )
+                        
+                        order = self.client.submit_order(order_request)
+                        print(f"  → Submitted: BUY {qty} shares (Order ID: {order.id})")
+                        
+                        orders.append(OrderResult(
+                            symbol=symbol,
+                            side="COVER+BUY",
+                            qty=qty,
+                            success=True,
+                            order_id=order.id
+                        ))
+                        continue  # Skip normal submission
+                    except Exception as e:
+                        print(f"  → Error opening short: {e}")
+                        orders.append(OrderResult(symbol=symbol, side="BUY", qty=qty, success=False, error=str(e)))
+                    
+                    continue  # Skip the normal order submission below
+
+                if dry_run:
+                    print(f"   [DRY RUN] {side.value} {qty} shares of {symbol} "
+                        f"(current: {current_qty}, target: {target_qty})")
+                    orders.append(OrderResult(
+                        symbol=symbol,
+                        side=side.value,
+                        qty=qty,
+                        success=True,
+                        order_id="DRY_RUN"
+                    ))
+                    continue
 
             #submit market order
             try:

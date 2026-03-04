@@ -137,6 +137,41 @@ def update_all_posteriors(
             prior=prior
         )
     return posteriors
+
+def update_all_posteriors_by_sector(
+    returns_window: pd.DataFrame,
+    sector_priors: dict[str, GroupPrior],
+    sector_map: dict[str, str]
+) -> dict[str, AssetPosterior]:
+    """
+    Update posteriors using sector-specific priors.
+    
+    Each stock's posterior is computed using its sector's prior,
+    not a global prior. This preserves sector-specific characteristics.
+    
+    Args:
+        returns_window: DataFrame of returns (dates x symbols)
+        sector_priors: Dict mapping {sector: GroupPrior}
+        sector_map: Dict mapping {symbol: sector}
+        
+    Returns:
+        Dict mapping {symbol: AssetPosterior}
+    """
+    posteriors = {}
+    
+    for symbol in returns_window.columns:
+        sector = sector_map.get(symbol, 'other')
+        prior = sector_priors.get(sector)
+        
+        if prior is None:
+            print(f"WARNING: No prior for sector '{sector}' (symbol {symbol}), skipping")
+            continue
+        
+        # Use sector-specific prior instead of global prior
+        posterior = update_posterior(symbol, returns_window[symbol], prior)
+        posteriors[symbol] = posterior
+    
+    return posteriors
     
 #This block only runs when you execute file directly:
 #   python3 model/posterior.py
@@ -146,35 +181,76 @@ if __name__ == "__main__":
     from datetime import datetime
     from data.fetcher import fetch_daily_bars
     from data.processor import compute_log_returns, clean_returns, get_rolling_window
-    from prior import estimate_prior
+    from prior import estimate_prior, estimate_sector_priors
 
-    print("Fetching data...\n")
-    raw=fetch_daily_bars(
-        symbols=["AAPL", "MSFT", "GOOG", "AMZN", "TSLA", "NVDA"],
-        start_date=datetime(2024,7,1),
-        end_date=datetime(2024,10,31)
+    print("="*70)
+    print("POSTERIOR ESTIMATION SANITY CHECK")
+    print("="*70)
+
+    # Use diverse sectors to show the difference
+    symbols = ["AAPL", "MSFT", "XOM", "CVX", "JPM", "TLT"]
+    
+    print("\nFetching data...\n")
+    raw, sector_map = fetch_daily_bars(
+        symbols=symbols,
+        start_date=datetime(2024, 7, 1),
+        end_date=datetime(2024, 10, 31)
     )
 
-    log_returns=compute_log_returns(raw)
-    log_returns=clean_returns(log_returns)
+    log_returns = compute_log_returns(raw)
+    log_returns = clean_returns(log_returns)
 
-    #use 60 day rolling window
-    window=get_rolling_window(log_returns, end_date=log_returns.index[-1], window=60)
+    # Use 60 day rolling window
+    window = get_rolling_window(log_returns, end_date=log_returns.index[-1], window=60)
 
-    #estimate prior from window
-    prior=estimate_prior(window)
+    # TEST 1: Global approach (old way)
+    print("\n" + "="*70)
+    print("TEST 1: GLOBAL POSTERIOR (all stocks use same prior)")
+    print("="*70)
+    
+    global_prior = estimate_prior(window)
+    print(f"\nGlobal Prior: μ₀={global_prior.mu_0:.6f}, τ₀={global_prior.tau_0:.6f}\n")
+    
+    global_posteriors = update_all_posteriors(window, global_prior)
 
-    #update posteriors for all stocks
-    posteriors=update_all_posteriors(window, prior)
+    print(f"{'Symbol':<8} {'Sector':<10} {'Post Mean':<12} {'Post Std':<12} {'Shrinkage':<12}")
+    print("-" * 70)
+    for symbol in sorted(symbols):
+        post = global_posteriors[symbol]
+        sector = sector_map[symbol]
+        print(f"{symbol:<8} {sector:<10} {post.post_mean:>11.6f} {post.post_std:>11.6f} {post.shrinkage_factor:>11.2%}")
 
-    print("---Posterior Estimates---")
-    print(f"{'Symbol':<8} {'Post Mean':<12} {'Post Std':<12} {'Shrinkage':<12} {'N Obs':<8}")
-    print("-" * 60)
-    for symbol, post in posteriors.items():
-        print(f"{symbol:<8} {post.post_mean:>11.6f} {post.post_std:>11.6f} {post.shrinkage_factor:>11.2%} {post.n_obs:>7}")
+    # TEST 2: Sector approach (new way)
+    print("\n" + "="*70)
+    print("TEST 2: SECTOR POSTERIOR (each sector uses its own prior)")
+    print("="*70)
+    
+    sector_priors = estimate_sector_priors(window, sector_map, verbose=False)
+    sector_posteriors = update_all_posteriors_by_sector(window, sector_priors, sector_map)
 
-    print("\n--- Interpretation ---")
-    print("Post Mean: Our updated belief about this stock's expected return")
-    print("Post Std: Our uncertainty about that estimate")
-    print("Shrinkage: How much we trusted the data vs. pulled toward the prior")
-    print("     (Higher=more reliance on likelihood, lower=more reliance on prior)")
+    print(f"\n{'Symbol':<8} {'Sector':<10} {'Post Mean':<12} {'Post Std':<12} {'Shrinkage':<12}")
+    print("-" * 70)
+    for symbol in sorted(symbols):
+        post = sector_posteriors[symbol]
+        sector = sector_map[symbol]
+        print(f"{symbol:<8} {sector:<10} {post.post_mean:>11.6f} {post.post_std:>11.6f} {post.shrinkage_factor:>11.2%}")
+
+    # COMPARISON
+    print("\n" + "="*70)
+    print("COMPARISON: How posterior means change")
+    print("="*70)
+    print(f"{'Symbol':<8} {'Sector':<10} {'Global Post':<15} {'Sector Post':<15} {'Difference':<12}")
+    print("-" * 70)
+    for symbol in sorted(symbols):
+        global_mean = global_posteriors[symbol].post_mean
+        sector_mean = sector_posteriors[symbol].post_mean
+        diff = sector_mean - global_mean
+        sector = sector_map[symbol]
+        print(f"{symbol:<8} {sector:<10} {global_mean:>14.6f} {sector_mean:>14.6f} {diff:>11.6f}")
+
+    print("\n" + "="*70)
+    print("KEY INSIGHT:")
+    print("="*70)
+    print("GLOBAL: Tech stocks get pulled DOWN toward global mean")
+    print("SECTOR: Tech stocks stay closer to tech mean (preserves the signal!)")
+    print("="*70)

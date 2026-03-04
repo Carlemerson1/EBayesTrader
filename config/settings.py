@@ -6,8 +6,9 @@ Central configuration for the trading strategy.
 All hyperparms, universe defs, and system settings live here.
 """
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List
+from data.sector_mapping import SECTOR_MAP, get_sector
 
 @dataclass
 class StrategyConfig:
@@ -16,10 +17,12 @@ class StrategyConfig:
     """
     # Universe
     symbols: List[str] = None                         # List of stock symbols to include in the universe (e.g. ['AAPL', 'MSFT', 'GOOG'])
+    sector_map: dict[str, str] = field(default_factory=lambda: None)                # Will auto-populate from symbols if not provided, but can be overridden for custom mappings
 
     # Model Parameters
     window: int = 60                                 # Rolling window size for estimating priors and posteriors (in trading days)
     min_prob_threshold: float = 0.67                 # Minimum posterior probability P(mu > 0 | data) threshold to take a position (e.g. 0.67 = 67% confidence)
+    short_prob_threshold: float = 0.10                # Maximum posterior probability P(mu > 0 | data) threshold to go short (e.g. 0.10 = 90% confidence it goes down)
 
     # Risk Parameters
     target_vol: float = 0.20                         # Target annualized portfolio volatility
@@ -37,6 +40,12 @@ class StrategyConfig:
     # Capital
     initial_capital: float = 100000.0               # Starting capital for backtesting
 
+    #Regime Filter
+    use_regime_filter: bool = False
+    regime_bull_scalar: float = 1.0
+    regime_bear_scalar: float = 0.5
+    regime_neutral_scalar: float = 0.75
+
     def __post_init__(self):
         """Set default universe if not provided"""
         if self.symbols is None:
@@ -49,6 +58,8 @@ class StrategyConfig:
                 "VOO",      # ETF
                 "TLT",      # Bond
             ]
+        if self.sector_map is None:
+            self.sector_map = {symbol: get_sector(symbol) for symbol in self.symbols}
 
 @dataclass
 class AlpacaConfig:
@@ -96,6 +107,7 @@ DEFAULT_CONFIG = StrategyConfig()
 CONSERVATIVE_CONFIG = StrategyConfig(
     target_vol=0.12,
     min_prob_threshold=0.72,
+    short_prob_threshold=0.20,
     stop_loss_threshold=-0.008
 )
 
@@ -103,27 +115,51 @@ CONSERVATIVE_CONFIG = StrategyConfig(
 AGGRESSIVE_GROWTH_CONFIG = StrategyConfig(
     symbols=[
         # Tech Growth
-        'NVDA', 'AMD', 'AVGO', 'PLTR', 'CRWD', 'SNOW',
-        # Mega-cap Tech
-        'AAPL', 'GOOGL', 'MSFT', 'META',
+        'AAPL', 'GOOGL', 'MSFT', 'NVDA', 'META', 'SMCI',
+        # Finance
+        'JPM', 'GS', 'V',
         # Energy
-        'XOM', 'CVX', 'COP', 'HL',
-        # Consumer
-        'AMZN',
-        # ETFs
-        'VOO', 'QQQ',
+        'XOM', 'CVX', 'OXY',
+        # Healthcare
+        'JNJ', 'UNH',
         # Bonds
         'TLT', 'IEF',
     ],
-    window=60,                    # These are defaults - will be optimized
-    min_prob_threshold=0.67,
+    window=70,                    # These are defaults - will be optimized
+    min_prob_threshold=0.70,
+    short_prob_threshold=0.00,  # No shorts in aggressive config
     target_vol=0.18,              # Bumped up for aggressive
-    max_position=0.20,
+    max_position=0.15,
     initial_capital=100000.0,
     drawdown_threshold=0.15,
-    drawdown_scaling=0.75,
-    drawdown_recovery=0.13,
+    drawdown_scaling=0.50,
+    drawdown_recovery=0.14,
     rebalance_frequency=5,
+    use_regime_filter=True,
+    regime_bull_scalar=1.0,
+    regime_bear_scalar=0.5,
+    regime_neutral_scalar=0.75
+)
+
+#CURRENT TESTING CONFIG - CAL'S MEDALLION FUND
+TESTING_CONFIG = StrategyConfig(
+    symbols = [
+        'AAPL', 'GOOGL', 'MSFT', 'META', 'AMZN', 'NVDA', 'AMD', 'TSLA',
+        'JPM', 'BAC', 'GS', 'V',
+        'XOM', 'CVX', 'COP',
+        'JNJ', 'UNH', 'PFE',
+        'TLT', 'IEF', 'LQD', 'HYG',
+    ],
+    window=60,
+    min_prob_threshold=0.70,
+    short_prob_threshold=0.30,
+    target_vol=0.18,
+    max_position=0.10,
+    initial_capital=100000.0,
+    drawdown_threshold=0.10,
+    drawdown_scaling=0.50,
+    drawdown_recovery=0.09,
+    rebalance_frequency=1,
 )
 
 # ---------------------------------------------------------

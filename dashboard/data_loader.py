@@ -76,7 +76,7 @@ def get_live_signals(config: StrategyConfig = None):
         end_date = datetime.now()
         start_date = end_date - timedelta(days=config.window + 10)
         
-        raw = fetch_daily_bars(
+        raw, sector_map = fetch_daily_bars(
             symbols=config.symbols,
             start_date=start_date,
             end_date=end_date

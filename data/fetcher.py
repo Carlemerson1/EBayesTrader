@@ -15,6 +15,7 @@ import pandas as pd
 
 from dotenv import load_dotenv
 
+from data.sector_mapping import get_sector
 from alpaca.data.historical import StockHistoricalDataClient
 from alpaca.data.requests import StockBarsRequest
 from alpaca.data.timeframe import TimeFrame
@@ -82,7 +83,9 @@ def fetch_daily_bars(
     df.sort_index(inplace=True)
 
     print(f"Fetched {len(df)} bars for {len(symbols)} symbol(s).")
-    return df
+    sector_map = {symbol: get_sector(symbol) for symbol in symbols}
+    
+    return df, sector_map
 
 #This block only runs when you execute file directly:
 #   python3 data/fetcher.py
@@ -91,8 +94,8 @@ def fetch_daily_bars(
 if __name__ == "__main__":
     print("Running fetcher sanity check...\n")
 
-    df=fetch_daily_bars(
-        symbols=["AAPL", "MSFT"],
+    df, sector_map = fetch_daily_bars(  # ← CHANGE THIS LINE
+        symbols=["AAPL", "MSFT", "XOM", "TLT"],
         start_date=datetime(2024,10,1),
         end_date=datetime(2024,10,31)
     )
@@ -100,16 +103,9 @@ if __name__ == "__main__":
     print("\n--- Raw DataFrame (first 10 rows) ---")
     print(df.head(10))
 
-    print("\n--- DataFrame shape ---")
-    print(f"Rows: {df.shape[0]}, Columns: {df.shape[1]}")
-
-    print("\n--- Index structure ---")
-    print(f"Index type: {type(df.index)}")
-    print(f"Index names: {df.index.names}")
-    print(f"Symbols: {df.index.get_level_values('symbol').unique().tolist()}")
-
-    print("\n--- Column names ---")
-    print(df.columns.tolist())
+    print("\n--- Sector Mapping ---")  # ← ADD THESE 3 LINES
+    for symbol, sector in sector_map.items():
+        print(f"  {symbol}: {sector}")
 
     print("\n--- AAPL close prices only ---")
     aapl_close=df.loc["AAPL", "close"]

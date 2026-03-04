@@ -539,7 +539,7 @@ def main():
     # Load data
     print("Loading market data...")
     from data.fetcher import fetch_daily_bars
-    raw = fetch_daily_bars(symbols, datetime(2020, 1, 1), datetime(2024, 12, 31))
+    raw, sector_map = fetch_daily_bars(symbols, datetime(2020, 1, 1), datetime(2024, 12, 31))
     log_returns = compute_log_returns(raw)
     log_returns = clean_returns(log_returns)
     print(f"Data loaded: {len(log_returns)} days\n")

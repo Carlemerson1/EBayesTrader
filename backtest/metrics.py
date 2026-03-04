@@ -8,6 +8,7 @@ and posterior calibration checks.
 """
 
 import sys
+import io
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
@@ -188,8 +189,13 @@ def print_metrics_report(
     print("\n--- CONFIGURATION ---")
     print(f"Initial Capital: ${config.initial_capital:,.2f}")
     print(f"List of Symbols: {result.symbols}")
+    # group a list of stocks for each sector
+    for sector in set(config.sector_map.values()):
+        sector_stocks = [s for s, sec in config.sector_map.items() if sec == sector]
+        print(f"  {sector.upper()}: {', '.join(sector_stocks)}")
     print(f"Window Size: {config.window} days")
     print(f"Min Prob Threshold: {config.min_prob_threshold:.2f}")
+    print(f"Short Prob Threshold: {config.short_prob_threshold:.2f}")
     print(f"Target Volatility: {config.target_vol:.2%}")
     print(f"Max Position Size: {config.max_position:.2%}")
     print(f"Drawdown Threshold: {config.drawdown_threshold:.2%}")
@@ -255,10 +261,13 @@ if __name__ == "__main__":
     
     print("Running backtest for metrics calculation...\n")
     
-    from config.settings import AGGRESSIVE_GROWTH_CONFIG
+    from config.settings import DEFAULT_CONFIG, AGGRESSIVE_GROWTH_CONFIG, TESTING_CONFIG
 
-    raw = fetch_daily_bars(
-        symbols=AGGRESSIVE_GROWTH_CONFIG.symbols,
+    #CURRENT CONFIG -- CHANGE THIS TO TEST DIFFERENT SETTINGS
+    config = AGGRESSIVE_GROWTH_CONFIG
+
+    raw, sector_map = fetch_daily_bars(
+        symbols=config.symbols,
         start_date=datetime(2020, 1, 1),
         end_date=datetime(2024, 12, 31),
     )
@@ -267,18 +276,25 @@ if __name__ == "__main__":
     log_returns = clean_returns(log_returns)
     
     config = BacktestConfig(
-        window=60,
-        min_prob_threshold=0.69,
-        target_vol=0.15,
-        max_position=0.20,
-        initial_capital=100000.0,
-        drawdown_threshold=0.15,
-        drawdown_scaling=0.75,
-        drawdown_recovery=0.13,
-        stop_loss_threshold=-0.005
+        window=config.window,
+        min_prob_threshold=config.min_prob_threshold,
+        short_prob_threshold=config.short_prob_threshold,
+        target_vol=config.target_vol,
+        max_position=config.max_position,
+        initial_capital=config.initial_capital,
+        sector_map=config.sector_map,
+        drawdown_threshold=config.drawdown_threshold,
+        drawdown_scaling=config.drawdown_scaling,
+        drawdown_recovery=config.drawdown_recovery,
+        stop_loss_threshold=config.stop_loss_threshold,
+        rebalance_frequency=config.rebalance_frequency,
+        use_regime_filter=config.use_regime_filter,
+        regime_bull_scalar=config.regime_bull_scalar,
+        regime_bear_scalar=config.regime_bear_scalar,
+        regime_neutral_scalar=config.regime_neutral_scalar
     )
     
-    result = run_backtest(log_returns, config)
+    result = run_backtest(log_returns, config, verbose=False) # Set verbose=True to see progress and drawdown protection logs
     
     # Compute metrics
     metrics = compute_metrics(

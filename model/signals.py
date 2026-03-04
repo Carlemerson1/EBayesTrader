@@ -31,17 +31,25 @@ class TradingSignal:
 def compute_signal(
     posterior: AssetPosterior,
     risk_free_daily: float=0.0,
-    min_prob_threshold: float=0.6
+    min_prob_threshold: float=0.67,
+    short_prob_threshold: float=0.10  # NEW: Stricter threshold for shorts
 ) -> TradingSignal:
     """
     Computes a trading signal for a posterior distribution
+    
+    Uses asymmetric thresholds:
+      - Long if P(mu > 0) >= min_prob_threshold (default 67%)
+      - Short if P(mu > 0) <= short_prob_threshold (default 10%, meaning 90% sure it goes down)
+      - Flat otherwise
     
     :param posterior: Posterior distribution of the asset
     :type posterior: AssetPosterior
     :param risk_free_daily: Daily risk-free rate
     :type risk_free_daily: float
-    :param min_prob_threshold: Minimum probability threshold to go long (default 60%)
+    :param min_prob_threshold: Minimum probability threshold to go long (default 67%)
     :type min_prob_threshold: float
+    :param short_prob_threshold: Maximum probability threshold to go short (default 10%)
+    :type short_prob_threshold: float
     :return: Trading signal dataclass
     :rtype: TradingSignal
     """
@@ -52,20 +60,19 @@ def compute_signal(
     else:
         erar = 0.0
 
-    #P(mu_i < r_f | data)
+    # P(mu_i > r_f | data)
     # Posterior on mu_i is Normal(post_mean, post_std^2)
-    # We want P(mu_i > r_f) = 1 - phi(r_f)
-    prob_positive=float(stats.norm.sf(
+    prob_positive = float(stats.norm.sf(
         risk_free_daily,
         loc=posterior.post_mean,
         scale=posterior.post_std
     ))
 
-    # Determine action based on probability threshold
+    # Determine action based on ASYMMETRIC probability thresholds
     if prob_positive >= min_prob_threshold:
         action = "long"
-    elif prob_positive <= (1 - min_prob_threshold):
-        action = "short"
+    elif prob_positive <= short_prob_threshold:
+        action = "short"  # Only if very confident it goes down
     else:
         action = "flat"
 
@@ -82,7 +89,8 @@ def compute_signal(
 def compute_all_signals(
     posteriors: dict[str, AssetPosterior],
     risk_free_daily: float=0.0,
-    min_prob_threshold: float=0.6,
+    min_prob_threshold: float=0.67,
+    short_prob_threshold: float=0.10,  # NEW
 ) -> dict[str, TradingSignal]:
     """
     Compute trading signals for all assets given their posteriors
@@ -91,8 +99,10 @@ def compute_all_signals(
     :type posteriors: dict[str, AssetPosterior]
     :param risk_free_daily: Daily risk-free rate
     :type risk_free_daily: float
-    :param min_prob_threshold: Minimum probability threshold to go long (default 60%)
+    :param min_prob_threshold: Minimum probability threshold to go long (default 67%)
     :type min_prob_threshold: float
+    :param short_prob_threshold: Maximum probability threshold to go short (default 10%)
+    :type short_prob_threshold: float
     :return: {symbol: TradingSignal}
     :rtype: dict[str, TradingSignal]
     """
@@ -101,7 +111,8 @@ def compute_all_signals(
         signals[symbol] = compute_signal(
             posterior,
             risk_free_daily=risk_free_daily,
-            min_prob_threshold=min_prob_threshold
+            min_prob_threshold=min_prob_threshold,
+            short_prob_threshold=short_prob_threshold  # PASS IT THROUGH
         )
     return signals
 
@@ -113,11 +124,11 @@ if __name__ == "__main__":
     from datetime import datetime
     from data.fetcher import fetch_daily_bars
     from data.processor import compute_log_returns, clean_returns, get_rolling_window
-    from prior import estimate_prior
-    from posterior import update_all_posteriors
+    from prior import estimate_prior, estimate_sector_priors
+    from posterior import update_all_posteriors, update_all_posteriors_by_sector
 
     print("Fetching data...\n")
-    raw = fetch_daily_bars(
+    raw, sector_map = fetch_daily_bars(
         symbols=["AAPL", "MSFT", "GOOG", "AMZN", "TSLA", "NVDA"],
         start_date=datetime(2022, 7, 1),
         end_date=datetime(2022, 10, 31),
@@ -127,9 +138,9 @@ if __name__ == "__main__":
     log_returns = clean_returns(log_returns)
     window = get_rolling_window(log_returns, end_date=log_returns.index[-1], window=60)
     
-    prior = estimate_prior(window)
-    posteriors = update_all_posteriors(window, prior)
-    signals = compute_all_signals(posteriors, min_prob_threshold=0.95)
+    sector_priors = estimate_sector_priors(window, sector_map, verbose=False)
+    posteriors = update_all_posteriors_by_sector(window, sector_priors, sector_map)
+    signals = compute_all_signals(posteriors, min_prob_threshold=0.95, short_prob_threshold=0.10)
 
     print("\n--- Trading Signals ---")
     print(f"{'Symbol':<8} {'Action':<8} {'P(mu>0)':<10} {'ERAR':<10} {'Post Mean':<12} {'Post Std':<12}")

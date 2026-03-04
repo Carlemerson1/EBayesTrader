@@ -16,7 +16,7 @@ USAGE EXAMPLES (copy-paste these commands):
 python analysis/parameter_study.py --full-grid
 
 # Custom period with more combinations
-python analysis/parameter_study.py --full-grid --start-date 2020-01-01 --end-date 2026-02-01 --max-combos 100
+python analysis/parameter_study.py --full-grid --start-date 2020-01-01 --end-date 2026-02-01 --max-combos 100 --config AGGRESSIVE_GROWTH_CONFIG
 
 # Bear market only (2022)
 python analysis/parameter_study.py --full-grid --start-date 2022-01-01 --end-date 2022-12-31 --max-combos 25
@@ -25,7 +25,7 @@ python analysis/parameter_study.py --full-grid --start-date 2022-01-01 --end-dat
 # SINGLE PARAMETER SWEEP (test one parameter, hold others constant)
 # ------------------------------------------------------------------
 # Test different window sizes
-python analysis/parameter_study.py --sweep window
+python analysis/parameter_study.py --sweep window --config AGGRESSIVE_GROWTH_CONFIG
 
 # Test probability thresholds on custom period
 python analysis/parameter_study.py --sweep threshold --start-date 2021-01-01 --end-date 2024-12-31
@@ -43,7 +43,7 @@ python analysis/parameter_study.py --sweep drawdown
 # WALK-FORWARD ANALYSIS (test stability across multiple periods)
 # ---------------------------------------------------------------
 # Test window parameter across 2020-21, 2021-22, 2022-23, 2023-24, 2020-24
-python analysis/parameter_study.py --walk-forward window
+python analysis/parameter_study.py --walk-forward window --config AGGRESSIVE_GROWTH_CONFIG
 
 # Test probability threshold stability
 python analysis/parameter_study.py --walk-forward threshold
@@ -108,10 +108,10 @@ class ParameterStudy:
         
         # Default parameter ranges
         self.param_grid = {
-            'window': [40, 50, 60, 70, 90],
+            'window': [50, 60, 70, 80, 90, 100],
             'min_prob_threshold': [0.60, 0.65, 0.67, 0.70, 0.75],
             'target_vol': [0.12, 0.15, 0.18, 0.20],
-            'max_position': [0.05, 0.075, 0.10, 0.15, 0.20, 0.25],
+            'max_position': [0.10, 0.15, 0.20, 0.25],
             'drawdown_threshold': [0.10, 0.15, 0.20],
         }
 
@@ -131,7 +131,7 @@ class ParameterStudy:
         start = datetime.strptime(start_date, '%Y-%m-%d')
         end = datetime.strptime(end_date, '%Y-%m-%d')
 
-        raw = fetch_daily_bars(self.symbols, start, end)
+        raw, sector_map = fetch_daily_bars(self.symbols, start, end)
         log_returns=compute_log_returns(raw)
         log_returns=clean_returns(log_returns)
 
@@ -488,33 +488,48 @@ def main():
     parser.add_argument('--walk-forward', type=str,
                        help='Walk-forward analysis for parameter (e.g., "window")')
     
+    # NEW: Config selection
+    parser.add_argument('--config', type=str, default='AGGRESSIVE_GROWTH_CONFIG',
+                       choices=['DEFAULT_CONFIG', 'CONSERVATIVE_CONFIG', 'AGGRESSIVE_GROWTH_CONFIG'],
+                       help='Which config from settings.py to use')
+    
     # Date range parameters
     parser.add_argument('--start-date', type=str, default='2020-01-01',
                        help='Start date for backtest (YYYY-MM-DD)')
     parser.add_argument('--end-date', type=str, default='2024-12-31',
                        help='End date for backtest (YYYY-MM-DD)')
-    
-    # Grid search size
     parser.add_argument('--max-combos', type=int, default=50,
                        help='Max combinations for grid search')
     
     args = parser.parse_args()
     
-    # CHOOSE SYMBOL UNIVERSE FROM CONFIG (can be customized)
-    from config.settings import AGGRESSIVE_GROWTH_CONFIG
-    symbols = AGGRESSIVE_GROWTH_CONFIG.symbols
+    # Load selected config
+    from config.settings import DEFAULT_CONFIG, CONSERVATIVE_CONFIG, AGGRESSIVE_GROWTH_CONFIG
+    
+    config_map = {
+        'DEFAULT_CONFIG': DEFAULT_CONFIG,
+        'CONSERVATIVE_CONFIG': CONSERVATIVE_CONFIG,
+        'AGGRESSIVE_GROWTH_CONFIG': AGGRESSIVE_GROWTH_CONFIG,
+    }
+    
+    selected_config = config_map[args.config]
+    symbols = selected_config.symbols
     
     study = ParameterStudy(symbols)
     
-    # Baseline config
+    # Build baseline from selected config
     baseline = {
-        'window': 60,
-        'min_prob_threshold': 0.67,
-        'target_vol': 0.20,
-        'max_position': 0.10,
-        'initial_capital': 100000.0,
-        'drawdown_threshold': 0.15,
-        'drawdown_scaling': 0.75,
+        'window': selected_config.window,
+        'min_prob_threshold': selected_config.min_prob_threshold,
+        'short_prob_threshold': selected_config.short_prob_threshold,
+        'target_vol': selected_config.target_vol,
+        'max_position': selected_config.max_position,
+        'initial_capital': selected_config.initial_capital,
+        'drawdown_threshold': selected_config.drawdown_threshold,
+        'drawdown_scaling': selected_config.drawdown_scaling,
+        'drawdown_recovery': selected_config.drawdown_recovery,
+        'rebalance_frequency': selected_config.rebalance_frequency,
+        'sector_map': selected_config.sector_map,
     }
     
     # Create descriptive period name

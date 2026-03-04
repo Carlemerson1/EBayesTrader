@@ -36,40 +36,31 @@ def compute_kelly_weights(
     max_position: float = 0.20,
 ) -> dict[str, float]:
     """
-    Computes raw position weights using a Kelly-like criterion
-
-    Kelly logic (simplified): weight_i propto expected_return_i / sigma_i^2
-        i.e., weight_i propto (post_mean / post_var) * direction
-        where direction = +1 for long, -1 for short, 0 for flat
-    
-    :param signals: dict of TradingSignal objects
-    :type signals: dict[str, TradingSignal]
-    :param max_position: max weifght for any single stock (default 20%)
-    :type max_position: float
-    :return: dict {symbol: raw_weight}, not normalized to sum to 1
-    :rtype: dict[str, float]
+    Computes raw position weights using a Kelly-like criterion.
     """
-    raw_weights={}
+    raw_weights = {}
+    
     for symbol, sig in signals.items():
-        #skip flat positions
         if sig.action == "flat":
             raw_weights[symbol] = 0.0
             continue
 
-        #direction: +1 for long, -1 for short
-        direction = 1.0 if sig.action == "long" else -1.0
-
-        #Kelly weight \propto expected_return / variance
-        #higher expected return -> bigger position
-        #higher variance -> smaller position
-        if sig.posterior_std > 0:
-            kelly = (sig.expected_return / sig.sigma_hat) * sig.prob_positive
+        if sig.posterior_std > 0 and sig.sigma_hat > 0:
+            # Base Kelly weight (includes sign)
+            kelly = sig.expected_return / sig.sigma_hat
+            
+            # Scale by conviction
+            if sig.action == 'long':
+                conviction = sig.prob_positive  # e.g., 0.90
+            else:  # short
+                conviction = 1 - sig.prob_positive  # e.g., 1 - 0.23 = 0.77
+            
+            weight = kelly * conviction
+            
+            # Cap at max position
+            weight = np.clip(weight, -max_position, max_position)
         else:
-            kelly = 0.0
-
-        # Apply direction and cap at max_position
-        weight = direction * kelly
-        weight = np.clip(weight, -max_position, max_position)
+            weight = 0.0
 
         raw_weights[symbol] = weight
 
@@ -129,15 +120,16 @@ def normalize_weights(
             return result
         
         #normal case: scale longs to +1.0 and shorts to -1.0
+        # Normal case: scale longs to +1.0 and shorts to -1.0
         scale_long = 1.0 / long_total
         scale_short = 1.0 / short_total
 
         normalized = {}
         for symbol, weight in raw_weights.items():
             if weight > 0:
-                normalized[symbol] = weight * scale_long
+                normalized[symbol] = weight * scale_long  # Positive
             elif weight < 0:
-                normalized[symbol] = weight * scale_short
+                normalized[symbol] = -abs(weight) * scale_short  # ← FIXED: Force negative
             else:
                 normalized[symbol] = 0.0
 
@@ -245,6 +237,7 @@ def compute_portfolio_weights(
     target_vol: float = 0.15,
     max_position: float = 0.20,
     target_gross_exposure: float = 2.0,
+    min_prob_threshold: float = 0.67, # NEW parm
     market_neutral: bool = True # NEW parm
 ) -> PortfolioWeights:
     """
@@ -266,7 +259,7 @@ def compute_portfolio_weights(
         target_vol: annualized portfolio volatility target (default 15%)
         max_position: max weight per stock (default 20%)
         target_gross_exposure: sum of weights (default 2.0 = fully invested)
-
+        min_prob_threshold: minimum probability threshold for conviction scaling (default 0.67)
     Returns: 
         PortfolioWeights object with final weights and diagnostics
     """
@@ -278,9 +271,14 @@ def compute_portfolio_weights(
     normalized = normalize_weights(raw, target_gross_exposure=target_gross_exposure, market_neutral=market_neutral)
 
     #Step 3 Vol targeting (NOW WITH FULL COV MATRIX)
-    final_weights, actual_vol = apply_volatility_target(
+    vol_adjusted, actual_vol = apply_volatility_target(
         normalized, signals, returns_window, target_vol=target_vol
     )
+
+    # NEW step 4: apply max pos limits as final step after all scaling
+    final_weights = {}
+    for symbol, weight in vol_adjusted.items():
+        final_weights[symbol] = np.clip(weight, -max_position, max_position)
 
     #compute total exposure
     total_exposure = sum(abs(w) for w in final_weights.values())
@@ -353,7 +351,7 @@ if __name__ == "__main__":
     from model.signals import compute_all_signals
     
     print("Fetching data...\n")
-    raw = fetch_daily_bars(
+    raw, sector_map = fetch_daily_bars(
         symbols=["AAPL", "MSFT", "GOOG", "AMZN", "TSLA", "HL"],
         start_date=datetime(2022, 7, 1),
         end_date=datetime(2023, 10, 31),

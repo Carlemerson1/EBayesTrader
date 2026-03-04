@@ -15,14 +15,13 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
 import argparse
-import sys
 from datetime import datetime, timedelta
 
 # Data & modeling
 from data.fetcher import fetch_daily_bars
 from data.processor import compute_log_returns, clean_returns, get_rolling_window
-from model.prior import estimate_prior
-from model.posterior import update_all_posteriors
+from model.prior import estimate_prior, estimate_sector_priors
+from model.posterior import update_all_posteriors, update_all_posteriors_by_sector
 from model.signals import compute_all_signals
 from risk.manager import compute_portfolio_weights
 
@@ -30,7 +29,7 @@ from risk.manager import compute_portfolio_weights
 from execution.trader import AlpacaTrader
 from config.settings import (
     StrategyConfig, AlpacaConfig,
-    DEFAULT_CONFIG, CONSERVATIVE_CONFIG, AGGRESSIVE_CONFIG
+    DEFAULT_CONFIG, CONSERVATIVE_CONFIG, AGGRESSIVE_GROWTH_CONFIG
 )
 
 # Backtesting
@@ -54,7 +53,7 @@ def run_backtest_mode(config: StrategyConfig):
     end_date = datetime.now()  # today
     start_date = end_date - timedelta(days=365 * 5)  # 5 years
     
-    raw = fetch_daily_bars(
+    raw, symbol_map = fetch_daily_bars(
         symbols=config.symbols,
         start_date=start_date,
         end_date=end_date,
@@ -76,7 +75,12 @@ def run_backtest_mode(config: StrategyConfig):
         drawdown_threshold=config.drawdown_threshold,
         drawdown_scaling=config.drawdown_scaling,
         drawdown_recovery=config.drawdown_recovery,
-        stop_loss_threshold=config.stop_loss_threshold
+        stop_loss_threshold=config.stop_loss_threshold,
+        sector_map=config.sector_map,
+        use_regime_filter=config.use_regime_filter,
+        regime_bull_scalar=config.regime_bull_scalar,
+        regime_bear_scalar=config.regime_bear_scalar,
+        regime_neutral_scalar=config.regime_neutral_scalar
     )
     
     # Run backtest
@@ -153,7 +157,7 @@ def run_paper_mode(config: StrategyConfig):
     end_date = datetime.now()
     start_date = end_date - timedelta(days=config.window + 10)  # Extra buffer
     
-    raw = fetch_daily_bars(
+    raw, sector_map = fetch_daily_bars(
         symbols=config.symbols,
         start_date=start_date,
         end_date=end_date,
@@ -173,10 +177,10 @@ def run_paper_mode(config: StrategyConfig):
     
     # Run the model
     print("Running Bayesian model...")
-    prior = estimate_prior(window)
-    posteriors = update_all_posteriors(window, prior)
-    signals = compute_all_signals(posteriors, min_prob_threshold=config.min_prob_threshold)
-    
+    sector_priors = estimate_sector_priors(window, config.sector_map, verbose=False)
+    posteriors = update_all_posteriors_by_sector(window, sector_priors, config.sector_map)
+    signals = compute_all_signals(posteriors, min_prob_threshold=config.min_prob_threshold, short_prob_threshold=config.short_prob_threshold)
+
     portfolio_weights_obj = compute_portfolio_weights(
         signals,
         returns_window=window,
@@ -187,7 +191,7 @@ def run_paper_mode(config: StrategyConfig):
     )
     
     target_weights = portfolio_weights_obj.weights
-    
+
     print(f"\n--- Target Portfolio Weights ---")
     print(f"Target Vol: {portfolio_weights_obj.target_vol:.1%}")
     print(f"Actual Vol: {portfolio_weights_obj.actual_vol:.1%}")
@@ -197,7 +201,7 @@ def run_paper_mode(config: StrategyConfig):
         weight = target_weights[symbol]
         sig = signals[symbol]
         if abs(weight) > 0.001:
-            print(f"{symbol:<6} {weight:>7.2%}  [{sig.action:<6}]  P(mu>0)={sig.prob_positive:.1%}")
+            print(f"{symbol:<6} {weight:>+7.2%}  [{sig.action:<6}]  P(mu>0)={sig.prob_positive:.1%}")
     
     # Get current prices for order sizing
     print("\n--- Fetching current prices ---")
@@ -214,6 +218,39 @@ def run_paper_mode(config: StrategyConfig):
             print(f"{symbol}: ${price:.2f}")
         except KeyError:
             print(f"No price data for {symbol}")
+    
+    #Order preview before submission
+    print("\n--- Order Preview ---")
+    portfolio_value= float(account.equity)
+    for symbol, weight in target_weights.items():
+        if abs(weight) < 0.001:
+            continue
+        
+        current_qty = trader.get_positions().get(symbol, 0)
+        target_qty = trader.compute_target_quantities(
+            {symbol: weight}, 
+            portfolio_value, 
+            current_prices
+        )[symbol]
+        
+        delta = target_qty - current_qty
+        
+        if abs(delta) < 1:
+            continue
+        
+        if current_qty > 0 and target_qty < 0:
+            action = "SELL LONG + SHORT"  # Close long, then short
+        elif current_qty == 0 and target_qty < 0:
+            action = "SHORT"
+        elif current_qty > 0 and target_qty == 0:
+            action = "CLOSE LONG"
+        elif delta > 0:
+            action = "BUY"
+        else:
+            action = "SELL"
+        
+        print(f"{action:<12} {abs(delta):>4.0f} shares of {symbol:<6} "
+            f"(current: {current_qty:>4.0f} → target: {target_qty:>4.0f})")
     
     # Submit orders
     print("\n--- Submitting Orders to Alpaca ---")
@@ -280,7 +317,7 @@ def main():
     
     # Config selection
     parser.add_argument('--config', type=str, default='default',
-                       choices=['default', 'conservative', 'aggressive'],
+                       choices=['default', 'conservative', 'aggressive_growth'],
                        help='Strategy configuration to use')
     
     args = parser.parse_args()
@@ -289,7 +326,7 @@ def main():
     if args.config == 'conservative':
         config = CONSERVATIVE_CONFIG
     elif args.config == 'aggressive':
-        config = AGGRESSIVE_CONFIG
+        config = AGGRESSIVE_GROWTH_CONFIG
     else:
         config = DEFAULT_CONFIG
     

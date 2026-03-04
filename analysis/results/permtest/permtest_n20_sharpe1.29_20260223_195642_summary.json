@@ -1,0 +1,10 @@
+{
+  "actual_sharpe": 1.292289705464911,
+  "permuted_mean": 1.086842255609611,
+  "permuted_std": 0.30897780118780865,
+  "permuted_min": 0.4733063366311332,
+  "permuted_max": 1.5000048523919245,
+  "permuted_median": 1.1959050962898692,
+  "p_value": 0.3,
+  "n_permutations": 20,
+  "better_than_actual": 

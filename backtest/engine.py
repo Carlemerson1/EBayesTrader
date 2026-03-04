@@ -14,8 +14,8 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 
-from model.prior import estimate_prior
-from model.posterior import update_all_posteriors
+from model.prior import estimate_prior, estimate_sector_priors
+from model.posterior import update_all_posteriors, update_all_posteriors_by_sector
 from model.signals import compute_all_signals
 from risk.manager import compute_portfolio_weights
 
@@ -26,9 +26,12 @@ class BacktestConfig:
     """
     window: int = 60 #rolling window for model (trading days)
     min_prob_threshold: float = 0.60 #signal threshold
+    short_prob_threshold: float = 0.10 #NEW: threshold for short signals (e.g. 0.10 means we need to be 90% sure it goes down to short)
     target_vol: float = 0.15 #annualized portfolio vol target
     max_position: float = 0.20 #max weight per stock
     initial_capital: float = 100000.0 #starting portfolio value
+    rebalance_frequency: int = 5 #rebalance every N trading days (e.g. 5 = weekly)
+    sector_map: dict[str, str] = None #mapping of {symbol: sector} for sector-specific priors
 
     # Drawdown protection
     drawdown_threshold: float = 0.15 # If drawdown exceeds this, we reduce risk
@@ -36,12 +39,21 @@ class BacktestConfig:
     drawdown_recovery: float = 0.10 # If drawdown recovers to this level, we can restore full risk (e.g. 0.10 = recover at -10% drawdown)
     stop_loss_threshold: float = -0.01 # If an individual position loses more than this in a day, we close it (e.g. -0.02 = 2% loss)
 
+    # Regime filter
+    use_regime_filter: bool = False  # Enable ML regime detection
+    regime_bull_scalar: float = 1.0   # Full exposure in bull markets
+    regime_bear_scalar: float = 0.5   # Half exposure in bear markets
+    regime_neutral_scalar: float = 0.75  # 75% in neutral markets
+
     def __post_init__(self):
         if self.window <= 0:
             raise ValueError("Window must be positive")
         if self.initial_capital <= 0:
             raise ValueError("Initial capital must be positive")
-        
+        if self.sector_map is None:
+            self.sector_map = {}
+
+
 @dataclass
 class BacktestResult:
     """
@@ -65,7 +77,8 @@ class BacktestResult:
 def run_backtest(
     log_returns: pd.DataFrame,
     config: BacktestConfig,
-    benchmark_returns: Optional[pd.Series] = None
+    benchmark_returns: Optional[pd.Series] = None,
+    verbose: bool = True
 ) -> BacktestResult:
     """
     Runs a walk-forward backtest of the strategy.
@@ -74,6 +87,8 @@ def run_backtest(
         log_returns: DataFrame of log returns (dates x symbols)
         config: BacktestConfig with backtest parameters
         benchmark_returns: Optional series of benchmark returns for comparison
+        sector_map: Dict mapping {symbol: sector}
+        verbose: Whether to print progress and debug information
 
     Returns:
         BacktestResult with equity curve, returns, positions, trades, and config
@@ -93,15 +108,15 @@ def run_backtest(
     prev_breaker_active = False #track previous state to log only on changes
 
     stop_loss_threshold = config.stop_loss_threshold # stop-loss threshold for individual positions (e.g. -0.02 = 2% loss)
-
-    print(f"Running backtest from {dates[0]} to {dates[-1]}")
-    print(f"Universe: {len(symbols)} stocks, Window: {config.window} days\n")
+    if verbose:
+        print(f"Running backtest from {dates[0]} to {dates[-1]}")
+        print(f"Universe: {len(symbols)} stocks, Window: {config.window} days\n")
 
     for i, date in enumerate(dates):
         # get rolling window of data up to (but not incl) this date
         # this simulates "looking back" at data we would have had at this time
         # so model is always trained on past data, never future data
-        if i % 5 != 0: #only rebalance every N days (weekly=5 trading days)
+        if i % config.rebalance_frequency != 0: #only rebalance every N days (weekly=5 trading days)
             #don't rebalancetoday, just apply yesterday's returns
             day_returns = log_returns.loc[date]
 
@@ -128,11 +143,12 @@ def run_backtest(
         window = log_returns.iloc[window_start_idx:window_end_idx + 1]
 
         #run model
-        prior = estimate_prior(window)
-        posteriors = update_all_posteriors(window, prior)
+        sector_priors = estimate_sector_priors(window, config.sector_map, verbose=False)
+        posteriors = update_all_posteriors_by_sector(window, sector_priors, config.sector_map)
         signals = compute_all_signals(
             posteriors,
-            min_prob_threshold=config.min_prob_threshold
+            min_prob_threshold=config.min_prob_threshold,
+            short_prob_threshold=config.short_prob_threshold
         )
 
         portfolio_weights = compute_portfolio_weights(
@@ -144,6 +160,34 @@ def run_backtest(
             market_neutral=True
         )
 
+        # Apply regime-based position scaling
+        regime_scalar = 1.0
+        if config.use_regime_filter:
+            # Simple regime detection: look at recent market trend
+            market_returns = window.mean(axis=1)  # Equal-weighted portfolio return
+            recent_60d = market_returns.iloc[-60:] if len(market_returns) >= 60 else market_returns
+            
+            # Check trend
+            recent_avg = recent_60d.mean() * 252  # Annualized
+            recent_vol = recent_60d.std() * np.sqrt(252)
+            
+            # Simple rule: positive trend = bull, negative = bear
+            if recent_avg > 0.05:  # >5% annualized = bull
+                regime_scalar = config.regime_bull_scalar
+                regime = 'BULL'
+            elif recent_avg < -0.05:  # <-5% annualized = bear
+                regime_scalar = config.regime_bear_scalar  
+                regime = 'BEAR'
+            else:
+                regime_scalar = config.regime_neutral_scalar
+                regime = 'NEUTRAL'
+            
+            if verbose and i % 50 == 0:
+                print(f"  [{date.date()}] Regime: {regime}, Scalar: {regime_scalar:.1%}")
+        
+        # Scale portfolio weights by regime
+        scaled_weights = {s: w * regime_scalar for s, w in portfolio_weights.weights.items()}
+
         from risk.manager import apply_drawdown_protection
 
         # portfolio peak value for drawdown calc - we can use current portfolio value as proxy for peak, since we only reduce risk after we have already taken the drawdown hit. This is a simplification but should be fine for our purposes.
@@ -151,7 +195,7 @@ def run_backtest(
 
         # asset weights after applying drawdown protection (if needed)
         new_weights, breaker_active = apply_drawdown_protection(
-            weights=portfolio_weights.weights,
+            weights=scaled_weights,
             current_value=portfolio_value,
             peak_value=peak_value,
             drawdown_trigger=config.drawdown_threshold,
@@ -161,15 +205,16 @@ def run_backtest(
         )
 
         # Log when state CHANGES (not every time it's active)
-        if i % 5 == 0 and breaker_active != prev_breaker_active:
-            current_dd = (portfolio_value - peak_value) / peak_value
-            if breaker_active and current_dd <= -config.drawdown_threshold:
-                print(f"  🔴 Drawdown protection ACTIVE at {date.date()}: "
-                    f"{current_dd:.1%} drawdown, exposure at 50%")
-            elif not breaker_active and current_dd > -0.10:
-                if (portfolio_value - peak_value) / peak_value > -config.drawdown_threshold:
-                    print(f"  🟢 Drawdown protection OFF at {date.date()}: "
-                        f"{current_dd:.1%} drawdown, full exposure restored")
+        if verbose:
+            if i % config.rebalance_frequency == 0 and breaker_active != prev_breaker_active:
+                current_dd = (portfolio_value - peak_value) / peak_value
+                if breaker_active and current_dd <= -config.drawdown_threshold:
+                    print(f"  DD protection ACTIVE at {date.date()}: "
+                        f"{current_dd:.1%} drawdown, exposure at 50%")
+                elif not breaker_active and current_dd > -0.10:
+                    if (portfolio_value - peak_value) / peak_value > -config.drawdown_threshold:
+                        print(f"  DD protection OFF at {date.date()}: "
+                            f"{current_dd:.1%} drawdown, full exposure restored")
                     
         prev_breaker_active = breaker_active #update previous state for next iteration
 
@@ -239,9 +284,10 @@ def run_backtest(
         current_weights = new_weights
 
         #progress indicator
-        if (i + 1) % 50 == 0:
-            print(f"Processed {i + 1}/{len(dates)} days..."
-                    f"Portfolio Value: ${portfolio_value:,.2f}")
+        if verbose:
+            if (i + 1) % 50 == 0:
+                print(f"Processed {i + 1}/{len(dates)} days..."
+                        f"Portfolio Value: ${portfolio_value:,.2f}")
             
     print(f"\nBacktest complete! Final Portfolio Value: ${portfolio_value:,.2f}")
 
@@ -271,7 +317,7 @@ if __name__ == "__main__":
     from data.processor import compute_log_returns, clean_returns
     
     print("Fetching historical data for backtest...\n")
-    raw = fetch_daily_bars(
+    raw, sector_map = fetch_daily_bars(
         symbols=["PLTR", "VOO", "SPY", "QQQ", "DIA"],
         start_date=datetime(2020, 1, 1),  # 2 years of data
         end_date=datetime(2025, 12, 31),
@@ -290,6 +336,7 @@ if __name__ == "__main__":
         target_vol=0.15,
         max_position=0.20,
         initial_capital=100000.0,
+        sector_map=sector_map
     )
     
     result = run_backtest(log_returns, config)

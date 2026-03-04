@@ -18,5 +18,137 @@
   {
     "timestamp": "2026-02-22 00:43:14",
     "event": "Bought 8 shares of MSFT"
+  },
+  {
+    "timestamp": "2026-03-02 09:42:17",
+    "event": "Portfolio rebalanced (4 orders)"
+  },
+  {
+    "timestamp": "2026-03-02 09:42:17",
+    "event": "Bought 2.0 shares of MSFT"
+  },
+  {
+    "timestamp": "2026-03-02 09:42:17",
+    "event": "Bought 12.0 shares of TLT"
+  },
+  {
+    "timestamp": "2026-03-02 09:42:17",
+    "event": "Bought 255.0 shares of OXY"
+  },
+  {
+    "timestamp": "2026-03-02 09:42:17",
+    "event": "Bought 41.0 shares of XOM"
+  },
+  {
+    "timestamp": "2026-03-02 13:48:38",
+    "event": "Portfolio rebalanced (3 orders)"
+  },
+  {
+    "timestamp": "2026-03-02 13:48:38",
+    "event": "Sold 33.0 shares of TLT"
+  },
+  {
+    "timestamp": "2026-03-02 13:48:38",
+    "event": "Bought 11.0 shares of XOM"
+  },
+  {
+    "timestamp": "2026-03-02 13:48:38",
+    "event": "Sold 12.0 shares of OXY"
+  },
+  {
+    "timestamp": "2026-03-03 16:27:21",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-03 16:27:44",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-03 16:40:15",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-03 16:40:53",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-03 16:51:16",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-03 16:56:10",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-03 16:57:30",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-03 16:58:17",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-03 17:04:15",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-03 17:07:40",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-03 17:09:38",
+    "event": "Portfolio rebalanced (3 orders)"
+  },
+  {
+    "timestamp": "2026-03-03 17:09:38",
+    "event": "Sold 333.0 shares of OXY"
+  },
+  {
+    "timestamp": "2026-03-03 17:09:38",
+    "event": "Sold 115.0 shares of TLT"
+  },
+  {
+    "timestamp": "2026-03-03 17:09:38",
+    "event": "Sold 166.0 shares of XOM"
+  },
+  {
+    "timestamp": "2026-03-03 17:12:33",
+    "event": "Portfolio rebalanced (3 orders)"
+  },
+  {
+    "timestamp": "2026-03-03 17:12:33",
+    "event": "Sold 166.0 shares of XOM"
+  },
+  {
+    "timestamp": "2026-03-03 17:12:33",
+    "event": "Sold 115.0 shares of TLT"
+  },
+  {
+    "timestamp": "2026-03-03 17:12:33",
+    "event": "Sold 333.0 shares of OXY"
+  },
+  {
+    "timestamp": "2026-03-03 17:17:29",
+    "event": "Portfolio rebalanced (3 orders)"
+  },
+  {
+    "timestamp": "2026-03-03 17:17:29",
+    "event": "Sold 115.0 shares of TLT"
+  },
+  {
+    "timestamp": "2026-03-03 17:17:29",
+    "event": "Sold 166.0 shares of XOM"
+  },
+  {
+    "timestamp": "2026-03-03 17:17:29",
+    "event": "Sold 333.0 shares of OXY"
+  },
+  {
+    "timestamp": "2026-03-03 20:21:01",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-03 20:23:16",
+    "event": "Rebalance cancelled by user."
   }
 ]
