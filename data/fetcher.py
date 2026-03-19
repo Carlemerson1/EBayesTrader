@@ -72,7 +72,8 @@ def fetch_daily_bars(
         timeframe=TimeFrame.Day, #daily bars
         start=start_date,
         end=end_date,
-        adjustment="all" #adjust for splits and dividends
+        adjustment="all", #adjust for splits and dividends
+        feed="iex" #use IEX feed for free data (note: may have limitations on historical depth)
     )
 
     #alpaca paginates automatically - req 5yrs of data makes multiple API calls, stiches together
