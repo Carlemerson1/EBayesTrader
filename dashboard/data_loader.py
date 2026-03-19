@@ -186,20 +186,49 @@ def compute_live_metrics(portfolio_value_history):
 
 
 def get_portfolio_history_from_alpaca(days_back=30):
-    history_file = Path(__file__).parent.parent / 'logs' / 'portfolio_history.csv'
+    # Try Alpaca portfolio history endpoint directly
+    try:
+        import requests
+        config = AlpacaConfig()
+        
+        url = f"{config.base_url}/v2/account/portfolio/history"
+        headers = {
+            'APCA-API-KEY-ID':     config.api_key,
+            'APCA-API-SECRET-KEY': config.secret_key,
+        }
+        params = {
+            'period':         f'{days_back}D',
+            'timeframe':      '1D',
+            'extended_hours': 'false',
+        }
+        
+        resp = requests.get(url, headers=headers, params=params)
+        resp.raise_for_status()
+        data = resp.json()
+        
+        if data.get('equity') and data.get('timestamp'):
+            timestamps = pd.to_datetime(data['timestamp'], unit='s', utc=True)
+            series = pd.Series(data['equity'], index=timestamps)
+            series = series[series > 0].dropna()
+            return series
 
+    except Exception as e:
+        print(f"Alpaca portfolio history API failed: {e}")
+
+    # Fallback to local CSV
+    history_file = Path(__file__).parent.parent / 'logs' / 'portfolio_history.csv'
     if history_file.exists():
         df = pd.read_csv(history_file, index_col=0)
         if 'portfolio_value' not in df.columns:
             return None
         df.index = pd.to_datetime(df.index, format='mixed')
+        df.index = pd.DatetimeIndex(df.index)
         series = df['portfolio_value'].sort_index()
-        series.index = pd.DatetimeIndex(series.index)  # ensure DatetimeIndex
         series = series.resample('D').last().dropna()
         cutoff = pd.Timestamp.now() - pd.Timedelta(days=days_back)
         return series[series.index >= cutoff] if len(series) > 0 else series
-    else:
-        return None
+
+    return None
     
 def snapshot_portfolio_value():
     """
