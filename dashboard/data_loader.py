@@ -64,39 +64,25 @@ def load_backtest_results(results_file='backtest_results.pkl'):
 
 
 def get_live_signals(config: StrategyConfig = None):
-    """
-    Run the model on current data to get live signals.
-    
-    Returns dict of {symbol: {'prob': float, 'action': str}}
-    """
     if config is None:
-        config = AGGRESSIVE_GROWTH_CONFIG
+        config = AGGRESSIVE_GROWTH_CONFIG  # Default to aggressive config for live signals
     
     try:
-        # Fetch recent data
         end_date = datetime.now()
-        start_date = end_date - timedelta(days=int(config.window*1.5 + 10))
+        start_date = end_date - timedelta(days=int(config.window * 1.5) + 10)
         
         raw, sector_map = fetch_daily_bars(
             symbols=config.symbols,
             start_date=start_date,
             end_date=end_date
         )
-        
         log_returns = compute_log_returns(raw)
         log_returns = clean_returns(log_returns)
-        
-        # Use last window days
         window = log_returns.tail(config.window)
-        print(f"DEBUG window shape: {window.shape}, dates: {window.index[0].date()} to {window.index[-1].date()}")
-
-        # Run model
         prior = estimate_prior(window)
         posteriors = update_all_posteriors(window, prior)
         signals = compute_all_signals(posteriors, config.min_prob_threshold)
-        print(f"DEBUG signals computed: {len(signals)} symbols, actions: {[s.action for s in signals.values()]}")
-
-        # Format for dashboard
+        
         signal_data = {}
         for symbol, sig in signals.items():
             signal_data[symbol] = {
@@ -104,13 +90,13 @@ def get_live_signals(config: StrategyConfig = None):
                 'action': sig.action,
                 'expected_return': sig.expected_return,
             }
-        
         return signal_data
-    
+
     except Exception as e:
-        print(f"Error computing signals: {e}")
         import traceback
-        traceback.print_exc()
+        import streamlit as st
+        st.error(f"Signal error: {e}")
+        st.code(traceback.format_exc())
         return {}
 
 

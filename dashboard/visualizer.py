@@ -42,8 +42,8 @@ BLACK = '#000000'
 
 # Page config
 st.set_page_config(
-    page_title="Bayesian Trading Dashboard",
-    page_icon="📊",
+    page_title="Trading Dashboard",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -409,7 +409,7 @@ def main():
     # Title
     st.markdown(f"""
     <h1 style='text-align: center; margin-bottom: 0.25rem;'>
-        Bayesian Hierarchical Trading System
+        Carl's Medallion Fund
     </h1>
     <p style='text-align: center; color: {GRAY}; font-size: 0.875rem; margin-top: 0;'>
         Real-time Portfolio Monitor • Paper Trading Environment
@@ -566,9 +566,9 @@ def main():
             else:
                 # Fallback to demo
                 sample_signals = {
-                    'XOM': {'prob': 0.955},
-                    'OXY': {'prob': 0.893},
-                    'TLT': {'prob': 0.815},
+                    'XOM': {'prob': 0.955, 'action': 'long', 'expected_return': 0.002},
+                    'OXY': {'prob': 0.893, 'action': 'long', 'expected_return': 0.001},
+                    'TLT': {'prob': 0.815, 'action': 'long', 'expected_return': 0.001},
                 }
                 fig_signals = create_signal_bars(sample_signals)
             st.plotly_chart(fig_signals, use_container_width=True)
