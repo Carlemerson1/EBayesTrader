@@ -12,7 +12,7 @@ Tests:
 Usage:
     python analysis/validation.py --lookahead-test
     python analysis/validation.py --k-fold --n-splits 5
-    python analysis/validation.py --permutation-test --n-perms 1000
+    python analysis/validation.py --permutation-test --block-size 20 --n-perms 1000
     python analysis/validation.py --full-validation
 """
 
@@ -33,6 +33,33 @@ from model.signals import compute_all_signals
 from backtest.engine import run_backtest, BacktestConfig
 from backtest.metrics import compute_metrics
 
+def _block_bootstrap(returns: pd.DataFrame, block_size: int = 20) -> pd.DataFrame:
+    """
+    Shuffle returns in blocks to preserve autocorrelation structure.
+
+    Individual-day shuffling destroys momentum autocorrelation, making the
+    null distribution unrealistically easy to beat. Shuffling 20-day blocks
+    preserves within-month return structure while breaking the multi-month
+    trends the strategy exploits (60-70 day window).
+
+    All columns are shuffled with the SAME block order so cross-sectional
+    correlations between stocks are also preserved within each block.
+    """
+    n = len(returns)
+
+    # Build list of block start indices
+    block_starts = list(range(0, n, block_size))
+    # Shuffle the block order (same permutation applied to all columns)
+    np.random.shuffle(block_starts)
+
+    # Reconstruct row order from shuffled blocks
+    new_order = []
+    for start in block_starts:
+        new_order.extend(range(start, min(start + block_size, n)))
+
+    shuffled = returns.iloc[new_order].copy()
+    shuffled.index = returns.index  # Restore original datetime index
+    return shuffled
 
 class ValidationFramework:
     """
@@ -160,8 +187,8 @@ class ValidationFramework:
         """
         signals_over_time = {}
         
-        window = self.base_config['window']
-        min_prob = self.base_config['min_prob_threshold']
+        window = self.base_config.window
+        min_prob = self.base_config.min_prob_threshold
         
         # Start after we have enough data
         start_idx = window
@@ -227,11 +254,11 @@ class ValidationFramework:
             print(f"Fold {fold + 1}/{n_splits}: Testing on {test_period} ({len(test_data)} days)\n")
 
             # run backtest on this fold
-            config = BacktestConfig(**self.base_config)
+            config = self.base_config
 
             # logic: if backtest fails, we catch exception and continue to next fold rather than crashing entire validation process. 
             try:
-                result = run_backtest(test_data, config)
+                result = run_backtest(test_data, config, verbose=False)
                 
                 metrics = compute_metrics(
                     result.returns,
@@ -279,7 +306,7 @@ class ValidationFramework:
         
         return df
     
-    def permutation_test(self, log_returns, n_permutations=1000, save_results=True):
+    def permutation_test(self, log_returns, n_permutations=1000, block=20, save_results=True):
         """
         Monte Carlo permutation test for statistical significance.
         
@@ -289,6 +316,7 @@ class ValidationFramework:
         Args:
             log_returns: DataFrame of returns
             n_permutations: Number of random shuffles
+            block: Block size for block bootstrap
             save_results: If True, save detailed results to CSV
             
         Returns:
@@ -301,8 +329,8 @@ class ValidationFramework:
         
         # Run on actual data
         print("Running backtest on ACTUAL data...")
-        config = BacktestConfig(**self.base_config)
-        actual_result = run_backtest(log_returns, config)
+        config = self.base_config
+        actual_result = run_backtest(log_returns, config, verbose=False)
         actual_metrics = compute_metrics(
             actual_result.returns,
             actual_result.equity_curve,
@@ -355,18 +383,16 @@ class ValidationFramework:
                 print(f"  Progress: {i + 1}/{n_permutations} ({pct_complete:.1f}%) complete", 
                       end='\r', flush=True)
             
-            # Shuffle returns (break time series structure)
-            shuffled_returns = log_returns.copy()
-            np.random.seed(1482 + i)  # Reproducible but different each iteration
-            for col in shuffled_returns.columns:
-                shuffled_returns[col] = np.random.permutation(shuffled_returns[col].values)
+            # Block bootstrap shuffle (preserves autocorrelation within 60-day blocks)
+            np.random.seed(1482 + i)
+            shuffled_returns = _block_bootstrap(log_returns, block_size=block)
             
             try:
                 # Suppress stdout for backtest to avoid cluttering output
                 old_stdout = sys.stdout
                 sys.stdout = io.StringIO() # sends all print statement for each backtest to a dummy buffer instead of console
                 
-                result = run_backtest(shuffled_returns, config)
+                result = run_backtest(shuffled_returns, config, verbose=False)
                 metrics = compute_metrics(result.returns, result.equity_curve, 
                                         result.positions, result.trades)
                 
@@ -466,8 +492,18 @@ class ValidationFramework:
             }
             summary_file = results_dir / f'{filename}_summary.json'
             import json
+            class NumpyEncoder(json.JSONEncoder):
+                def default(self, obj):
+                    if isinstance(obj, (np.integer,)):
+                        return int(obj)
+                    if isinstance(obj, (np.floating,)):
+                        return float(obj)
+                    if isinstance(obj, np.bool_):
+                        return bool(obj)
+                    return super().default(obj)
+
             with open(summary_file, 'w') as f:
-                json.dump(summary, f, indent=2)
+                json.dump(summary, f, indent=2, cls=NumpyEncoder)
             print(f"Summary saved to: {summary_file}")
         
         print(f"\n{'='*80}")
@@ -503,6 +539,11 @@ class ValidationFramework:
         }
 
 
+
+
+
+#============== OVERHAUL/UPDATE ARGPARSE ================
+
 def main():
     parser = argparse.ArgumentParser(description='Validation Framework')
     
@@ -516,30 +557,43 @@ def main():
                        help='Monte Carlo permutation test')
     parser.add_argument('--n-perms', type=int, default=100,
                        help='Number of permutations')
+    parser.add_argument('--block-size', type=int, default=20,
+                       help='Block size for block bootstrap')
     parser.add_argument('--full-validation', action='store_true',
                        help='Run all validation tests')
     
     args = parser.parse_args()
+
+    #CURRENT CONFIG -- CHANGE THIS TO TEST DIFFERENT SETTINGS
+    from config.settings import AGGRESSIVE_GROWTH_CONFIG
+    config = AGGRESSIVE_GROWTH_CONFIG
     
-    # Setup
-    symbols = ['AAPL', 'GOOG', 'MSFT', 'OXY', 'XOM', 'TLT', 'VOO']
+    config = BacktestConfig(
+        symbols=config.symbols,
+        window=config.window,
+        min_prob_threshold=config.min_prob_threshold,
+        short_prob_threshold=config.short_prob_threshold,
+        target_vol=config.target_vol,
+        max_position=config.max_position,
+        initial_capital=config.initial_capital,
+        sector_map=config.sector_map,
+        drawdown_threshold=config.drawdown_threshold,
+        drawdown_scaling=config.drawdown_scaling,
+        drawdown_recovery=config.drawdown_recovery,
+        stop_loss_threshold=config.stop_loss_threshold,
+        rebalance_frequency=config.rebalance_frequency,
+        use_regime_filter=config.use_regime_filter,
+        regime_bull_scalar=config.regime_bull_scalar,
+        regime_bear_scalar=config.regime_bear_scalar,
+        regime_neutral_scalar=config.regime_neutral_scalar
+    )
     
-    base_config = {
-        'window': 60,
-        'min_prob_threshold': 0.67,
-        'target_vol': 0.15,
-        'max_position': 0.20,
-        'initial_capital': 100000.0,
-        'drawdown_threshold': 0.15,
-        'drawdown_scaling': 0.75,
-    }
-    
-    validator = ValidationFramework(symbols, base_config)
+    validator = ValidationFramework(config.symbols, config)
     
     # Load data
     print("Loading market data...")
     from data.fetcher import fetch_daily_bars
-    raw, sector_map = fetch_daily_bars(symbols, datetime(2020, 1, 1), datetime(2024, 12, 31))
+    raw, sector_map = fetch_daily_bars(config.symbols, datetime(2020, 1, 1), datetime(2025, 12, 31))
     log_returns = compute_log_returns(raw)
     log_returns = clean_returns(log_returns)
     print(f"Data loaded: {len(log_returns)} days\n")
@@ -554,7 +608,7 @@ def main():
         validator.k_fold_cv(log_returns, n_splits=args.n_splits)
     
     if args.permutation_test or args.full_validation:
-        validator.permutation_test(log_returns, n_permutations=args.n_perms)
+        validator.permutation_test(log_returns, n_permutations=args.n_perms, block=args.block_size)
 
 
 if __name__ == "__main__":

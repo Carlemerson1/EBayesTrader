@@ -317,7 +317,7 @@ def main():
     
     # Config selection
     parser.add_argument('--config', type=str, default='default',
-                       choices=['default', 'conservative', 'aggressive_growth'],
+                       choices=['default', 'conservative', 'aggressive'],
                        help='Strategy configuration to use')
     
     args = parser.parse_args()
@@ -344,3 +344,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+#### ===== FIX SELL SHARES ======

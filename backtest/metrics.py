@@ -269,7 +269,7 @@ if __name__ == "__main__":
     raw, sector_map = fetch_daily_bars(
         symbols=config.symbols,
         start_date=datetime(2020, 1, 1),
-        end_date=datetime(2024, 12, 31),
+        end_date=datetime(2025, 12, 31),
     )
     
     log_returns = compute_log_returns(raw)

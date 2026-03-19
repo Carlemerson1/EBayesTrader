@@ -16,7 +16,7 @@ USAGE EXAMPLES (copy-paste these commands):
 python analysis/parameter_study.py --full-grid
 
 # Custom period with more combinations
-python analysis/parameter_study.py --full-grid --start-date 2020-01-01 --end-date 2026-02-01 --max-combos 100 --config AGGRESSIVE_GROWTH_CONFIG
+python analysis/parameter_study.py --full-grid --start-date 2020-01-01 --end-date 2026-03-01 --config AGGRESSIVE_GROWTH_CONFIG
 
 # Bear market only (2022)
 python analysis/parameter_study.py --full-grid --start-date 2022-01-01 --end-date 2022-12-31 --max-combos 25
@@ -108,11 +108,13 @@ class ParameterStudy:
         
         # Default parameter ranges
         self.param_grid = {
-            'window': [50, 60, 70, 80, 90, 100],
-            'min_prob_threshold': [0.60, 0.65, 0.67, 0.70, 0.75],
-            'target_vol': [0.12, 0.15, 0.18, 0.20],
-            'max_position': [0.10, 0.15, 0.20, 0.25],
-            'drawdown_threshold': [0.10, 0.15, 0.20],
+            'window': [70],
+            'min_prob_threshold': [0.67, 0.70, 0.73, 0.75, 0.8],
+            'target_vol': [0.20, 0.24, 0.28, 0.32, 0.35],
+            'max_position': [0.15],
+            'drawdown_threshold': [0.10, 0.13, 0.15],
+            'regime_bear_scalar': [0.6, 0.7, 0.8],
+            'regime_neutral_scalar': [0.85, 0.9, 0.95],
         }
 
         # Test periods for walk-forward analysis
@@ -219,20 +221,24 @@ class ParameterStudy:
 
         return pd.DataFrame(results)
     
-    def full_grid_sweep(self, log_returns, period_name, max_combinations=100):
+    def full_grid_sweep(self, log_returns, period_name, base_config, max_combinations=100):
         """
         Test all parameter combinations (or random sample if too many).
-        
+
+        Sweeps only the parameters in self.param_grid; all other config values
+        are inherited from base_config so that sector_map, use_regime_filter,
+        short_prob_threshold, drawdown_scaling, etc. stay consistent.
+
         WARNING: Can be slow! Use max_combinations to limit.
         """
         # Generate all combinations
         param_names = list(self.param_grid.keys())
         param_values = [self.param_grid[p] for p in param_names]
-        
+
         all_combinations = list(itertools.product(*param_values))
-        
+
         print(f"\nFull grid sweep: {len(all_combinations)} total combinations")
-        
+
         if len(all_combinations) > max_combinations:
             print(f"   Sampling {max_combinations} random combinations...")
             np.random.seed(42)
@@ -240,36 +246,38 @@ class ParameterStudy:
             combinations = [all_combinations[i] for i in indices]
         else:
             combinations = all_combinations
-        
+
         results = []
         failures = []
-        
+
         for i, combo in enumerate(combinations, 1):
-            # Build config dict
-            config = {param_names[j]: combo[j] for j in range(len(param_names))}
-            config['initial_capital'] = 100000.0
-            
+            # Start from base_config so sector_map, use_regime_filter, etc. are always set
+            config = base_config.copy()
+            # Override only the swept parameters
+            for j, name in enumerate(param_names):
+                config[name] = combo[j]
+
             if i % 10 == 0 or i == 1:
                 print(f"  Progress: {i}/{len(combinations)} "
                       f"(Successful: {len(results)}, Failed: {len(failures)})")
-            
+
             metrics = self.run_single_backtest(log_returns, config)
-            
+
             if metrics:
                 results.append({
                     'period': period_name,
-                    **config,
+                    **{name: combo[j] for j, name in enumerate(param_names)},
                     **metrics
                 })
             else:
                 failures.append(config)
-        
+
         print(f"\nCompleted: {len(results)} successful, {len(failures)} failed")
-        
+
         if len(results) == 0:
             print("No successful backtests! Check data length and parameters.")
             return pd.DataFrame()
-        
+
         return pd.DataFrame(results)
 
     def walk_forward_analysis(self, param_name, base_config):
@@ -529,7 +537,12 @@ def main():
         'drawdown_scaling': selected_config.drawdown_scaling,
         'drawdown_recovery': selected_config.drawdown_recovery,
         'rebalance_frequency': selected_config.rebalance_frequency,
+        'stop_loss_threshold': selected_config.stop_loss_threshold,
         'sector_map': selected_config.sector_map,
+        'use_regime_filter': selected_config.use_regime_filter,
+        'regime_bull_scalar': selected_config.regime_bull_scalar,
+        'regime_bear_scalar': selected_config.regime_bear_scalar,
+        'regime_neutral_scalar': selected_config.regime_neutral_scalar,
     }
     
     # Create descriptive period name
@@ -543,6 +556,9 @@ def main():
             'vol': 'target_vol',
             'position': 'max_position',
             'drawdown': 'drawdown_threshold',
+            'regime_bull': 'regime_bull_scalar',
+            'regime_bear': 'regime_bear_scalar',
+            'regime_neutral': 'regime_neutral_scalar',
         }
         param_name = param_map[args.sweep]
         
@@ -561,7 +577,7 @@ def main():
     elif args.full_grid:
         # Full grid search
         log_returns = study.load_data(args.start_date, args.end_date)
-        results = study.full_grid_sweep(log_returns, period_name, max_combinations=args.max_combos)
+        results = study.full_grid_sweep(log_returns, period_name, baseline, max_combinations=args.max_combos)
         
         if len(results) > 0:
             study.save_results(
@@ -578,7 +594,9 @@ def main():
                 'target_vol', 
                 'max_position',
                 'drawdown_threshold',
-                'total_return', 
+                'regime_bear_scalar',
+                'regime_neutral_scalar',
+                'total_return',
                 'sharpe', 
                 'calmar'
             ]]
@@ -593,6 +611,9 @@ def main():
             'vol': 'target_vol',
             'position': 'max_position',
             'drawdown': 'drawdown_threshold',
+            'regime_bull': 'regime_bull_scalar',
+            'regime_bear': 'regime_bear_scalar',
+            'regime_neutral': 'regime_neutral_scalar',
         }
         param_name = param_map[args.walk_forward]
         

@@ -13,9 +13,10 @@ import numpy as np
 from datetime import datetime, timedelta
 from pathlib import Path
 import json
+import csv
 
 from execution.trader import AlpacaTrader
-from config.settings import AlpacaConfig, StrategyConfig
+from config.settings import AlpacaConfig, StrategyConfig, AGGRESSIVE_GROWTH_CONFIG
 from data.fetcher import fetch_daily_bars
 from data.processor import compute_log_returns, clean_returns
 from model.prior import estimate_prior
@@ -69,12 +70,12 @@ def get_live_signals(config: StrategyConfig = None):
     Returns dict of {symbol: {'prob': float, 'action': str}}
     """
     if config is None:
-        config = StrategyConfig()
+        config = AGGRESSIVE_GROWTH_CONFIG
     
     try:
         # Fetch recent data
         end_date = datetime.now()
-        start_date = end_date - timedelta(days=config.window + 10)
+        start_date = end_date - timedelta(days=int(config.window*1.5 + 10))
         
         raw, sector_map = fetch_daily_bars(
             symbols=config.symbols,
@@ -87,12 +88,14 @@ def get_live_signals(config: StrategyConfig = None):
         
         # Use last window days
         window = log_returns.tail(config.window)
-        
+        print(f"DEBUG window shape: {window.shape}, dates: {window.index[0].date()} to {window.index[-1].date()}")
+
         # Run model
         prior = estimate_prior(window)
         posteriors = update_all_posteriors(window, prior)
         signals = compute_all_signals(posteriors, config.min_prob_threshold)
-        
+        print(f"DEBUG signals computed: {len(signals)} symbols, actions: {[s.action for s in signals.values()]}")
+
         # Format for dashboard
         signal_data = {}
         for symbol, sig in signals.items():
@@ -106,6 +109,8 @@ def get_live_signals(config: StrategyConfig = None):
     
     except Exception as e:
         print(f"Error computing signals: {e}")
+        import traceback
+        traceback.print_exc()
         return {}
 
 
@@ -195,20 +200,59 @@ def compute_live_metrics(portfolio_value_history):
 
 
 def get_portfolio_history_from_alpaca(days_back=30):
-    """
-    Fetch portfolio value history from Alpaca.
-    
-    Note: Alpaca only provides daily snapshots, not continuous equity curve.
-    For continuous tracking, you need to log values yourself.
-    """
-    # Placeholder - Alpaca API doesn't provide historical portfolio values easily
-    # You need to log these yourself in a CSV or database
-    
-    # Check if local log exists
     history_file = Path(__file__).parent.parent / 'logs' / 'portfolio_history.csv'
-    
+
     if history_file.exists():
-        df = pd.read_csv(history_file, index_col=0, parse_dates=True)
-        return df['portfolio_value']
+        df = pd.read_csv(history_file, index_col=0)
+        if 'portfolio_value' not in df.columns:
+            return None
+        df.index = pd.to_datetime(df.index, format='mixed')
+        series = df['portfolio_value'].sort_index()
+        series.index = pd.DatetimeIndex(series.index)  # ensure DatetimeIndex
+        series = series.resample('D').last().dropna()
+        cutoff = pd.Timestamp.now() - pd.Timedelta(days=days_back)
+        return series[series.index >= cutoff] if len(series) > 0 else series
     else:
+        return None
+    
+def snapshot_portfolio_value():
+    """
+    Fetch current portfolio value from Alpaca and append to history CSV.
+    
+    Called on every dashboard refresh so the equity curve grows continuously,
+    not just on trade days. Deduplicates by timestamp — won't write a second
+    entry if one already exists for the current minute.
+    """
+    try:
+        config  = AlpacaConfig()
+        trader  = AlpacaTrader(config)
+        account = trader.get_account()
+        current_value = float(account.equity)
+        now = datetime.now()
+
+        history_file = Path(__file__).parent.parent / 'logs' / 'portfolio_history.csv'
+        history_file.parent.mkdir(exist_ok=True)
+
+        # Read existing entries to check for duplicates
+        existing = []
+        if history_file.exists():
+            df = pd.read_csv(history_file)
+            existing = df['date'].tolist() if 'date' in df.columns else []
+
+        # Write header if file is new
+        write_header = not history_file.exists() or history_file.stat().st_size == 0
+
+        # Deduplicate on minute-level timestamp
+        timestamp_str = now.strftime('%Y-%m-%d %H:%M')
+        if timestamp_str not in existing:
+            with open(history_file, 'a', newline='') as f:
+                writer = csv.writer(f)
+                if write_header:
+                    writer.writerow(['date', 'portfolio_value'])
+                writer.writerow([timestamp_str, current_value])
+
+        return current_value
+
+    except Exception as e:
+        print(f"Error snapshotting portfolio value: {e}")
         return None

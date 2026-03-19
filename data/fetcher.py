@@ -94,16 +94,16 @@ def fetch_daily_bars(
 if __name__ == "__main__":
     print("Running fetcher sanity check...\n")
 
-    df, sector_map = fetch_daily_bars(  # ← CHANGE THIS LINE
+    df, sector_map = fetch_daily_bars(
         symbols=["AAPL", "MSFT", "XOM", "TLT"],
-        start_date=datetime(2024,10,1),
-        end_date=datetime(2024,10,31)
+        start_date=datetime(2026,2,1),
+        end_date=datetime(2026,2,28)
     )
 
     print("\n--- Raw DataFrame (first 10 rows) ---")
     print(df.head(10))
 
-    print("\n--- Sector Mapping ---")  # ← ADD THESE 3 LINES
+    print("\n--- Sector Mapping ---")
     for symbol, sector in sector_map.items():
         print(f"  {symbol}: {sector}")
 

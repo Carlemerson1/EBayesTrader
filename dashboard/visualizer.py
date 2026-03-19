@@ -21,7 +21,7 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 from execution.trader import AlpacaTrader
-from config.settings import AlpacaConfig, StrategyConfig
+from config.settings import AlpacaConfig, StrategyConfig, AGGRESSIVE_GROWTH_CONFIG
 from backtest.metrics import compute_drawdowns
 from dashboard.data_loader import (
     load_live_portfolio,
@@ -38,6 +38,7 @@ RED = '#DC3545'
 GRAY = '#6C757D'
 DARK_GRAY = '#343A40'
 WHITE = '#FFFFFF'
+BLACK = '#000000'
 
 # Page config
 st.set_page_config(
@@ -148,6 +149,9 @@ st.markdown(f"""
 
 def load_all_data():
     """Load all data for dashboard (live + historical)."""
+    from dashboard.data_loader import snapshot_portfolio_value
+    snapshot_portfolio_value()  # Ensure we log the latest portfolio value before loading data
+
     # Live portfolio
     live_data = load_live_portfolio()
     
@@ -161,6 +165,7 @@ def load_all_data():
     
     # Live signals
     signals = get_live_signals()
+    print(f"DEBUG signals: {signals}")
     
     # Trade history
     events = load_trade_history()
@@ -205,7 +210,7 @@ def create_equity_curve(equity_data, benchmark_data=None):
         hovermode='x unified',
         plot_bgcolor=WHITE,
         paper_bgcolor=WHITE,
-        font=dict(family='Computer Modern, Times New Roman', size=11, color=DARK_GRAY),
+        font=dict(family='Computer Modern, Times New Roman', size=11, color=BLACK),
         height=400,
         margin=dict(l=60, r=20, t=20, b=40),
         legend=dict(
@@ -220,8 +225,8 @@ def create_equity_curve(equity_data, benchmark_data=None):
             showgrid=False,
             showline=True,
             linewidth=1,
-            linecolor=LIGHT_BLUE,
-            tickfont=dict(size=10)
+            linecolor=BLACK,
+            tickfont=dict(size=10, color=BLACK)
         ),
         yaxis=dict(
             showgrid=True,
@@ -229,8 +234,8 @@ def create_equity_curve(equity_data, benchmark_data=None):
             gridcolor=LIGHT_BLUE,
             showline=True,
             linewidth=1,
-            linecolor=LIGHT_BLUE,
-            tickfont=dict(size=10),
+            linecolor=BLACK,
+            tickfont=dict(size=10, color=BLACK),
             tickformat='$,.0f'
         )
     )
@@ -272,7 +277,7 @@ def create_drawdown_chart(drawdown_series):
         hovermode='x unified',
         plot_bgcolor=WHITE,
         paper_bgcolor=WHITE,
-        font=dict(family='Computer Modern, Times New Roman', size=11, color=DARK_GRAY),
+        font=dict(family='Computer Modern, Times New Roman', size=11, color=BLACK),
         height=400,
         margin=dict(l=60, r=20, t=20, b=40),
         showlegend=False,
@@ -280,8 +285,8 @@ def create_drawdown_chart(drawdown_series):
             showgrid=False,
             showline=True,
             linewidth=1,
-            linecolor=LIGHT_BLUE,
-            tickfont=dict(size=10)
+            linecolor=BLACK,
+            tickfont=dict(size=10, color=BLACK)
         ),
         yaxis=dict(
             showgrid=True,
@@ -289,8 +294,8 @@ def create_drawdown_chart(drawdown_series):
             gridcolor=LIGHT_BLUE,
             showline=True,
             linewidth=1,
-            linecolor=LIGHT_BLUE,
-            tickfont=dict(size=10)
+            linecolor=BLACK,
+            tickfont=dict(size=10, color=BLACK)
         )
     )
     
@@ -315,58 +320,76 @@ def create_positions_table(positions):
 
 
 def create_signal_bars(signals_data):
-    """Create clean horizontal bar chart for signals."""
     if not signals_data:
         return go.Figure()
-    
-    symbols = list(signals_data.keys())
-    probs = [signals_data[s]['prob'] for s in symbols]
-    
-    # Color based on direction
+
+    # Sort by prob descending
+    sorted_signals = sorted(signals_data.items(), key=lambda x: x[1]['prob'], reverse=True)
+    symbols = [s for s, _ in sorted_signals]
+    probs   = [d['prob'] for _, d in sorted_signals]
+    actions = [d['action'] for _, d in sorted_signals]
+
     colors = [PRIMARY_BLUE if p >= 0.5 else RED for p in probs]
-    
+
+    # Show prob, but if all zero show expected_return instead as fallback
+    all_zero = all(p == 0.0 for p in probs)
+    if all_zero:
+        x_vals  = [signals_data[s].get('expected_return', 0) for s in symbols]
+        x_title = 'Expected Return (all P(μ>0) ≈ 0 — bearish regime)'
+        text    = [f"{v:.4%}" for v in x_vals]
+        x_range = None
+    else:
+        x_vals  = probs
+        x_title = 'Probability of Positive Return P(μ > 0)'
+        text    = [f"{p:.1%}" for p in probs]
+        x_range = [0, 1]
+
     fig = go.Figure(go.Bar(
         y=symbols,
-        x=probs,
+        x=x_vals,
         orientation='h',
         marker=dict(color=colors, opacity=0.8),
-        text=[f"{p:.1%}" for p in probs],
+        text=text,
         textposition='outside',
         textfont=dict(size=10),
-        hovertemplate='<b>%{y}</b><br>P(μ > 0) = %{x:.1%}<extra></extra>'
+        hovertemplate='<b>%{y}</b><br>' + x_title + ': %{x}<extra></extra>'
     ))
-    
-    # 50% neutral line
-    fig.add_vline(x=0.5, line_dash="dash", line_width=1, line_color=GRAY, opacity=0.5)
-    
+
+    if not all_zero:
+        fig.add_vline(x=0.5, line_dash="dash", line_width=1,
+                      line_color=GRAY, opacity=0.5)
+    else:
+        fig.add_vline(x=0, line_dash="dash", line_width=1,
+                      line_color=GRAY, opacity=0.5)
+
     fig.update_layout(
-        xaxis_title='Probability of Positive Return',
+        xaxis_title=x_title,
         yaxis_title='',
         plot_bgcolor=WHITE,
         paper_bgcolor=WHITE,
-        font=dict(family='Computer Modern, Times New Roman', size=11, color=DARK_GRAY),
-        height=300,
-        margin=dict(l=60, r=60, t=20, b=40),
+        font=dict(family='Computer Modern, Times New Roman', size=11, color=BLACK),
+        height=400,
+        margin=dict(l=60, r=80, t=20, b=40),
         xaxis=dict(
-            range=[0, 1],
+            range=x_range,
             showgrid=True,
             gridwidth=0.5,
             gridcolor=LIGHT_BLUE,
             showline=True,
             linewidth=1,
-            linecolor=LIGHT_BLUE,
-            tickfont=dict(size=10),
-            tickformat='.0%'
+            linecolor=BLACK,
+            tickfont=dict(size=10, color=BLACK),
+            tickformat='.2%' if all_zero else '.0%'
         ),
         yaxis=dict(
             showgrid=False,
             showline=True,
             linewidth=1,
-            linecolor=LIGHT_BLUE,
-            tickfont=dict(size=10)
+            linecolor=BLACK,
+            tickfont=dict(size=10, color=BLACK)
         )
     )
-    
+
     return fig
 
 
@@ -477,7 +500,7 @@ def main():
                     }
                 )
             else:
-                st.info("No open positions", icon="ℹ️")
+                st.info("No open positions", icon="ⓘ")
         
         with col_right:
             st.markdown("### Performance Metrics")

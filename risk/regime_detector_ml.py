@@ -1,10 +1,11 @@
 """
-risk/regime_detector_v2.py
+risk/regime_detector_ml.py
 
-Improved ML regime detector with:
-1. Better labels (regime-based, not return-based)
-2. Simpler features (reduce overfitting)
-3. Longer-term focus (60-day regimes, not 20-day)
+ML regime detector — v3 improvements:
+1. Explicit neutral labeling (volatility + range-bound criteria, not just residual)
+2. Asymmetric bear penalty via sample_weight (missing bear costs 3x more)
+3. Confidence threshold gate — low-confidence predictions default to neutral scalar
+4. Long-only strategy focus: bull/neutral/bear map to 1.0 / 0.75 / 0.5 position scalars
 """
 import sys
 from pathlib import Path
@@ -45,10 +46,14 @@ class ImprovedRegimeDetector:
         bull_scalar: float = 1.0,
         bear_scalar: float = 0.5,
         neutral_scalar: float = 0.75,
+        confidence_threshold: float = 0.55,  # Min confidence to act on prediction
+        bear_penalty: float = 3.0,           # Cost multiplier for missing a bear regime
     ):
         self.bull_scalar = bull_scalar
         self.bear_scalar = bear_scalar
         self.neutral_scalar = neutral_scalar
+        self.confidence_threshold = confidence_threshold
+        self.bear_penalty = bear_penalty
         
         # Use simpler Gradient Boosting with MORE regularization
         self.model = GradientBoostingClassifier(
@@ -110,38 +115,62 @@ class ImprovedRegimeDetector:
     
     def label_regimes_improved(self, prices: pd.DataFrame, market_proxy: str = None) -> pd.Series:
         """
-        Create better labels based on REGIME QUALITY, not just returns.
-        
-        RELAXED CRITERIA (to get more bull/bear samples):
-        Bull: Uptrend (price > MA200) + positive momentum
-        Bear: Downtrend (price < MA200) + negative momentum  
-        Neutral: Everything else
+        Label regimes with an EXPLICIT neutral definition.
+
+        Neutral is no longer a residual catch-all. It is defined positively
+        as periods of elevated volatility or range-bound price action, where
+        momentum signals are unreliable and the strategy should reduce exposure.
+
+        Rules (applied in priority order):
+          Bear:    Price below MA200 AND 3m return < -2%
+                   (clear downtrend — protect capital)
+          Neutral: ANY of the following choppy/uncertain conditions:
+                     - Short-term vol elevated vs long-term (vol_ratio > 1.2)
+                     - Price within 3% of MA200 (transitional zone)
+                     - 3m return between -5% and +5% (no clear momentum)
+          Bull:    Price above MA200 AND 3m return > +5% AND vol not elevated
+                   (clean uptrend — full exposure)
         """
         if market_proxy and market_proxy in prices.columns:
             market = prices[market_proxy]
         else:
             market = prices.mean(axis=1)
-        
-        # Components
+
         ma_200 = market.rolling(200).mean()
-        price_above_ma = market > ma_200
-        
+        returns_daily = market.pct_change()
         return_3m = market.pct_change(60)
-        
-        # RELAXED label logic (removed volatility requirement)
+
+        # Volatility ratio: short-term vs long-term vol
+        vol_20 = returns_daily.rolling(20).std()
+        vol_60 = returns_daily.rolling(60).std()
+        vol_ratio = vol_20 / vol_60.replace(0, np.nan)
+
+        # Distance from MA200 (absolute %)
+        dist_from_ma200 = (market / ma_200) - 1
+
+        # --- Bear: clear downtrend ---
+        bear_mask = (
+            (market < ma_200) &
+            (return_3m < -0.02)
+        )
+
+        # --- Neutral: choppy / transitional / low-conviction ---
+        neutral_mask = (
+            ~bear_mask & (
+                (vol_ratio > 1.2) |                          # Volatility elevated
+                (dist_from_ma200.abs() < 0.03) |             # Hugging MA200
+                ((return_3m > -0.05) & (return_3m < 0.05))  # No clear momentum
+            )
+        )
+
+        # --- Bull: everything remaining (clean uptrend) ---
+        bull_mask = ~bear_mask & ~neutral_mask
+
         labels = pd.Series(index=market.index, dtype=str)
-        
-        # Bull: Above MA200 + ANY positive momentum
-        bull_mask = price_above_ma & (return_3m > 0.00)
         labels[bull_mask] = 'bull'
-        
-        # Bear: Below MA200 + ANY negative momentum
-        bear_mask = ~price_above_ma & (return_3m < 0.00)
         labels[bear_mask] = 'bear'
-        
-        # Neutral: everything else (choppy/transitional)
-        labels[~bull_mask & ~bear_mask] = 'neutral'
-        
+        labels[neutral_mask] = 'neutral'
+
         return labels.dropna()
     
     def balance_classes(self, X, y):
@@ -201,97 +230,115 @@ class ImprovedRegimeDetector:
         return np.array(X_aug), np.array(y_aug)
     
     def train(self, prices: pd.DataFrame, market_proxy: str = None, verbose: bool = True):
-        """Train on historical data with improved labels."""
+        """
+        Train on historical data.
+
+        Asymmetric bear penalty: bear samples are upweighted by self.bear_penalty
+        so the model pays a higher cost for missing bear regimes than for
+        misclassifying neutral periods. This is appropriate for a long-only
+        strategy where drawdown avoidance is the primary value of the regime signal.
+        """
         if verbose:
-            print("\nTraining Improved ML Regime Detector...")
-        
-        # Compute features
+            print("\nTraining ML Regime Detector (v3)...")
+
+        # Compute features and labels
         features_df = self.compute_features(prices, market_proxy)
-        
-        # Create IMPROVED labels
         labels = self.label_regimes_improved(prices, market_proxy)
-        
-        # Align
+
+        # Align on common dates
         common_dates = features_df.index.intersection(labels.index)
         X = features_df.loc[common_dates]
         y = labels.loc[common_dates]
-        
+
         if len(X) < 200:
             if verbose:
-                print(f"  ⚠️  Warning: Only {len(X)} samples (need 200+)")
+                print(f"  Warning: Only {len(X)} samples (need 200+)")
             return
-        
-        # Time series split (80/20)
+
+        if verbose:
+            print(f"  Raw label distribution:")
+            for regime, count in y.value_counts().items():
+                print(f"    {regime:<10} {count:>4} ({count/len(y)*100:.1f}%)")
+
+        # Time series split (80/20, no shuffling — respect temporal order)
         split_idx = int(len(X) * 0.8)
         X_train, X_test = X.iloc[:split_idx], X.iloc[split_idx:]
         y_train, y_test = y.iloc[:split_idx], y.iloc[split_idx:]
-        
-        # BALANCE CLASSES first (prevent bull bias)
+
+        # Balance classes by undersampling majority
         X_train_balanced, y_train_balanced = self.balance_classes(X_train, y_train)
-        
         if verbose:
-            print(f"  Class balancing: {len(X_train)} → {len(X_train_balanced)} samples")
-        
-        # DATA AUGMENTATION: Create synthetic samples
+            print(f"  Class balancing: {len(X_train)} -> {len(X_train_balanced)} samples")
+
+        # Data augmentation via noise injection
         X_train_aug, y_train_aug = self.augment_data(X_train_balanced, y_train_balanced, n_augmented=2)
-        
         if verbose:
-            print(f"  Data augmentation: {len(X_train_balanced)} → {len(X_train_aug)} samples")
-        
-        # Scale (fit on augmented data)
+            print(f"  Data augmentation: {len(X_train_balanced)} -> {len(X_train_aug)} samples")
+
+        # Scale features
         X_train_scaled = self.scaler.fit_transform(X_train_aug)
         X_test_scaled = self.scaler.transform(X_test)
-        
-        # Train on augmented data
-        self.model.fit(X_train_scaled, y_train_aug)
+
+        # Build asymmetric sample weights: bear samples cost `bear_penalty` times more
+        sample_weights = np.where(y_train_aug == 'bear', self.bear_penalty, 1.0)
+
+        # Fit model with asymmetric weighting
+        self.model.fit(X_train_scaled, y_train_aug, sample_weight=sample_weights)
         self.is_trained = True
-        
-        # Evaluate (use augmented y for train score)
+
+        # Evaluate
         train_score = self.model.score(X_train_scaled, y_train_aug)
         test_score = self.model.score(X_test_scaled, y_test)
-        
+
         if verbose:
             print(f"  Train accuracy: {train_score:.1%}")
             print(f"  Test accuracy:  {test_score:.1%}")
-            
-            # Feature importance
+
             feature_importance = pd.DataFrame({
                 'feature': X.columns,
                 'importance': self.model.feature_importances_
             }).sort_values('importance', ascending=False)
-            
+
             print(f"\n  Feature Importance:")
             for _, row in feature_importance.iterrows():
                 print(f"    {row['feature']:<20} {row['importance']:.3f}")
-            
-            # Class distribution (show balanced)
-            print(f"\n  Label distribution after balancing:")
-            for regime, count in y_train_balanced.value_counts().items():
-                print(f"    {regime:<10} {count:>4} ({count/len(y_train_balanced)*100:.1f}%)")
-            
-            print(f"  After augmentation: {len(y_train_aug)} total samples")
-            
-            # Test set confusion
-            from sklearn.metrics import confusion_matrix
+
+            print(f"\n  Bear penalty applied: {self.bear_penalty}x")
+            print(f"  Confidence threshold: {self.confidence_threshold:.0%}")
+
+            from sklearn.metrics import confusion_matrix, classification_report
             y_pred = self.model.predict(X_test_scaled)
             cm = confusion_matrix(y_test, y_pred, labels=['bull', 'bear', 'neutral'])
-            
+
             print(f"\n  Test Set Confusion Matrix:")
             print(f"              Predicted")
             print(f"  Actual    Bull  Bear  Neutral")
             for i, actual in enumerate(['Bull', 'Bear', 'Neutral']):
                 print(f"  {actual:<8} {cm[i][0]:>5} {cm[i][1]:>5} {cm[i][2]:>8}")
-        
-        print(f"  ✓ Model trained on {len(X_train)} samples\n")
+
+            print(f"\n  Classification Report:")
+            print(classification_report(y_test, y_pred, labels=['bull', 'bear', 'neutral'], target_names=['bull', 'bear', 'neutral'], zero_division=0))
+
+        print(f"  Model trained on {len(X_train)} samples\n")
     
     def predict(self, prices: pd.DataFrame, market_proxy: str = None, verbose: bool = False) -> RegimeSignal:
-        """Predict current regime."""
+        """
+        Predict current market regime.
+
+        Confidence threshold gate: if the model's confidence in its top prediction
+        falls below self.confidence_threshold, the prediction is treated as neutral
+        regardless of what the model picked. This prevents the model from acting
+        on low-conviction bull calls in flat/ambiguous markets.
+
+        Bear predictions are NEVER downgraded by the confidence gate — if the
+        model says bear at any confidence level, we respect it. The gate only
+        softens uncertain bull/neutral calls.
+        """
         if not self.is_trained:
             self.train(prices, market_proxy, verbose=False)
-        
-        # Get features
+
         features_df = self.compute_features(prices, market_proxy)
-        
+
         if len(features_df) == 0:
             return RegimeSignal(
                 regime='neutral',
@@ -299,36 +346,46 @@ class ImprovedRegimeDetector:
                 position_scalar=self.neutral_scalar,
                 probabilities={'bull': 0.33, 'bear': 0.33, 'neutral': 0.34}
             )
-        
-        # Predict on latest
+
         latest = features_df.iloc[[-1]]
         latest_scaled = self.scaler.transform(latest)
-        
-        prediction = self.model.predict(latest_scaled)[0]
+
+        raw_prediction = self.model.predict(latest_scaled)[0]
         probabilities = self.model.predict_proba(latest_scaled)[0]
-        
         prob_dict = {regime: prob for regime, prob in zip(self.model.classes_, probabilities)}
-        confidence = prob_dict[prediction]
-        
+        confidence = prob_dict[raw_prediction]
+
+        # Confidence gate: uncertain non-bear calls default to neutral
+        if raw_prediction != 'bear' and confidence < self.confidence_threshold:
+            prediction = 'neutral'
+            gated = True
+        else:
+            prediction = raw_prediction
+            gated = False
+
         scalar_map = {
             'bull': self.bull_scalar,
             'bear': self.bear_scalar,
             'neutral': self.neutral_scalar,
         }
         position_scalar = scalar_map[prediction]
-        
+
         if verbose:
             print(f"\n{'='*60}")
-            print(f"REGIME PREDICTION (Improved Model)")
+            print(f"REGIME PREDICTION (v3)")
             print(f"{'='*60}")
-            print(f"Regime: {prediction.upper()}")
-            print(f"Confidence: {confidence:.1%}")
-            print(f"Position Scalar: {position_scalar:.1%}")
+            print(f"Raw prediction:  {raw_prediction.upper()}")
+            if gated:
+                print(f"After gate:      NEUTRAL (confidence {confidence:.1%} < threshold {self.confidence_threshold:.0%})")
+            print(f"Final regime:    {prediction.upper()}")
+            print(f"Confidence:      {confidence:.1%}")
+            print(f"Position scalar: {position_scalar:.1%}")
             print(f"\nProbabilities:")
             for regime, prob in sorted(prob_dict.items(), key=lambda x: -x[1]):
-                print(f"  {regime.capitalize():<10} {prob:.1%}")
+                bar = '#' * int(prob * 30)
+                print(f"  {regime.capitalize():<10} {prob:.1%}  {bar}")
             print(f"{'='*60}\n")
-        
+
         return RegimeSignal(
             regime=prediction,
             confidence=confidence,

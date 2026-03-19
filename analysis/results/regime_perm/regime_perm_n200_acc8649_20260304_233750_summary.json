@@ -1,0 +1,21 @@
+{
+  "test_type": "regime_permutation",
+  "timestamp": "20260304_233750",
+  "n_perms": 200,
+  "train_years": 3,
+  "observed_accuracy": 0.864865,
+  "null_mean": 0.458649,
+  "null_std": 0.052488,
+  "null_min": 0.310811,
+  "null_max": 0.594595,
+  "null_p05": 0.378378,
+  "null_p25": 0.418919,
+  "null_p50": 0.459459,
+  "null_p75": 0.5,
+  "null_p95": 0.540541,
+  "null_p99": 0.581081,
+  "p_value": 0.0,
+  "effect_size_z": 7.7392,
+  "n_beats_observed": 0,
+  "verdict": "HIGHLY SIGNIFICANT (p < 0.01) \u2014 strong evidence of genuine signal"
+}

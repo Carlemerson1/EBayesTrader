@@ -76,8 +76,9 @@ def walk_forward_test(prices, train_years=3, test_year=1):
             regime_signal = detector.predict(data_up_to_month, market_proxy='VOO', verbose=False)
             prediction = regime_signal.regime
             
-            # Get actual label (what happened in next 20 days)
-            actual_labels = detector.label_regimes_improved(test_data, market_proxy='VOO')
+            # Get actual label using FULL history up to this month
+            # (MA200 needs ~200 days of prior data — can't compute on isolated test year)
+            actual_labels = detector.label_regimes_improved(data_up_to_month, market_proxy='VOO')
             if test_month.index[-1] in actual_labels.index:
                 actual = actual_labels.loc[test_month.index[-1]]
             else:
@@ -111,7 +112,7 @@ if __name__ == "__main__":
     
     # Fetch extended history (need more years for walk-forward)
     symbols = ['AAPL', 'GOOGL', 'MSFT', 'NVDA', 'XOM', 'VOO']
-    raw, _ = fetch_daily_bars(symbols, datetime(2017, 1, 1), datetime(2024, 12, 31))
+    raw, _ = fetch_daily_bars(symbols, datetime(2017, 1, 1), datetime(2026, 3, 1))
     
     prices = raw['close'].unstack(level='symbol')
     

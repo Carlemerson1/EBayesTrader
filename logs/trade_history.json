@@ -150,5 +150,117 @@
   {
     "timestamp": "2026-03-03 20:23:16",
     "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-09 09:50:52",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-09 09:51:18",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-09 09:52:18",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-09 09:59:07",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-09 10:02:42",
+    "event": "Portfolio rebalanced (7 orders)"
+  },
+  {
+    "timestamp": "2026-03-09 10:02:42",
+    "event": "Sold 199.0 shares of XOM"
+  },
+  {
+    "timestamp": "2026-03-09 10:02:42",
+    "event": "Sold 374.0 shares of OXY"
+  },
+  {
+    "timestamp": "2026-03-09 10:02:42",
+    "event": "Bought 63 shares of JNJ"
+  },
+  {
+    "timestamp": "2026-03-09 10:02:42",
+    "event": "Sold 125.0 shares of TLT"
+  },
+  {
+    "timestamp": "2026-03-09 10:02:42",
+    "event": "Bought 147 shares of IEF"
+  },
+  {
+    "timestamp": "2026-03-09 10:02:42",
+    "event": "Sold 10.0 shares of MSFT"
+  },
+  {
+    "timestamp": "2026-03-09 10:02:42",
+    "event": "Bought 80 shares of CVX"
+  },
+  {
+    "timestamp": "2026-03-12 12:45:12",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-15 17:05:38",
+    "event": "Portfolio rebalanced (6 orders)"
+  },
+  {
+    "timestamp": "2026-03-15 17:05:38",
+    "event": "Sold 147.0 shares of IEF"
+  },
+  {
+    "timestamp": "2026-03-15 17:05:38",
+    "event": "Bought 32.0 shares of XOM"
+  },
+  {
+    "timestamp": "2026-03-15 17:05:38",
+    "event": "Sold 80.0 shares of CVX"
+  },
+  {
+    "timestamp": "2026-03-15 17:05:38",
+    "event": "Sold 63.0 shares of JNJ"
+  },
+  {
+    "timestamp": "2026-03-15 17:05:38",
+    "event": "Bought 79.0 shares of OXY"
+  },
+  {
+    "timestamp": "2026-03-15 17:05:38",
+    "event": "Sold 82.0 shares of TLT"
+  },
+  {
+    "timestamp": "2026-03-15 23:57:16",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-16 10:11:05",
+    "event": "Portfolio rebalanced (6 orders)"
+  },
+  {
+    "timestamp": "2026-03-16 10:11:05",
+    "event": "Sold 82.0 shares of TLT"
+  },
+  {
+    "timestamp": "2026-03-16 10:11:05",
+    "event": "Bought 32.0 shares of XOM"
+  },
+  {
+    "timestamp": "2026-03-16 10:11:05",
+    "event": "Bought 83.0 shares of OXY"
+  },
+  {
+    "timestamp": "2026-03-16 10:11:05",
+    "event": "Sold 147.0 shares of IEF"
+  },
+  {
+    "timestamp": "2026-03-16 10:11:05",
+    "event": "Sold 63.0 shares of JNJ"
+  },
+  {
+    "timestamp": "2026-03-16 10:11:05",
+    "event": "Sold 80.0 shares of CVX"
   }
 ]

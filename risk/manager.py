@@ -353,8 +353,8 @@ if __name__ == "__main__":
     print("Fetching data...\n")
     raw, sector_map = fetch_daily_bars(
         symbols=["AAPL", "MSFT", "GOOG", "AMZN", "TSLA", "HL"],
-        start_date=datetime(2022, 7, 1),
-        end_date=datetime(2023, 10, 31),
+        start_date=datetime(2025, 7, 1),
+        end_date=datetime(2025, 10, 31),
     )
     
     log_returns = compute_log_returns(raw)

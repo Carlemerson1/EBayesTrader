@@ -24,6 +24,7 @@ class BacktestConfig:
     """
     Configuration for backtest parms
     """
+    symbols: list[str] = None # List of stock symbols in the universe (e.g. ['AAPL', 'MSFT', 'GOOG'])
     window: int = 60 #rolling window for model (trading days)
     min_prob_threshold: float = 0.60 #signal threshold
     short_prob_threshold: float = 0.10 #NEW: threshold for short signals (e.g. 0.10 means we need to be 90% sure it goes down to short)

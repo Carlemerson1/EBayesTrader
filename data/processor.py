@@ -81,6 +81,9 @@ def get_rolling_window(
 #   python3 data/processor.py
 #Does NOT run when another file imports from this module
 
+
+# ============== debug main block ==============
+
 if __name__ == "__main__":
     from datetime import datetime
     from fetcher import fetch_daily_bars
