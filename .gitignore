@@ -4,6 +4,9 @@ venv/
 env/
 *.pyc
 __pycache__/
+config/
+model/
+risk/
 
 # IDE
 .vscode/
