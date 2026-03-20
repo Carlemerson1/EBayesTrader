@@ -1,0 +1,5563 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="856.634375pt" height="388.209219pt" viewBox="0 0 856.634375 388.209219" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-03-19T18:23:25.252753</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 388.209219 
+L 856.634375 388.209219 
+L 856.634375 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 44.624375 345.575 
+L 849.434375 345.575 
+L 849.434375 34.295 
+L 44.624375 34.295 
+z
+" style="fill: #f4f6f8"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 65.528507 345.575 
+L 65.528507 34.295 
+" clip-path="url(#pa69dad1a11)" style="fill: none; stroke: #ffffff; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="m5805b70b17" d="M 0 0 
+L 0 3.5 
+" style="stroke: #aaaaaa; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m5805b70b17" x="65.528507" y="345.575" style="fill: #aaaaaa; stroke: #aaaaaa; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <!-- 30% -->
+      <g style="fill: #aaaaaa" transform="translate(55.614444 360.134375) scale(0.1 -0.1)">
+       <defs>
+        <path id="Georgia-33" d="M 1522 -1141 
+Q 1228 -1141 984 -1067 
+Q 741 -994 566 -869 
+Q 391 -744 295 -581 
+Q 200 -419 200 -247 
+Q 200 -94 275 29 
+Q 350 153 516 153 
+Q 703 153 801 61 
+Q 900 -31 900 -150 
+Q 900 -250 867 -403 
+Q 834 -556 816 -622 
+Q 838 -650 895 -697 
+Q 953 -744 1038 -781 
+Q 1138 -828 1247 -856 
+Q 1356 -884 1556 -884 
+Q 1744 -884 1917 -821 
+Q 2091 -759 2222 -622 
+Q 2359 -478 2436 -286 
+Q 2513 -94 2513 219 
+Q 2513 388 2477 553 
+Q 2441 719 2344 841 
+Q 2247 963 2080 1030 
+Q 1913 1097 1656 1097 
+L 1247 1097 
+L 1247 1456 
+L 1519 1456 
+Q 1950 1456 2140 1693 
+Q 2331 1931 2331 2409 
+Q 2331 2800 2147 2998 
+Q 1963 3197 1625 3197 
+Q 1463 3197 1358 3158 
+Q 1253 3119 1188 3081 
+Q 1109 3038 1059 2984 
+Q 1009 2931 984 2906 
+Q 1006 2806 1037 2661 
+Q 1069 2516 1069 2384 
+Q 1069 2269 970 2176 
+Q 872 2084 681 2084 
+Q 516 2084 439 2203 
+Q 363 2322 363 2478 
+Q 363 2641 453 2809 
+Q 544 2978 722 3125 
+Q 900 3272 1156 3362 
+Q 1413 3453 1747 3453 
+Q 2131 3453 2382 3339 
+Q 2634 3225 2778 3063 
+Q 2919 2903 2972 2728 
+Q 3025 2553 3025 2428 
+Q 3025 2272 2981 2114 
+Q 2938 1956 2838 1822 
+Q 2728 1675 2548 1554 
+Q 2369 1434 2097 1359 
+L 2097 1309 
+Q 2272 1294 2470 1231 
+Q 2669 1169 2828 1047 
+Q 2994 919 3100 717 
+Q 3206 516 3206 206 
+Q 3206 -394 2725 -767 
+Q 2244 -1141 1522 -1141 
+z
+" transform="scale(0.015625)"/>
+        <path id="Georgia-30" d="M 3209 2919 
+Q 3409 2678 3507 2354 
+Q 3606 2031 3606 1678 
+Q 3606 1253 3484 917 
+Q 3363 581 3150 359 
+Q 2931 131 2631 15 
+Q 2331 -100 1963 -100 
+Q 1559 -100 1243 34 
+Q 928 169 731 403 
+Q 525 647 423 973 
+Q 322 1300 322 1678 
+Q 322 2050 420 2362 
+Q 519 2675 728 2928 
+Q 928 3172 1243 3312 
+Q 1559 3453 1966 3453 
+Q 2394 3453 2700 3309 
+Q 3006 3166 3209 2919 
+z
+M 2916 1678 
+Q 2916 2422 2661 2831 
+Q 2406 3241 1969 3241 
+Q 1525 3241 1269 2831 
+Q 1013 2422 1013 1678 
+Q 1013 972 1258 542 
+Q 1503 113 1963 113 
+Q 2422 113 2669 542 
+Q 2916 972 2916 1678 
+z
+" transform="scale(0.015625)"/>
+        <path id="Georgia-25" d="M 2463 3384 
+Q 2463 2834 2166 2531 
+Q 1869 2228 1400 2228 
+Q 931 2228 636 2531 
+Q 341 2834 341 3384 
+Q 341 3903 630 4222 
+Q 919 4541 1403 4541 
+Q 1881 4541 2172 4222 
+Q 2463 3903 2463 3384 
+z
+M 1934 3384 
+Q 1934 3791 1800 4050 
+Q 1666 4309 1403 4309 
+Q 1134 4309 1001 4050 
+Q 869 3791 869 3384 
+Q 869 2969 1003 2714 
+Q 1138 2459 1400 2459 
+Q 1663 2459 1798 2714 
+Q 1934 2969 1934 3384 
+z
+M 4891 1056 
+Q 4891 506 4594 203 
+Q 4297 -100 3828 -100 
+Q 3359 -100 3064 203 
+Q 2769 506 2769 1056 
+Q 2769 1575 3058 1894 
+Q 3347 2213 3831 2213 
+Q 4309 2213 4600 1894 
+Q 4891 1575 4891 1056 
+z
+M 4363 1056 
+Q 4363 1463 4228 1722 
+Q 4094 1981 3831 1981 
+Q 3563 1981 3430 1722 
+Q 3297 1463 3297 1056 
+Q 3297 641 3431 386 
+Q 3566 131 3828 131 
+Q 4091 131 4227 386 
+Q 4363 641 4363 1056 
+z
+M 4684 4450 
+L 1000 0 
+L 569 0 
+L 4244 4450 
+L 4684 4450 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Georgia-33"/>
+       <use xlink:href="#Georgia-30" transform="translate(55.175781 0)"/>
+       <use xlink:href="#Georgia-25" transform="translate(116.552734 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 179.271577 345.575 
+L 179.271577 34.295 
+" clip-path="url(#pa69dad1a11)" style="fill: none; stroke: #ffffff; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m5805b70b17" x="179.271577" y="345.575" style="fill: #aaaaaa; stroke: #aaaaaa; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <!-- 35% -->
+      <g style="fill: #aaaaaa" transform="translate(169.784859 360.134375) scale(0.1 -0.1)">
+       <defs>
+        <path id="Georgia-35" d="M 2634 1466 
+Q 2841 1303 2977 1047 
+Q 3113 791 3113 406 
+Q 3113 -266 2653 -703 
+Q 2194 -1141 1488 -1141 
+Q 941 -1141 562 -881 
+Q 184 -622 184 -278 
+Q 184 -119 262 0 
+Q 341 119 503 119 
+Q 691 119 789 20 
+Q 888 -78 888 -194 
+Q 888 -294 853 -444 
+Q 819 -594 800 -666 
+Q 825 -688 881 -725 
+Q 938 -763 1016 -797 
+Q 1097 -831 1214 -857 
+Q 1331 -884 1488 -884 
+Q 1688 -884 1866 -803 
+Q 2044 -722 2166 -563 
+Q 2300 -388 2367 -164 
+Q 2434 59 2434 403 
+Q 2434 844 2189 1133 
+Q 1944 1422 1544 1422 
+Q 1294 1422 1076 1328 
+Q 859 1234 688 1016 
+L 478 1097 
+L 744 3353 
+L 2981 3353 
+L 2981 2797 
+L 997 2797 
+L 834 1472 
+Q 975 1572 1204 1670 
+Q 1434 1769 1709 1769 
+Q 1938 1769 2183 1698 
+Q 2428 1628 2634 1466 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Georgia-33"/>
+       <use xlink:href="#Georgia-35" transform="translate(55.175781 0)"/>
+       <use xlink:href="#Georgia-25" transform="translate(108.007812 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 293.014648 345.575 
+L 293.014648 34.295 
+" clip-path="url(#pa69dad1a11)" style="fill: none; stroke: #ffffff; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m5805b70b17" x="293.014648" y="345.575" style="fill: #aaaaaa; stroke: #aaaaaa; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <!-- 40% -->
+      <g style="fill: #aaaaaa" transform="translate(283.034179 360.134375) scale(0.1 -0.1)">
+       <defs>
+        <path id="Georgia-34" d="M 3388 281 
+L 2753 281 
+L 2753 -1141 
+L 2153 -1141 
+L 2153 281 
+L 153 281 
+L 153 763 
+L 2344 3434 
+L 2753 3434 
+L 2753 691 
+L 3388 691 
+L 3388 281 
+z
+M 2153 691 
+L 2153 2738 
+L 466 691 
+L 2153 691 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Georgia-34"/>
+       <use xlink:href="#Georgia-30" transform="translate(56.494141 0)"/>
+       <use xlink:href="#Georgia-25" transform="translate(117.871094 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 406.757719 345.575 
+L 406.757719 34.295 
+" clip-path="url(#pa69dad1a11)" style="fill: none; stroke: #ffffff; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m5805b70b17" x="406.757719" y="345.575" style="fill: #aaaaaa; stroke: #aaaaaa; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <!-- 45% -->
+      <g style="fill: #aaaaaa" transform="translate(397.204594 360.134375) scale(0.1 -0.1)">
+       <use xlink:href="#Georgia-34"/>
+       <use xlink:href="#Georgia-35" transform="translate(56.494141 0)"/>
+       <use xlink:href="#Georgia-25" transform="translate(109.326172 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 520.500789 345.575 
+L 520.500789 34.295 
+" clip-path="url(#pa69dad1a11)" style="fill: none; stroke: #ffffff; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m5805b70b17" x="520.500789" y="345.575" style="fill: #aaaaaa; stroke: #aaaaaa; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <!-- 50% -->
+      <g style="fill: #aaaaaa" transform="translate(510.703914 360.134375) scale(0.1 -0.1)">
+       <use xlink:href="#Georgia-35"/>
+       <use xlink:href="#Georgia-30" transform="translate(52.832031 0)"/>
+       <use xlink:href="#Georgia-25" transform="translate(114.208984 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 634.24386 345.575 
+L 634.24386 34.295 
+" clip-path="url(#pa69dad1a11)" style="fill: none; stroke: #ffffff; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m5805b70b17" x="634.24386" y="345.575" style="fill: #aaaaaa; stroke: #aaaaaa; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <!-- 55% -->
+      <g style="fill: #aaaaaa" transform="translate(624.874329 360.134375) scale(0.1 -0.1)">
+       <use xlink:href="#Georgia-35"/>
+       <use xlink:href="#Georgia-35" transform="translate(52.832031 0)"/>
+       <use xlink:href="#Georgia-25" transform="translate(105.664062 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <path d="M 747.98693 345.575 
+L 747.98693 34.295 
+" clip-path="url(#pa69dad1a11)" style="fill: none; stroke: #ffffff; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m5805b70b17" x="747.98693" y="345.575" style="fill: #aaaaaa; stroke: #aaaaaa; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <!-- 60% -->
+      <g style="fill: #aaaaaa" transform="translate(738.001774 360.134375) scale(0.1 -0.1)">
+       <defs>
+        <path id="Georgia-36" d="M 3359 1441 
+Q 3359 1116 3242 831 
+Q 3125 547 2928 347 
+Q 2700 119 2423 9 
+Q 2147 -100 1847 -100 
+Q 1500 -100 1219 28 
+Q 938 156 741 391 
+Q 541 628 431 972 
+Q 322 1316 322 1744 
+Q 322 2859 986 3625 
+Q 1650 4391 2766 4544 
+L 2822 4263 
+L 2541 4213 
+Q 1863 3994 1492 3531 
+Q 1122 3069 1013 2409 
+Q 1281 2644 1543 2741 
+Q 1806 2838 2097 2838 
+Q 2619 2838 2989 2438 
+Q 3359 2038 3359 1441 
+z
+M 2681 1356 
+Q 2681 1863 2448 2169 
+Q 2216 2475 1825 2475 
+Q 1591 2475 1389 2387 
+Q 1188 2300 1000 2094 
+Q 997 2056 990 1920 
+Q 984 1784 984 1706 
+Q 984 975 1223 561 
+Q 1463 147 1853 147 
+Q 2225 147 2453 470 
+Q 2681 794 2681 1356 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Georgia-36"/>
+       <use xlink:href="#Georgia-30" transform="translate(56.591797 0)"/>
+       <use xlink:href="#Georgia-25" transform="translate(117.96875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_8">
+     <!-- Walk-Forward Classification Accuracy -->
+     <g style="fill: #2c3e50" transform="translate(354.198828 378.623594) scale(0.11 -0.11)">
+      <defs>
+       <path id="Georgia-57" d="M 6338 4213 
+Q 6259 4209 6156 4176 
+Q 6053 4144 5966 4091 
+Q 5856 4022 5789 3933 
+Q 5722 3844 5672 3684 
+Q 5450 2963 5156 1998 
+Q 4863 1034 4522 -56 
+L 4234 -56 
+L 3116 3356 
+L 1950 -56 
+L 1675 -56 
+Q 1366 1038 1034 2214 
+Q 703 3391 591 3791 
+Q 563 3888 508 3963 
+Q 453 4038 359 4100 
+Q 281 4153 176 4179 
+Q 72 4206 -13 4213 
+L -13 4434 
+L 1797 4434 
+L 1797 4213 
+Q 1559 4200 1392 4165 
+Q 1225 4131 1225 4050 
+Q 1225 4019 1234 3967 
+Q 1244 3916 1250 3884 
+Q 1322 3609 1505 2976 
+Q 1688 2344 2047 1081 
+L 3153 4372 
+L 3459 4372 
+L 4575 1009 
+Q 4800 1784 4962 2364 
+Q 5125 2944 5231 3356 
+Q 5306 3647 5325 3755 
+Q 5344 3863 5344 3938 
+Q 5344 4044 5198 4116 
+Q 5053 4188 4728 4213 
+L 4728 4434 
+L 6338 4434 
+L 6338 4213 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-61" d="M 3144 56 
+Q 2997 3 2886 -30 
+Q 2775 -63 2634 -63 
+Q 2391 -63 2245 51 
+Q 2100 166 2059 384 
+L 2041 384 
+Q 1838 159 1605 40 
+Q 1372 -78 1044 -78 
+Q 697 -78 473 134 
+Q 250 347 250 691 
+Q 250 869 300 1009 
+Q 350 1150 450 1263 
+Q 528 1356 656 1429 
+Q 784 1503 897 1547 
+Q 1038 1600 1467 1744 
+Q 1897 1888 2047 1969 
+L 2047 2278 
+Q 2047 2319 2030 2434 
+Q 2013 2550 1956 2653 
+Q 1894 2769 1780 2855 
+Q 1666 2941 1456 2941 
+Q 1313 2941 1189 2892 
+Q 1066 2844 1016 2791 
+Q 1016 2728 1045 2606 
+Q 1075 2484 1075 2381 
+Q 1075 2272 976 2181 
+Q 878 2091 703 2091 
+Q 547 2091 473 2202 
+Q 400 2313 400 2450 
+Q 400 2594 501 2725 
+Q 603 2856 766 2959 
+Q 906 3047 1106 3108 
+Q 1306 3169 1497 3169 
+Q 1759 3169 1954 3133 
+Q 2150 3097 2309 2978 
+Q 2469 2863 2551 2664 
+Q 2634 2466 2634 2153 
+Q 2634 1706 2625 1361 
+Q 2616 1016 2616 606 
+Q 2616 484 2658 412 
+Q 2700 341 2788 291 
+Q 2834 263 2936 259 
+Q 3038 256 3144 256 
+L 3144 56 
+z
+M 2053 1706 
+Q 1788 1628 1588 1553 
+Q 1388 1478 1216 1366 
+Q 1059 1259 968 1114 
+Q 878 969 878 769 
+Q 878 509 1014 387 
+Q 1150 266 1359 266 
+Q 1581 266 1750 373 
+Q 1919 481 2034 628 
+L 2053 1706 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-6c" d="M 1669 0 
+L 166 0 
+L 166 206 
+Q 238 213 319 220 
+Q 400 228 453 244 
+Q 541 272 584 342 
+Q 628 413 628 525 
+L 628 4094 
+Q 628 4206 579 4304 
+Q 531 4403 453 4459 
+Q 397 4497 247 4528 
+Q 97 4559 6 4566 
+L 6 4766 
+L 1166 4838 
+L 1209 4791 
+L 1209 563 
+Q 1209 453 1250 383 
+Q 1291 313 1381 275 
+Q 1450 244 1517 228 
+Q 1584 213 1669 206 
+L 1669 0 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-6b" d="M 3491 0 
+L 2559 0 
+Q 2316 353 2037 756 
+Q 1759 1159 1459 1541 
+L 1203 1300 
+L 1203 569 
+Q 1203 456 1243 382 
+Q 1284 309 1375 275 
+Q 1450 244 1519 228 
+Q 1588 213 1678 206 
+L 1678 0 
+L 166 0 
+L 166 206 
+Q 238 213 316 220 
+Q 394 228 447 244 
+Q 534 272 578 342 
+Q 622 413 622 525 
+L 622 4106 
+Q 622 4222 573 4323 
+Q 525 4425 447 4478 
+Q 381 4528 242 4543 
+Q 103 4559 19 4566 
+L 19 4766 
+L 1159 4838 
+L 1203 4791 
+L 1203 1531 
+Q 1447 1775 1730 2054 
+Q 2013 2334 2206 2553 
+Q 2231 2581 2261 2626 
+Q 2291 2672 2291 2700 
+Q 2291 2784 2155 2825 
+Q 2019 2866 1894 2881 
+L 1894 3081 
+L 3250 3081 
+L 3250 2888 
+Q 2988 2809 2786 2692 
+Q 2584 2575 2478 2481 
+Q 2403 2419 2265 2278 
+Q 2128 2138 1881 1909 
+Q 2138 1594 2458 1153 
+Q 2778 713 2925 516 
+Q 3063 331 3172 275 
+Q 3281 219 3491 206 
+L 3491 0 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-2d" d="M 2128 1453 
+L 266 1453 
+L 266 1944 
+L 2128 1944 
+L 2128 1453 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-46" d="M 3747 3325 
+L 3513 3325 
+Q 3447 3572 3239 3853 
+Q 3031 4134 2841 4163 
+Q 2744 4175 2611 4181 
+Q 2478 4188 2309 4188 
+L 1566 4188 
+L 1566 2406 
+L 2075 2406 
+Q 2306 2406 2434 2454 
+Q 2563 2503 2653 2603 
+Q 2716 2672 2767 2817 
+Q 2819 2963 2834 3128 
+L 3072 3128 
+L 3072 1388 
+L 2834 1388 
+Q 2825 1525 2770 1700 
+Q 2716 1875 2653 1953 
+Q 2559 2069 2417 2111 
+Q 2275 2153 2075 2153 
+L 1566 2153 
+L 1566 625 
+Q 1566 522 1606 440 
+Q 1647 359 1750 309 
+Q 1797 288 1953 256 
+Q 2109 225 2191 222 
+L 2191 0 
+L 269 0 
+L 269 222 
+Q 363 228 519 242 
+Q 675 256 722 278 
+Q 816 319 858 398 
+Q 900 478 900 591 
+L 900 3791 
+Q 900 3894 865 3973 
+Q 831 4053 722 4103 
+Q 638 4144 495 4175 
+Q 353 4206 269 4213 
+L 269 4434 
+L 3747 4434 
+L 3747 3325 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-6f" d="M 3228 1572 
+Q 3228 1247 3125 933 
+Q 3022 619 2831 400 
+Q 2616 150 2331 28 
+Q 2047 -94 1694 -94 
+Q 1400 -94 1134 17 
+Q 869 128 663 341 
+Q 459 550 339 851 
+Q 219 1153 219 1528 
+Q 219 2250 639 2709 
+Q 1059 3169 1741 3169 
+Q 2388 3169 2808 2733 
+Q 3228 2297 3228 1572 
+z
+M 2581 1566 
+Q 2581 1800 2534 2061 
+Q 2488 2322 2394 2503 
+Q 2294 2697 2131 2814 
+Q 1969 2931 1734 2931 
+Q 1494 2931 1323 2812 
+Q 1153 2694 1047 2488 
+Q 947 2297 906 2053 
+Q 866 1809 866 1581 
+Q 866 1281 914 1026 
+Q 963 772 1069 572 
+Q 1175 372 1336 258 
+Q 1497 144 1734 144 
+Q 2125 144 2353 522 
+Q 2581 900 2581 1566 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-72" d="M 2584 2684 
+Q 2584 2525 2506 2401 
+Q 2428 2278 2266 2278 
+Q 2091 2278 1998 2368 
+Q 1906 2459 1906 2569 
+Q 1906 2638 1917 2694 
+Q 1928 2750 1938 2806 
+Q 1791 2806 1594 2687 
+Q 1397 2569 1259 2350 
+L 1259 556 
+Q 1259 447 1301 378 
+Q 1344 309 1434 275 
+Q 1513 244 1636 228 
+Q 1759 213 1850 206 
+L 1850 0 
+L 225 0 
+L 225 206 
+Q 297 213 373 219 
+Q 450 225 506 244 
+Q 594 272 636 342 
+Q 678 413 678 525 
+L 678 2428 
+Q 678 2525 633 2619 
+Q 588 2713 506 2769 
+Q 447 2806 365 2823 
+Q 284 2841 191 2847 
+L 191 3050 
+L 1216 3119 
+L 1259 3075 
+L 1259 2641 
+L 1275 2641 
+Q 1469 2894 1706 3025 
+Q 1944 3156 2141 3156 
+Q 2338 3156 2461 3028 
+Q 2584 2900 2584 2684 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-77" d="M 4816 2881 
+Q 4684 2869 4532 2772 
+Q 4381 2675 4313 2481 
+Q 4156 2022 4017 1611 
+Q 3878 1200 3706 688 
+Q 3650 525 3592 337 
+Q 3534 150 3488 -22 
+L 3219 -22 
+L 2391 2247 
+L 1556 -22 
+L 1300 -22 
+Q 1066 672 842 1355 
+Q 619 2038 447 2544 
+Q 397 2691 256 2775 
+Q 116 2859 -16 2875 
+L -16 3081 
+L 1359 3081 
+L 1359 2863 
+Q 1256 2859 1136 2828 
+Q 1016 2797 1016 2725 
+Q 1016 2713 1027 2672 
+Q 1038 2631 1053 2584 
+Q 1153 2256 1279 1851 
+Q 1406 1447 1606 800 
+L 2394 3019 
+L 2694 3019 
+L 3497 831 
+Q 3631 1250 3764 1642 
+Q 3897 2034 3997 2378 
+Q 4019 2459 4039 2526 
+Q 4059 2594 4059 2659 
+Q 4059 2716 4009 2759 
+Q 3959 2803 3888 2831 
+Q 3825 2856 3751 2868 
+Q 3678 2881 3644 2881 
+L 3644 3081 
+L 4816 3081 
+L 4816 2881 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-64" d="M 3600 56 
+L 2525 -13 
+L 2478 31 
+L 2478 319 
+L 2453 325 
+Q 2291 144 2052 28 
+Q 1813 -88 1559 -88 
+Q 1297 -88 1051 29 
+Q 806 147 625 359 
+Q 441 575 333 878 
+Q 225 1181 225 1547 
+Q 225 1881 340 2181 
+Q 456 2481 659 2706 
+Q 850 2916 1126 3041 
+Q 1403 3166 1691 3166 
+Q 1906 3166 2114 3111 
+Q 2322 3056 2472 2972 
+L 2472 4044 
+Q 2472 4175 2428 4283 
+Q 2384 4391 2306 4447 
+Q 2219 4506 2070 4532 
+Q 1922 4559 1750 4572 
+L 1750 4766 
+L 3009 4838 
+L 3056 4791 
+L 3056 634 
+Q 3056 525 3098 448 
+Q 3141 372 3222 319 
+Q 3281 281 3393 272 
+Q 3506 263 3600 259 
+L 3600 56 
+z
+M 2472 597 
+L 2472 2400 
+Q 2447 2481 2390 2575 
+Q 2334 2669 2250 2747 
+Q 2159 2825 2037 2876 
+Q 1916 2928 1753 2928 
+Q 1566 2928 1408 2831 
+Q 1250 2734 1128 2553 
+Q 1013 2378 945 2108 
+Q 878 1838 878 1509 
+Q 878 1247 928 1033 
+Q 978 819 1097 634 
+Q 1206 459 1376 353 
+Q 1547 247 1781 247 
+Q 2031 247 2195 356 
+Q 2359 466 2472 597 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-20" transform="scale(0.015625)"/>
+       <path id="Georgia-43" d="M 2259 -103 
+Q 1863 -103 1498 53 
+Q 1134 209 853 503 
+Q 575 797 409 1220 
+Q 244 1644 244 2175 
+Q 244 2706 406 3139 
+Q 569 3572 856 3884 
+Q 1141 4194 1528 4362 
+Q 1916 4531 2356 4531 
+Q 2684 4531 2950 4450 
+Q 3216 4369 3456 4222 
+L 3584 4434 
+L 3834 4434 
+L 3863 2853 
+L 3606 2853 
+Q 3556 3084 3456 3354 
+Q 3356 3625 3222 3813 
+Q 3072 4025 2865 4145 
+Q 2659 4266 2394 4266 
+Q 2091 4266 1830 4131 
+Q 1569 3997 1378 3734 
+Q 1197 3481 1094 3090 
+Q 991 2700 991 2219 
+Q 991 1794 1098 1439 
+Q 1206 1084 1406 816 
+Q 1606 550 1879 400 
+Q 2153 250 2491 250 
+Q 2744 250 2956 329 
+Q 3169 409 3325 541 
+Q 3481 678 3600 853 
+Q 3719 1028 3794 1234 
+L 4028 1122 
+Q 3759 463 3315 180 
+Q 2872 -103 2259 -103 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-73" d="M 2259 1509 
+Q 2388 1397 2456 1250 
+Q 2525 1103 2525 891 
+Q 2525 463 2204 191 
+Q 1884 -81 1375 -81 
+Q 1106 -81 879 16 
+Q 653 113 556 194 
+L 494 -9 
+L 259 -9 
+L 228 1063 
+L 444 1063 
+Q 469 941 550 778 
+Q 631 616 747 484 
+Q 869 347 1039 253 
+Q 1209 159 1422 159 
+Q 1722 159 1884 295 
+Q 2047 431 2047 684 
+Q 2047 816 1995 911 
+Q 1944 1006 1844 1078 
+Q 1741 1150 1591 1208 
+Q 1441 1266 1256 1322 
+Q 1109 1366 929 1442 
+Q 750 1519 622 1622 
+Q 484 1731 396 1890 
+Q 309 2050 309 2266 
+Q 309 2644 590 2906 
+Q 872 3169 1344 3169 
+Q 1525 3169 1714 3122 
+Q 1903 3075 2022 3009 
+L 2094 3172 
+L 2319 3172 
+L 2366 2181 
+L 2150 2181 
+Q 2084 2513 1867 2720 
+Q 1650 2928 1338 2928 
+Q 1081 2928 934 2800 
+Q 788 2672 788 2491 
+Q 788 2350 836 2256 
+Q 884 2163 981 2097 
+Q 1075 2034 1217 1979 
+Q 1359 1925 1569 1856 
+Q 1775 1791 1958 1703 
+Q 2141 1616 2259 1509 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-69" d="M 1722 0 
+L 231 0 
+L 231 206 
+Q 303 213 379 219 
+Q 456 225 513 244 
+Q 600 272 642 342 
+Q 684 413 684 525 
+L 684 2428 
+Q 684 2528 639 2611 
+Q 594 2694 513 2750 
+Q 453 2788 340 2814 
+Q 228 2841 134 2847 
+L 134 3050 
+L 1222 3119 
+L 1266 3075 
+L 1266 563 
+Q 1266 453 1308 381 
+Q 1350 309 1441 275 
+Q 1509 247 1575 230 
+Q 1641 213 1722 206 
+L 1722 0 
+z
+M 1328 4334 
+Q 1328 4156 1211 4023 
+Q 1094 3891 922 3891 
+Q 763 3891 645 4017 
+Q 528 4144 528 4306 
+Q 528 4478 645 4606 
+Q 763 4734 922 4734 
+Q 1100 4734 1214 4614 
+Q 1328 4494 1328 4334 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-66" d="M 2519 4466 
+Q 2519 4325 2444 4228 
+Q 2369 4131 2216 4131 
+Q 2119 4131 2045 4172 
+Q 1972 4213 1909 4281 
+Q 1847 4350 1794 4437 
+Q 1741 4525 1703 4578 
+Q 1494 4569 1380 4286 
+Q 1266 4003 1266 3384 
+L 1266 3069 
+L 2059 3069 
+L 2059 2769 
+L 1266 2769 
+L 1266 556 
+Q 1266 447 1308 378 
+Q 1350 309 1441 275 
+Q 1516 247 1641 230 
+Q 1766 213 1856 206 
+L 1856 0 
+L 231 0 
+L 231 206 
+Q 303 213 379 219 
+Q 456 225 513 244 
+Q 600 272 642 342 
+Q 684 413 684 525 
+L 684 2769 
+L 75 2769 
+L 75 3069 
+L 684 3069 
+L 684 3266 
+Q 684 3969 1048 4405 
+Q 1413 4841 1959 4841 
+Q 2238 4841 2378 4731 
+Q 2519 4622 2519 4466 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-63" d="M 1650 -81 
+Q 981 -81 603 362 
+Q 225 806 225 1553 
+Q 225 1878 326 2161 
+Q 428 2444 622 2675 
+Q 806 2897 1084 3033 
+Q 1363 3169 1691 3169 
+Q 2144 3169 2428 2951 
+Q 2713 2734 2713 2359 
+Q 2713 2203 2638 2083 
+Q 2563 1963 2391 1963 
+Q 2206 1963 2104 2056 
+Q 2003 2150 2003 2266 
+Q 2003 2406 2040 2554 
+Q 2078 2703 2084 2772 
+Q 2028 2869 1917 2901 
+Q 1806 2934 1678 2934 
+Q 1528 2934 1392 2870 
+Q 1256 2806 1128 2634 
+Q 1013 2478 941 2212 
+Q 869 1947 869 1578 
+Q 869 997 1126 630 
+Q 1384 263 1803 263 
+Q 2106 263 2311 409 
+Q 2516 556 2691 850 
+L 2891 719 
+Q 2684 350 2346 134 
+Q 2009 -81 1650 -81 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-74" d="M 2128 134 
+Q 1925 50 1744 -8 
+Q 1563 -66 1300 -66 
+Q 913 -66 755 129 
+Q 597 325 597 681 
+L 597 2769 
+L 41 2769 
+L 41 3069 
+L 609 3069 
+L 609 4028 
+L 1178 4028 
+L 1178 3069 
+L 2063 3069 
+L 2063 2769 
+L 1184 2769 
+L 1184 1047 
+Q 1184 853 1198 723 
+Q 1213 594 1266 497 
+Q 1316 406 1416 359 
+Q 1516 313 1684 313 
+Q 1763 313 1914 327 
+Q 2066 341 2128 363 
+L 2128 134 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-6e" d="M 3628 0 
+L 2119 0 
+L 2119 206 
+Q 2191 213 2277 219 
+Q 2363 225 2419 244 
+Q 2506 272 2548 342 
+Q 2591 413 2591 525 
+L 2591 2109 
+Q 2591 2438 2436 2616 
+Q 2281 2794 2059 2794 
+Q 1894 2794 1756 2742 
+Q 1619 2691 1513 2616 
+Q 1409 2544 1348 2461 
+Q 1288 2378 1259 2328 
+L 1259 556 
+Q 1259 450 1303 381 
+Q 1347 313 1434 275 
+Q 1500 244 1576 228 
+Q 1653 213 1734 206 
+L 1734 0 
+L 225 0 
+L 225 206 
+Q 297 213 373 219 
+Q 450 225 506 244 
+Q 594 272 636 342 
+Q 678 413 678 525 
+L 678 2428 
+Q 678 2534 633 2623 
+Q 588 2713 506 2769 
+Q 447 2806 365 2823 
+Q 284 2841 191 2847 
+L 191 3050 
+L 1216 3119 
+L 1259 3075 
+L 1259 2641 
+L 1275 2641 
+Q 1350 2716 1462 2820 
+Q 1575 2925 1675 2991 
+Q 1791 3066 1950 3116 
+Q 2109 3166 2309 3166 
+Q 2753 3166 2967 2889 
+Q 3181 2613 3181 2153 
+L 3181 550 
+Q 3181 441 3218 373 
+Q 3256 306 3347 269 
+Q 3422 238 3476 225 
+Q 3531 213 3628 206 
+L 3628 0 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-41" d="M 4441 0 
+L 2594 0 
+L 2594 222 
+Q 2838 238 2998 284 
+Q 3159 331 3159 400 
+Q 3159 428 3153 468 
+Q 3147 509 3134 541 
+L 2766 1534 
+L 1213 1534 
+Q 1125 1316 1070 1153 
+Q 1016 991 972 853 
+Q 931 719 915 634 
+Q 900 550 900 497 
+Q 900 372 1097 303 
+Q 1294 234 1541 222 
+L 1541 0 
+L -128 0 
+L -128 222 
+Q -47 228 75 258 
+Q 197 288 275 338 
+Q 400 422 469 514 
+Q 538 606 603 769 
+Q 938 1603 1341 2643 
+Q 1744 3684 2059 4497 
+L 2309 4497 
+L 3788 672 
+Q 3834 550 3893 475 
+Q 3953 400 4059 328 
+Q 4131 284 4247 254 
+Q 4363 225 4441 222 
+L 4441 0 
+z
+M 2653 1813 
+L 1981 3531 
+L 1322 1813 
+L 2653 1813 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-75" d="M 3528 56 
+L 2525 -13 
+L 2478 31 
+L 2478 422 
+L 2459 422 
+Q 2384 344 2290 255 
+Q 2197 166 2075 94 
+Q 1934 9 1803 -34 
+Q 1672 -78 1431 -78 
+Q 1022 -78 808 189 
+Q 594 456 594 966 
+L 594 2441 
+Q 594 2553 551 2629 
+Q 509 2706 428 2763 
+Q 372 2800 287 2817 
+Q 203 2834 109 2841 
+L 109 3044 
+L 1138 3119 
+L 1184 3075 
+L 1184 934 
+Q 1184 600 1334 431 
+Q 1484 263 1694 263 
+Q 1866 263 2000 316 
+Q 2134 369 2225 441 
+Q 2309 506 2373 579 
+Q 2438 653 2472 716 
+L 2472 2463 
+Q 2472 2566 2428 2645 
+Q 2384 2725 2306 2781 
+Q 2250 2819 2139 2826 
+Q 2028 2834 1891 2841 
+L 1891 3044 
+L 3009 3119 
+L 3056 3075 
+L 3056 628 
+Q 3056 522 3100 447 
+Q 3144 372 3222 319 
+Q 3278 284 3356 273 
+Q 3434 263 3528 259 
+L 3528 56 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-79" d="M -9 -1006 
+Q -9 -850 77 -751 
+Q 163 -653 291 -653 
+Q 391 -653 462 -690 
+Q 534 -728 591 -788 
+Q 638 -834 691 -915 
+Q 744 -997 775 -1050 
+Q 931 -966 1148 -609 
+Q 1366 -253 1463 16 
+Q 1166 756 925 1340 
+Q 684 1925 422 2550 
+Q 363 2694 222 2773 
+Q 81 2853 -59 2875 
+L -59 3081 
+L 1347 3081 
+L 1347 2863 
+Q 1253 2859 1122 2823 
+Q 991 2788 991 2741 
+Q 991 2722 1005 2678 
+Q 1019 2634 1038 2588 
+Q 1156 2278 1400 1695 
+Q 1644 1113 1778 763 
+Q 1919 1097 2070 1455 
+Q 2222 1813 2409 2300 
+Q 2431 2359 2472 2464 
+Q 2513 2569 2513 2644 
+Q 2513 2725 2370 2795 
+Q 2228 2866 2100 2881 
+L 2100 3081 
+L 3244 3081 
+L 3244 2888 
+Q 3150 2872 2997 2780 
+Q 2844 2688 2769 2519 
+Q 2397 1656 2108 947 
+Q 1819 238 1669 -97 
+Q 1472 -534 1317 -779 
+Q 1163 -1025 1016 -1166 
+Q 872 -1297 755 -1342 
+Q 638 -1388 513 -1388 
+Q 269 -1388 130 -1272 
+Q -9 -1156 -9 -1006 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#Georgia-57"/>
+      <use xlink:href="#Georgia-61" transform="translate(97.558594 0)"/>
+      <use xlink:href="#Georgia-6c" transform="translate(147.949219 0)"/>
+      <use xlink:href="#Georgia-6b" transform="translate(176.5625 0)"/>
+      <use xlink:href="#Georgia-2d" transform="translate(230.126953 0)"/>
+      <use xlink:href="#Georgia-46" transform="translate(267.529297 0)"/>
+      <use xlink:href="#Georgia-6f" transform="translate(327.441406 0)"/>
+      <use xlink:href="#Georgia-72" transform="translate(381.347656 0)"/>
+      <use xlink:href="#Georgia-77" transform="translate(422.314453 0)"/>
+      <use xlink:href="#Georgia-61" transform="translate(496.044922 0)"/>
+      <use xlink:href="#Georgia-72" transform="translate(546.435547 0)"/>
+      <use xlink:href="#Georgia-64" transform="translate(587.402344 0)"/>
+      <use xlink:href="#Georgia-20" transform="translate(644.824219 0)"/>
+      <use xlink:href="#Georgia-43" transform="translate(668.945312 0)"/>
+      <use xlink:href="#Georgia-6c" transform="translate(733.154297 0)"/>
+      <use xlink:href="#Georgia-61" transform="translate(761.767578 0)"/>
+      <use xlink:href="#Georgia-73" transform="translate(812.158203 0)"/>
+      <use xlink:href="#Georgia-73" transform="translate(855.371094 0)"/>
+      <use xlink:href="#Georgia-69" transform="translate(898.583984 0)"/>
+      <use xlink:href="#Georgia-66" transform="translate(927.880859 0)"/>
+      <use xlink:href="#Georgia-69" transform="translate(960.400391 0)"/>
+      <use xlink:href="#Georgia-63" transform="translate(989.697266 0)"/>
+      <use xlink:href="#Georgia-61" transform="translate(1035.107422 0)"/>
+      <use xlink:href="#Georgia-74" transform="translate(1085.498047 0)"/>
+      <use xlink:href="#Georgia-69" transform="translate(1120.019531 0)"/>
+      <use xlink:href="#Georgia-6f" transform="translate(1149.316406 0)"/>
+      <use xlink:href="#Georgia-6e" transform="translate(1203.222656 0)"/>
+      <use xlink:href="#Georgia-20" transform="translate(1262.304688 0)"/>
+      <use xlink:href="#Georgia-41" transform="translate(1286.425781 0)"/>
+      <use xlink:href="#Georgia-63" transform="translate(1353.515625 0)"/>
+      <use xlink:href="#Georgia-63" transform="translate(1398.925781 0)"/>
+      <use xlink:href="#Georgia-75" transform="translate(1444.335938 0)"/>
+      <use xlink:href="#Georgia-72" transform="translate(1501.855469 0)"/>
+      <use xlink:href="#Georgia-61" transform="translate(1542.822266 0)"/>
+      <use xlink:href="#Georgia-63" transform="translate(1593.212891 0)"/>
+      <use xlink:href="#Georgia-79" transform="translate(1638.623047 0)"/>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_15">
+      <path d="M 44.624375 345.575 
+L 849.434375 345.575 
+" clip-path="url(#pa69dad1a11)" style="fill: none; stroke: #ffffff; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <defs>
+       <path id="m57b752cc2e" d="M 0 0 
+L -3.5 0 
+" style="stroke: #aaaaaa; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m57b752cc2e" x="44.624375" y="345.575" style="fill: #aaaaaa; stroke: #aaaaaa; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <!-- 0 -->
+      <g style="fill: #aaaaaa" transform="translate(31.486875 349.354688) scale(0.1 -0.1)">
+       <use xlink:href="#Georgia-30"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_17">
+      <path d="M 44.624375 278.198377 
+L 849.434375 278.198377 
+" clip-path="url(#pa69dad1a11)" style="fill: none; stroke: #ffffff; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m57b752cc2e" x="44.624375" y="278.198377" style="fill: #aaaaaa; stroke: #aaaaaa; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <!-- 5 -->
+      <g style="fill: #aaaaaa" transform="translate(32.341563 281.978064) scale(0.1 -0.1)">
+       <use xlink:href="#Georgia-35"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_19">
+      <path d="M 44.624375 210.821753 
+L 849.434375 210.821753 
+" clip-path="url(#pa69dad1a11)" style="fill: none; stroke: #ffffff; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m57b752cc2e" x="44.624375" y="210.821753" style="fill: #aaaaaa; stroke: #aaaaaa; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <!-- 10 -->
+      <g style="fill: #aaaaaa" transform="translate(27.19 214.601441) scale(0.1 -0.1)">
+       <defs>
+        <path id="Georgia-31" d="M 2528 0 
+L 422 0 
+L 422 222 
+Q 516 228 714 248 
+Q 913 269 988 291 
+Q 1084 322 1136 392 
+Q 1188 463 1188 603 
+L 1188 2797 
+L 409 2797 
+L 409 3059 
+L 581 3059 
+Q 919 3059 1186 3184 
+Q 1453 3309 1569 3453 
+L 1828 3453 
+Q 1819 3250 1809 2978 
+Q 1800 2706 1800 2491 
+L 1800 638 
+Q 1800 528 1848 442 
+Q 1897 356 1988 316 
+Q 2069 281 2253 253 
+Q 2438 225 2528 222 
+L 2528 0 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Georgia-31"/>
+       <use xlink:href="#Georgia-30" transform="translate(42.96875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_21">
+      <path d="M 44.624375 143.44513 
+L 849.434375 143.44513 
+" clip-path="url(#pa69dad1a11)" style="fill: none; stroke: #ffffff; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#m57b752cc2e" x="44.624375" y="143.44513" style="fill: #aaaaaa; stroke: #aaaaaa; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <!-- 15 -->
+      <g style="fill: #aaaaaa" transform="translate(28.044688 147.224817) scale(0.1 -0.1)">
+       <use xlink:href="#Georgia-31"/>
+       <use xlink:href="#Georgia-35" transform="translate(42.96875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_23">
+      <path d="M 44.624375 76.068506 
+L 849.434375 76.068506 
+" clip-path="url(#pa69dad1a11)" style="fill: none; stroke: #ffffff; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#m57b752cc2e" x="44.624375" y="76.068506" style="fill: #aaaaaa; stroke: #aaaaaa; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <!-- 20 -->
+      <g style="fill: #aaaaaa" transform="translate(25.900938 79.848194) scale(0.1 -0.1)">
+       <defs>
+        <path id="Georgia-32" d="M 3272 0 
+L 344 0 
+L 344 425 
+Q 428 522 578 642 
+Q 728 763 934 903 
+Q 1059 988 1234 1088 
+Q 1409 1188 1631 1306 
+Q 1878 1438 2011 1538 
+Q 2144 1638 2253 1784 
+Q 2325 1881 2369 2026 
+Q 2413 2172 2413 2441 
+Q 2413 2831 2203 3014 
+Q 1994 3197 1666 3197 
+Q 1463 3197 1281 3117 
+Q 1100 3038 1009 2897 
+Q 1031 2797 1064 2659 
+Q 1097 2522 1097 2391 
+Q 1097 2272 998 2180 
+Q 900 2088 706 2088 
+Q 550 2088 465 2195 
+Q 381 2303 381 2484 
+Q 381 2653 475 2823 
+Q 569 2994 744 3138 
+Q 916 3278 1169 3365 
+Q 1422 3453 1716 3453 
+Q 2356 3453 2732 3167 
+Q 3109 2881 3109 2403 
+Q 3109 2175 3042 1987 
+Q 2975 1800 2825 1656 
+Q 2659 1497 2437 1383 
+Q 2216 1269 1759 1066 
+Q 1488 944 1253 811 
+Q 1019 678 869 553 
+L 3272 553 
+L 3272 0 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Georgia-32"/>
+       <use xlink:href="#Georgia-30" transform="translate(55.859375 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_14">
+     <!-- Count -->
+     <g style="fill: #2c3e50" transform="translate(15.515313 204.742031) rotate(-90) scale(0.11 -0.11)">
+      <use xlink:href="#Georgia-43"/>
+      <use xlink:href="#Georgia-6f" transform="translate(64.208984 0)"/>
+      <use xlink:href="#Georgia-75" transform="translate(118.115234 0)"/>
+      <use xlink:href="#Georgia-6e" transform="translate(175.634766 0)"/>
+      <use xlink:href="#Georgia-74" transform="translate(234.716797 0)"/>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 612.725946 345.575 
+L 704.948827 345.575 
+L 704.948827 34.295 
+L 612.725946 34.295 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #e8913a; opacity: 0.18; stroke: #e8913a; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 704.948827 345.575 
+L 849.434375 345.575 
+L 849.434375 34.295 
+L 704.948827 34.295 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #c0392b; opacity: 0.22; stroke: #c0392b; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_25">
+    <path d="M 426.432995 345.575 
+L 426.432995 34.295 
+" clip-path="url(#pa69dad1a11)" style="fill: none; stroke-dasharray: 1.5,2.475; stroke-dashoffset: 0; stroke: #00539b; stroke-width: 1.5"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 44.624375 345.575 
+L 44.624375 34.295 
+" style="fill: none; stroke: #cccccc; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 44.624375 345.575 
+L 849.434375 345.575 
+" style="fill: none; stroke: #cccccc; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 90.121603 345.575 
+L 113.177631 345.575 
+L 113.177631 332.099675 
+L 90.121603 332.099675 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 113.177631 345.575 
+L 136.233659 345.575 
+L 136.233659 332.099675 
+L 113.177631 332.099675 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 136.233659 345.575 
+L 159.289687 345.575 
+L 159.289687 318.624351 
+L 136.233659 318.624351 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 159.289687 345.575 
+L 182.345715 345.575 
+L 182.345715 332.099675 
+L 159.289687 332.099675 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 182.345715 345.575 
+L 205.401742 345.575 
+L 205.401742 345.575 
+L 182.345715 345.575 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 205.401742 345.575 
+L 228.45777 345.575 
+L 228.45777 291.673701 
+L 205.401742 291.673701 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 228.45777 345.575 
+L 251.513798 345.575 
+L 251.513798 210.821753 
+L 228.45777 210.821753 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 251.513798 345.575 
+L 274.569826 345.575 
+L 274.569826 345.575 
+L 251.513798 345.575 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 274.569826 345.575 
+L 297.625854 345.575 
+L 297.625854 251.247727 
+L 274.569826 251.247727 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 297.625854 345.575 
+L 320.681881 345.575 
+L 320.681881 237.772403 
+L 297.625854 237.772403 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 320.681881 345.575 
+L 343.737909 345.575 
+L 343.737909 49.117857 
+L 320.681881 49.117857 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 343.737909 345.575 
+L 366.793937 345.575 
+L 366.793937 129.969805 
+L 343.737909 129.969805 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 366.793937 345.575 
+L 389.849965 345.575 
+L 389.849965 345.575 
+L 366.793937 345.575 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 389.849965 345.575 
+L 412.905993 345.575 
+L 412.905993 49.117857 
+L 389.849965 49.117857 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 412.905993 345.575 
+L 435.962021 345.575 
+L 435.962021 156.920455 
+L 412.905993 156.920455 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 435.962021 345.575 
+L 459.018048 345.575 
+L 459.018048 103.019156 
+L 435.962021 103.019156 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 459.018048 345.575 
+L 482.074076 345.575 
+L 482.074076 345.575 
+L 459.018048 345.575 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 482.074076 345.575 
+L 505.130104 345.575 
+L 505.130104 89.543831 
+L 482.074076 89.543831 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 505.130104 345.575 
+L 528.186132 345.575 
+L 528.186132 76.068506 
+L 505.130104 76.068506 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 528.186132 345.575 
+L 551.24216 345.575 
+L 551.24216 237.772403 
+L 528.186132 237.772403 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_27">
+    <path d="M 551.24216 345.575 
+L 574.298187 345.575 
+L 574.298187 345.575 
+L 551.24216 345.575 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_28">
+    <path d="M 574.298187 345.575 
+L 597.354215 345.575 
+L 597.354215 156.920455 
+L 574.298187 156.920455 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_29">
+    <path d="M 597.354215 345.575 
+L 620.410243 345.575 
+L 620.410243 251.247727 
+L 597.354215 251.247727 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #2e6da4; opacity: 0.82; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_30">
+    <path d="M 620.410243 345.575 
+L 643.466271 345.575 
+L 643.466271 318.624351 
+L 620.410243 318.624351 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #e8913a; opacity: 0.88; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_31">
+    <path d="M 643.466271 345.575 
+L 666.522299 345.575 
+L 666.522299 345.575 
+L 643.466271 345.575 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #e8913a; opacity: 0.88; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_32">
+    <path d="M 666.522299 345.575 
+L 689.578327 345.575 
+L 689.578327 332.099675 
+L 666.522299 332.099675 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #e8913a; opacity: 0.88; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_33">
+    <path d="M 689.578327 345.575 
+L 712.634354 345.575 
+L 712.634354 318.624351 
+L 689.578327 318.624351 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #e8913a; opacity: 0.88; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_34">
+    <path d="M 712.634354 345.575 
+L 735.690382 345.575 
+L 735.690382 332.099675 
+L 712.634354 332.099675 
+z
+" clip-path="url(#pa69dad1a11)" style="fill: #c0392b; opacity: 0.88; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_15">
+    <g id="patch_35">
+     <path d="M 56.696525 55.791838 
+L 473.904181 55.791838 
+Q 477.054181 55.791838 477.054181 52.641838 
+L 477.054181 43.6334 
+Q 477.054181 40.4834 473.904181 40.4834 
+L 56.696525 40.4834 
+Q 53.546525 40.4834 53.546525 43.6334 
+L 53.546525 52.641838 
+Q 53.546525 55.791838 56.696525 55.791838 
+z
+" style="fill: #ffffff; opacity: 0.92; stroke: #cccccc; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <!-- n = 200   |   null mean = 45.9%   |   null max = 59.5%   |   observed = 86.5% -->
+    <g style="fill: #003366" transform="translate(56.696525 50.519806) scale(0.09 -0.09)">
+     <defs>
+      <path id="DejaVuSansMono-6e" d="M 3284 2169 
+L 3284 0 
+L 2706 0 
+L 2706 2169 
+Q 2706 2641 2540 2862 
+Q 2375 3084 2022 3084 
+Q 1619 3084 1401 2798 
+Q 1184 2513 1184 1978 
+L 1184 0 
+L 609 0 
+L 609 3500 
+L 1184 3500 
+L 1184 2975 
+Q 1338 3275 1600 3429 
+Q 1863 3584 2222 3584 
+Q 2756 3584 3020 3232 
+Q 3284 2881 3284 2169 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-20" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-3d" d="M 275 1638 
+L 3578 1638 
+L 3578 1100 
+L 275 1100 
+L 275 1638 
+z
+M 275 2906 
+L 3578 2906 
+L 3578 2375 
+L 275 2375 
+L 275 2906 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-32" d="M 1166 531 
+L 3309 531 
+L 3309 0 
+L 475 0 
+L 475 531 
+Q 1059 1147 1496 1619 
+Q 1934 2091 2100 2284 
+Q 2413 2666 2522 2902 
+Q 2631 3138 2631 3384 
+Q 2631 3775 2401 3997 
+Q 2172 4219 1772 4219 
+Q 1488 4219 1175 4116 
+Q 863 4013 513 3803 
+L 513 4441 
+Q 834 4594 1145 4672 
+Q 1456 4750 1759 4750 
+Q 2444 4750 2861 4386 
+Q 3278 4022 3278 3431 
+Q 3278 3131 3139 2831 
+Q 3000 2531 2688 2169 
+Q 2513 1966 2180 1606 
+Q 1847 1247 1166 531 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-30" d="M 1509 2344 
+Q 1509 2516 1629 2641 
+Q 1750 2766 1919 2766 
+Q 2094 2766 2219 2641 
+Q 2344 2516 2344 2344 
+Q 2344 2169 2220 2047 
+Q 2097 1925 1919 1925 
+Q 1744 1925 1626 2044 
+Q 1509 2163 1509 2344 
+z
+M 1925 4250 
+Q 1484 4250 1267 3775 
+Q 1050 3300 1050 2328 
+Q 1050 1359 1267 884 
+Q 1484 409 1925 409 
+Q 2369 409 2586 884 
+Q 2803 1359 2803 2328 
+Q 2803 3300 2586 3775 
+Q 2369 4250 1925 4250 
+z
+M 1925 4750 
+Q 2672 4750 3055 4137 
+Q 3438 3525 3438 2328 
+Q 3438 1134 3055 521 
+Q 2672 -91 1925 -91 
+Q 1178 -91 797 521 
+Q 416 1134 416 2328 
+Q 416 3525 797 4137 
+Q 1178 4750 1925 4750 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-7c" d="M 2194 4891 
+L 2194 -1509 
+L 1656 -1509 
+L 1656 4891 
+L 2194 4891 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-75" d="M 609 1325 
+L 609 3494 
+L 1184 3494 
+L 1184 1325 
+Q 1184 853 1351 631 
+Q 1519 409 1869 409 
+Q 2275 409 2490 695 
+Q 2706 981 2706 1516 
+L 2706 3494 
+L 3284 3494 
+L 3284 0 
+L 2706 0 
+L 2706 525 
+Q 2553 222 2289 65 
+Q 2025 -91 1672 -91 
+Q 1134 -91 871 261 
+Q 609 613 609 1325 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-6c" d="M 1997 1269 
+Q 1997 881 2139 684 
+Q 2281 488 2559 488 
+L 3231 488 
+L 3231 0 
+L 2503 0 
+Q 1988 0 1705 331 
+Q 1422 663 1422 1269 
+L 1422 4447 
+L 500 4447 
+L 500 4897 
+L 1997 4897 
+L 1997 1269 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-6d" d="M 2113 3144 
+Q 2219 3369 2383 3476 
+Q 2547 3584 2778 3584 
+Q 3200 3584 3373 3257 
+Q 3547 2931 3547 2028 
+L 3547 0 
+L 3022 0 
+L 3022 2003 
+Q 3022 2744 2939 2923 
+Q 2856 3103 2638 3103 
+Q 2388 3103 2295 2911 
+Q 2203 2719 2203 2003 
+L 2203 0 
+L 1678 0 
+L 1678 2003 
+Q 1678 2753 1589 2928 
+Q 1500 3103 1269 3103 
+Q 1041 3103 952 2911 
+Q 863 2719 863 2003 
+L 863 0 
+L 341 0 
+L 341 3500 
+L 863 3500 
+L 863 3200 
+Q 966 3388 1120 3486 
+Q 1275 3584 1472 3584 
+Q 1709 3584 1867 3475 
+Q 2025 3366 2113 3144 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-65" d="M 3475 1894 
+L 3475 1613 
+L 984 1613 
+L 984 1594 
+Q 984 1022 1282 709 
+Q 1581 397 2125 397 
+Q 2400 397 2700 484 
+Q 3000 572 3341 750 
+L 3341 178 
+Q 3013 44 2708 -23 
+Q 2403 -91 2119 -91 
+Q 1303 -91 843 398 
+Q 384 888 384 1747 
+Q 384 2584 834 3084 
+Q 1284 3584 2034 3584 
+Q 2703 3584 3089 3131 
+Q 3475 2678 3475 1894 
+z
+M 2900 2063 
+Q 2888 2569 2661 2833 
+Q 2434 3097 2009 3097 
+Q 1594 3097 1325 2822 
+Q 1056 2547 1006 2059 
+L 2900 2063 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-61" d="M 2194 1759 
+L 2003 1759 
+Q 1500 1759 1245 1582 
+Q 991 1406 991 1056 
+Q 991 741 1181 566 
+Q 1372 391 1709 391 
+Q 2184 391 2456 720 
+Q 2728 1050 2731 1631 
+L 2731 1759 
+L 2194 1759 
+z
+M 3309 1997 
+L 3309 0 
+L 2731 0 
+L 2731 519 
+Q 2547 206 2267 57 
+Q 1988 -91 1588 -91 
+Q 1053 -91 734 211 
+Q 416 513 416 1019 
+Q 416 1603 808 1906 
+Q 1200 2209 1959 2209 
+L 2731 2209 
+L 2731 2300 
+Q 2728 2719 2518 2908 
+Q 2309 3097 1850 3097 
+Q 1556 3097 1256 3012 
+Q 956 2928 672 2766 
+L 672 3341 
+Q 991 3463 1283 3523 
+Q 1575 3584 1850 3584 
+Q 2284 3584 2592 3456 
+Q 2900 3328 3091 3072 
+Q 3209 2916 3259 2686 
+Q 3309 2456 3309 1997 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-34" d="M 2297 4091 
+L 825 1625 
+L 2297 1625 
+L 2297 4091 
+z
+M 2194 4666 
+L 2925 4666 
+L 2925 1625 
+L 3547 1625 
+L 3547 1113 
+L 2925 1113 
+L 2925 0 
+L 2297 0 
+L 2297 1113 
+L 319 1113 
+L 319 1709 
+L 2194 4666 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-35" d="M 647 4666 
+L 3009 4666 
+L 3009 4134 
+L 1222 4134 
+L 1222 2988 
+Q 1356 3038 1492 3061 
+Q 1628 3084 1766 3084 
+Q 2491 3084 2916 2656 
+Q 3341 2228 3341 1497 
+Q 3341 759 2895 334 
+Q 2450 -91 1678 -91 
+Q 1306 -91 998 -41 
+Q 691 9 447 109 
+L 447 750 
+Q 734 594 1025 517 
+Q 1316 441 1619 441 
+Q 2141 441 2423 716 
+Q 2706 991 2706 1497 
+Q 2706 1997 2414 2275 
+Q 2122 2553 1600 2553 
+Q 1347 2553 1106 2495 
+Q 866 2438 647 2322 
+L 647 4666 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-2e" d="M 1528 953 
+L 2316 953 
+L 2316 0 
+L 1528 0 
+L 1528 953 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-39" d="M 1863 2069 
+Q 2266 2069 2495 2359 
+Q 2725 2650 2725 3163 
+Q 2725 3675 2495 3965 
+Q 2266 4256 1863 4256 
+Q 1444 4256 1231 3979 
+Q 1019 3703 1019 3163 
+Q 1019 2619 1230 2344 
+Q 1441 2069 1863 2069 
+z
+M 738 97 
+L 738 678 
+Q 934 563 1156 502 
+Q 1378 441 1619 441 
+Q 2219 441 2526 892 
+Q 2834 1344 2834 2222 
+Q 2688 1909 2422 1742 
+Q 2156 1575 1813 1575 
+Q 1138 1575 767 1990 
+Q 397 2406 397 3169 
+Q 397 3922 776 4336 
+Q 1156 4750 1850 4750 
+Q 2663 4750 3041 4165 
+Q 3419 3581 3419 2328 
+Q 3419 1150 2964 529 
+Q 2509 -91 1644 -91 
+Q 1416 -91 1184 -42 
+Q 953 6 738 97 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-25" d="M 2175 997 
+Q 2175 753 2339 587 
+Q 2503 422 2747 422 
+Q 2988 422 3155 589 
+Q 3322 756 3322 997 
+Q 3322 1238 3153 1406 
+Q 2984 1575 2747 1575 
+Q 2503 1575 2339 1409 
+Q 2175 1244 2175 997 
+z
+M 1753 997 
+Q 1753 1419 2040 1708 
+Q 2328 1997 2747 1997 
+Q 2947 1997 3126 1922 
+Q 3306 1847 3450 1703 
+Q 3594 1556 3672 1375 
+Q 3750 1194 3750 997 
+Q 3750 581 3459 290 
+Q 3169 0 2747 0 
+Q 2322 0 2037 286 
+Q 1753 572 1753 997 
+z
+M 378 1453 
+L 269 1753 
+L 3525 3059 
+L 3653 2759 
+L 378 1453 
+z
+M 525 3475 
+Q 525 3228 689 3064 
+Q 853 2900 1100 2900 
+Q 1341 2900 1509 3067 
+Q 1678 3234 1678 3475 
+Q 1678 3716 1509 3883 
+Q 1341 4050 1100 4050 
+Q 859 4050 692 3884 
+Q 525 3719 525 3475 
+z
+M 103 3475 
+Q 103 3897 390 4186 
+Q 678 4475 1100 4475 
+Q 1300 4475 1483 4400 
+Q 1666 4325 1806 4184 
+Q 1947 4044 2023 3861 
+Q 2100 3678 2100 3475 
+Q 2100 3056 1809 2767 
+Q 1519 2478 1100 2478 
+Q 678 2478 390 2765 
+Q 103 3053 103 3475 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-78" d="M 3494 3500 
+L 2241 1825 
+L 3616 0 
+L 2950 0 
+L 1925 1403 
+L 903 0 
+L 238 0 
+L 1613 1825 
+L 359 3500 
+L 997 3500 
+L 1925 2234 
+L 2847 3500 
+L 3494 3500 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-6f" d="M 1925 3097 
+Q 1488 3097 1263 2756 
+Q 1038 2416 1038 1747 
+Q 1038 1081 1263 739 
+Q 1488 397 1925 397 
+Q 2366 397 2591 739 
+Q 2816 1081 2816 1747 
+Q 2816 2416 2591 2756 
+Q 2366 3097 1925 3097 
+z
+M 1925 3584 
+Q 2653 3584 3039 3112 
+Q 3425 2641 3425 1747 
+Q 3425 850 3040 379 
+Q 2656 -91 1925 -91 
+Q 1197 -91 812 379 
+Q 428 850 428 1747 
+Q 428 2641 812 3112 
+Q 1197 3584 1925 3584 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-62" d="M 2869 1747 
+Q 2869 2416 2656 2756 
+Q 2444 3097 2028 3097 
+Q 1609 3097 1393 2755 
+Q 1178 2413 1178 1747 
+Q 1178 1084 1393 740 
+Q 1609 397 2028 397 
+Q 2444 397 2656 737 
+Q 2869 1078 2869 1747 
+z
+M 1178 3053 
+Q 1316 3309 1558 3446 
+Q 1800 3584 2119 3584 
+Q 2750 3584 3112 3098 
+Q 3475 2613 3475 1759 
+Q 3475 894 3111 401 
+Q 2747 -91 2113 -91 
+Q 1800 -91 1561 45 
+Q 1322 181 1178 441 
+L 1178 0 
+L 603 0 
+L 603 4863 
+L 1178 4863 
+L 1178 3053 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-73" d="M 3041 3378 
+L 3041 2816 
+Q 2794 2959 2544 3031 
+Q 2294 3103 2034 3103 
+Q 1644 3103 1451 2976 
+Q 1259 2850 1259 2591 
+Q 1259 2356 1403 2240 
+Q 1547 2125 2119 2016 
+L 2350 1972 
+Q 2778 1891 2998 1647 
+Q 3219 1403 3219 1013 
+Q 3219 494 2850 201 
+Q 2481 -91 1825 -91 
+Q 1566 -91 1281 -36 
+Q 997 19 666 128 
+L 666 722 
+Q 988 556 1281 473 
+Q 1575 391 1838 391 
+Q 2219 391 2428 545 
+Q 2638 700 2638 978 
+Q 2638 1378 1872 1531 
+L 1847 1538 
+L 1631 1581 
+Q 1134 1678 906 1908 
+Q 678 2138 678 2534 
+Q 678 3038 1018 3311 
+Q 1359 3584 1991 3584 
+Q 2272 3584 2531 3532 
+Q 2791 3481 3041 3378 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-72" d="M 3609 2778 
+Q 3425 2922 3234 2987 
+Q 3044 3053 2816 3053 
+Q 2278 3053 1993 2715 
+Q 1709 2378 1709 1741 
+L 1709 0 
+L 1131 0 
+L 1131 3500 
+L 1709 3500 
+L 1709 2816 
+Q 1853 3188 2151 3386 
+Q 2450 3584 2859 3584 
+Q 3072 3584 3256 3531 
+Q 3441 3478 3609 3366 
+L 3609 2778 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-76" d="M 313 3500 
+L 909 3500 
+L 1925 563 
+L 2944 3500 
+L 3541 3500 
+L 2297 0 
+L 1556 0 
+L 313 3500 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-64" d="M 2681 3053 
+L 2681 4863 
+L 3256 4863 
+L 3256 0 
+L 2681 0 
+L 2681 441 
+Q 2538 181 2298 45 
+Q 2059 -91 1747 -91 
+Q 1113 -91 748 401 
+Q 384 894 384 1759 
+Q 384 2613 750 3098 
+Q 1116 3584 1747 3584 
+Q 2063 3584 2303 3448 
+Q 2544 3313 2681 3053 
+z
+M 991 1747 
+Q 991 1078 1203 737 
+Q 1416 397 1831 397 
+Q 2247 397 2464 740 
+Q 2681 1084 2681 1747 
+Q 2681 2413 2464 2755 
+Q 2247 3097 1831 3097 
+Q 1416 3097 1203 2756 
+Q 991 2416 991 1747 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-38" d="M 1925 2216 
+Q 1503 2216 1273 1980 
+Q 1044 1744 1044 1313 
+Q 1044 881 1276 642 
+Q 1509 403 1925 403 
+Q 2350 403 2579 639 
+Q 2809 875 2809 1313 
+Q 2809 1741 2576 1978 
+Q 2344 2216 1925 2216 
+z
+M 1375 2478 
+Q 972 2581 745 2862 
+Q 519 3144 519 3541 
+Q 519 4097 897 4423 
+Q 1275 4750 1925 4750 
+Q 2578 4750 2956 4423 
+Q 3334 4097 3334 3541 
+Q 3334 3144 3107 2862 
+Q 2881 2581 2478 2478 
+Q 2947 2375 3195 2062 
+Q 3444 1750 3444 1253 
+Q 3444 622 3041 265 
+Q 2638 -91 1925 -91 
+Q 1213 -91 811 264 
+Q 409 619 409 1247 
+Q 409 1747 657 2061 
+Q 906 2375 1375 2478 
+z
+M 1147 3481 
+Q 1147 3106 1347 2909 
+Q 1547 2713 1925 2713 
+Q 2306 2713 2506 2909 
+Q 2706 3106 2706 3481 
+Q 2706 3863 2507 4063 
+Q 2309 4263 1925 4263 
+Q 1547 4263 1347 4061 
+Q 1147 3859 1147 3481 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSansMono-36" d="M 3097 4563 
+L 3097 3981 
+Q 2900 4097 2678 4158 
+Q 2456 4219 2216 4219 
+Q 1616 4219 1306 3767 
+Q 997 3316 997 2438 
+Q 1147 2750 1412 2917 
+Q 1678 3084 2022 3084 
+Q 2697 3084 3067 2670 
+Q 3438 2256 3438 1497 
+Q 3438 741 3056 325 
+Q 2675 -91 1984 -91 
+Q 1172 -91 794 492 
+Q 416 1075 416 2328 
+Q 416 3509 870 4129 
+Q 1325 4750 2188 4750 
+Q 2419 4750 2650 4701 
+Q 2881 4653 3097 4563 
+z
+M 1972 2591 
+Q 1569 2591 1337 2300 
+Q 1106 2009 1106 1497 
+Q 1106 984 1337 693 
+Q 1569 403 1972 403 
+Q 2391 403 2603 679 
+Q 2816 956 2816 1497 
+Q 2816 2041 2603 2316 
+Q 2391 2591 1972 2591 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#DejaVuSansMono-6e"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(60.205078 0)"/>
+     <use xlink:href="#DejaVuSansMono-3d" transform="translate(120.410156 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(180.615234 0)"/>
+     <use xlink:href="#DejaVuSansMono-32" transform="translate(240.820312 0)"/>
+     <use xlink:href="#DejaVuSansMono-30" transform="translate(301.025391 0)"/>
+     <use xlink:href="#DejaVuSansMono-30" transform="translate(361.230469 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(421.435547 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(481.640625 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(541.845703 0)"/>
+     <use xlink:href="#DejaVuSansMono-7c" transform="translate(602.050781 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(662.255859 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(722.460938 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(782.666016 0)"/>
+     <use xlink:href="#DejaVuSansMono-6e" transform="translate(842.871094 0)"/>
+     <use xlink:href="#DejaVuSansMono-75" transform="translate(903.076172 0)"/>
+     <use xlink:href="#DejaVuSansMono-6c" transform="translate(963.28125 0)"/>
+     <use xlink:href="#DejaVuSansMono-6c" transform="translate(1023.486328 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(1083.691406 0)"/>
+     <use xlink:href="#DejaVuSansMono-6d" transform="translate(1143.896484 0)"/>
+     <use xlink:href="#DejaVuSansMono-65" transform="translate(1204.101562 0)"/>
+     <use xlink:href="#DejaVuSansMono-61" transform="translate(1264.306641 0)"/>
+     <use xlink:href="#DejaVuSansMono-6e" transform="translate(1324.511719 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(1384.716797 0)"/>
+     <use xlink:href="#DejaVuSansMono-3d" transform="translate(1444.921875 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(1505.126953 0)"/>
+     <use xlink:href="#DejaVuSansMono-34" transform="translate(1565.332031 0)"/>
+     <use xlink:href="#DejaVuSansMono-35" transform="translate(1625.537109 0)"/>
+     <use xlink:href="#DejaVuSansMono-2e" transform="translate(1685.742188 0)"/>
+     <use xlink:href="#DejaVuSansMono-39" transform="translate(1745.947266 0)"/>
+     <use xlink:href="#DejaVuSansMono-25" transform="translate(1806.152344 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(1866.357422 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(1926.5625 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(1986.767578 0)"/>
+     <use xlink:href="#DejaVuSansMono-7c" transform="translate(2046.972656 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(2107.177734 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(2167.382812 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(2227.587891 0)"/>
+     <use xlink:href="#DejaVuSansMono-6e" transform="translate(2287.792969 0)"/>
+     <use xlink:href="#DejaVuSansMono-75" transform="translate(2347.998047 0)"/>
+     <use xlink:href="#DejaVuSansMono-6c" transform="translate(2408.203125 0)"/>
+     <use xlink:href="#DejaVuSansMono-6c" transform="translate(2468.408203 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(2528.613281 0)"/>
+     <use xlink:href="#DejaVuSansMono-6d" transform="translate(2588.818359 0)"/>
+     <use xlink:href="#DejaVuSansMono-61" transform="translate(2649.023438 0)"/>
+     <use xlink:href="#DejaVuSansMono-78" transform="translate(2709.228516 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(2769.433594 0)"/>
+     <use xlink:href="#DejaVuSansMono-3d" transform="translate(2829.638672 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(2889.84375 0)"/>
+     <use xlink:href="#DejaVuSansMono-35" transform="translate(2950.048828 0)"/>
+     <use xlink:href="#DejaVuSansMono-39" transform="translate(3010.253906 0)"/>
+     <use xlink:href="#DejaVuSansMono-2e" transform="translate(3070.458984 0)"/>
+     <use xlink:href="#DejaVuSansMono-35" transform="translate(3130.664062 0)"/>
+     <use xlink:href="#DejaVuSansMono-25" transform="translate(3190.869141 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(3251.074219 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(3311.279297 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(3371.484375 0)"/>
+     <use xlink:href="#DejaVuSansMono-7c" transform="translate(3431.689453 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(3491.894531 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(3552.099609 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(3612.304688 0)"/>
+     <use xlink:href="#DejaVuSansMono-6f" transform="translate(3672.509766 0)"/>
+     <use xlink:href="#DejaVuSansMono-62" transform="translate(3732.714844 0)"/>
+     <use xlink:href="#DejaVuSansMono-73" transform="translate(3792.919922 0)"/>
+     <use xlink:href="#DejaVuSansMono-65" transform="translate(3853.125 0)"/>
+     <use xlink:href="#DejaVuSansMono-72" transform="translate(3913.330078 0)"/>
+     <use xlink:href="#DejaVuSansMono-76" transform="translate(3973.535156 0)"/>
+     <use xlink:href="#DejaVuSansMono-65" transform="translate(4033.740234 0)"/>
+     <use xlink:href="#DejaVuSansMono-64" transform="translate(4093.945312 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(4154.150391 0)"/>
+     <use xlink:href="#DejaVuSansMono-3d" transform="translate(4214.355469 0)"/>
+     <use xlink:href="#DejaVuSansMono-20" transform="translate(4274.560547 0)"/>
+     <use xlink:href="#DejaVuSansMono-38" transform="translate(4334.765625 0)"/>
+     <use xlink:href="#DejaVuSansMono-36" transform="translate(4394.970703 0)"/>
+     <use xlink:href="#DejaVuSansMono-2e" transform="translate(4455.175781 0)"/>
+     <use xlink:href="#DejaVuSansMono-35" transform="translate(4515.380859 0)"/>
+     <use xlink:href="#DejaVuSansMono-25" transform="translate(4575.585938 0)"/>
+    </g>
+   </g>
+   <g id="text_16">
+    <!-- Null distribution of 200 label-shuffled walk-forward runs vs observed accuracy (off chart) -->
+    <g style="fill: #7f8c8d" transform="translate(44.624375 32.234688) scale(0.095 -0.095)">
+     <defs>
+      <path id="Georgia-4e" d="M 4856 4213 
+Q 4769 4209 4587 4162 
+Q 4406 4116 4328 4066 
+Q 4216 3988 4177 3766 
+Q 4138 3544 4138 3203 
+L 4138 -44 
+L 3866 -44 
+L 1178 3584 
+L 1178 1297 
+Q 1178 913 1226 706 
+Q 1275 500 1375 413 
+Q 1447 344 1672 284 
+Q 1897 225 1969 222 
+L 1969 0 
+L 150 0 
+L 150 222 
+Q 234 228 434 283 
+Q 634 338 684 381 
+Q 794 469 834 648 
+Q 875 828 875 1263 
+L 875 3447 
+Q 875 3591 825 3734 
+Q 775 3878 691 3956 
+Q 578 4059 386 4132 
+Q 194 4206 75 4213 
+L 75 4434 
+L 1341 4434 
+L 3834 1053 
+L 3834 3163 
+Q 3834 3550 3784 3758 
+Q 3734 3966 3641 4034 
+Q 3553 4094 3354 4150 
+Q 3156 4206 3053 4213 
+L 3053 4434 
+L 4856 4434 
+L 4856 4213 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-62" d="M 3353 1544 
+Q 3353 850 2915 378 
+Q 2478 -94 1900 -94 
+Q 1647 -94 1401 -15 
+Q 1156 63 941 194 
+L 709 -166 
+L 516 -122 
+Q 531 109 537 434 
+Q 544 759 544 1063 
+L 544 4113 
+Q 544 4219 495 4325 
+Q 447 4431 372 4478 
+Q 313 4519 173 4539 
+Q 34 4559 -50 4566 
+L -50 4766 
+L 1081 4838 
+L 1125 4791 
+L 1125 2759 
+L 1147 2753 
+Q 1341 2959 1570 3062 
+Q 1800 3166 2022 3166 
+Q 2591 3166 2972 2716 
+Q 3353 2266 3353 1544 
+z
+M 2700 1522 
+Q 2700 1753 2650 1993 
+Q 2600 2234 2494 2413 
+Q 2388 2594 2216 2706 
+Q 2044 2819 1803 2819 
+Q 1584 2819 1420 2733 
+Q 1256 2647 1125 2500 
+L 1125 706 
+Q 1144 631 1198 531 
+Q 1253 431 1347 341 
+Q 1441 253 1559 198 
+Q 1678 144 1850 144 
+Q 2231 144 2465 512 
+Q 2700 881 2700 1522 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-65" d="M 2963 725 
+Q 2769 356 2444 137 
+Q 2119 -81 1697 -81 
+Q 1325 -81 1045 50 
+Q 766 181 584 406 
+Q 403 631 314 931 
+Q 225 1231 225 1566 
+Q 225 1866 320 2155 
+Q 416 2444 600 2675 
+Q 778 2897 1042 3033 
+Q 1306 3169 1634 3169 
+Q 1972 3169 2212 3062 
+Q 2453 2956 2603 2772 
+Q 2747 2597 2817 2359 
+Q 2888 2122 2888 1844 
+L 2888 1638 
+L 847 1638 
+Q 847 1334 905 1087 
+Q 963 841 1088 653 
+Q 1209 472 1406 367 
+Q 1603 263 1875 263 
+Q 2153 263 2354 392 
+Q 2556 522 2744 859 
+L 2963 725 
+z
+M 2272 1900 
+Q 2272 2075 2242 2275 
+Q 2213 2475 2147 2609 
+Q 2075 2753 1950 2843 
+Q 1825 2934 1628 2934 
+Q 1300 2934 1083 2661 
+Q 866 2388 847 1900 
+L 2272 1900 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-68" d="M 3572 0 
+L 2059 0 
+L 2059 206 
+Q 2131 213 2218 219 
+Q 2306 225 2363 244 
+Q 2450 272 2492 342 
+Q 2534 413 2534 525 
+L 2534 2109 
+Q 2534 2438 2379 2616 
+Q 2225 2794 2003 2794 
+Q 1841 2794 1702 2742 
+Q 1563 2691 1453 2616 
+Q 1347 2538 1290 2459 
+Q 1234 2381 1203 2328 
+L 1203 556 
+Q 1203 450 1245 381 
+Q 1288 313 1375 275 
+Q 1444 244 1517 228 
+Q 1591 213 1678 206 
+L 1678 0 
+L 166 0 
+L 166 206 
+Q 238 213 316 220 
+Q 394 228 447 244 
+Q 534 272 578 342 
+Q 622 413 622 525 
+L 622 4113 
+Q 622 4219 573 4325 
+Q 525 4431 447 4484 
+Q 391 4525 248 4542 
+Q 106 4559 19 4566 
+L 19 4766 
+L 1159 4838 
+L 1203 4791 
+L 1203 2641 
+L 1216 2641 
+Q 1319 2744 1403 2823 
+Q 1488 2903 1625 2991 
+Q 1744 3066 1905 3116 
+Q 2066 3166 2266 3166 
+Q 2678 3166 2900 2905 
+Q 3122 2644 3122 2153 
+L 3122 550 
+Q 3122 441 3161 373 
+Q 3200 306 3291 269 
+Q 3363 241 3420 227 
+Q 3478 213 3572 206 
+L 3572 0 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-76" d="M 3269 2891 
+Q 3128 2866 3001 2789 
+Q 2875 2713 2784 2519 
+Q 2600 2100 2403 1645 
+Q 2206 1191 1994 691 
+Q 1931 547 1861 350 
+Q 1791 153 1731 -28 
+L 1488 -28 
+Q 1191 706 941 1311 
+Q 691 1916 422 2550 
+Q 359 2694 220 2773 
+Q 81 2853 -59 2875 
+L -59 3081 
+L 1366 3081 
+L 1366 2863 
+Q 1272 2859 1131 2823 
+Q 991 2788 991 2725 
+Q 991 2716 1006 2677 
+Q 1022 2638 1038 2588 
+Q 1166 2269 1400 1697 
+Q 1634 1125 1781 775 
+Q 1894 1044 2064 1444 
+Q 2234 1844 2431 2338 
+Q 2463 2422 2491 2495 
+Q 2519 2569 2519 2644 
+Q 2519 2697 2467 2739 
+Q 2416 2781 2344 2813 
+Q 2272 2844 2203 2859 
+Q 2134 2875 2091 2881 
+L 2091 3081 
+L 3269 3081 
+L 3269 2891 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-28" d="M 2191 -1025 
+Q 1338 -919 852 -165 
+Q 366 588 366 1863 
+Q 366 3159 852 3917 
+Q 1338 4675 2191 4788 
+L 2191 4528 
+Q 1591 4419 1278 3762 
+Q 966 3106 966 1856 
+Q 966 666 1272 5 
+Q 1578 -656 2191 -769 
+L 2191 -1025 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-29" d="M 2034 1863 
+Q 2034 588 1548 -165 
+Q 1063 -919 209 -1025 
+L 209 -769 
+Q 822 -656 1128 5 
+Q 1434 666 1434 1856 
+Q 1434 3106 1121 3762 
+Q 809 4419 209 4528 
+L 209 4788 
+Q 1063 4675 1548 3917 
+Q 2034 3159 2034 1863 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Georgia-4e"/>
+     <use xlink:href="#Georgia-75" transform="translate(76.708984 0)"/>
+     <use xlink:href="#Georgia-6c" transform="translate(134.228516 0)"/>
+     <use xlink:href="#Georgia-6c" transform="translate(162.841797 0)"/>
+     <use xlink:href="#Georgia-20" transform="translate(191.455078 0)"/>
+     <use xlink:href="#Georgia-64" transform="translate(215.576172 0)"/>
+     <use xlink:href="#Georgia-69" transform="translate(272.998047 0)"/>
+     <use xlink:href="#Georgia-73" transform="translate(302.294922 0)"/>
+     <use xlink:href="#Georgia-74" transform="translate(345.507812 0)"/>
+     <use xlink:href="#Georgia-72" transform="translate(380.029297 0)"/>
+     <use xlink:href="#Georgia-69" transform="translate(420.996094 0)"/>
+     <use xlink:href="#Georgia-62" transform="translate(450.292969 0)"/>
+     <use xlink:href="#Georgia-75" transform="translate(506.298828 0)"/>
+     <use xlink:href="#Georgia-74" transform="translate(563.818359 0)"/>
+     <use xlink:href="#Georgia-69" transform="translate(598.339844 0)"/>
+     <use xlink:href="#Georgia-6f" transform="translate(627.636719 0)"/>
+     <use xlink:href="#Georgia-6e" transform="translate(681.542969 0)"/>
+     <use xlink:href="#Georgia-20" transform="translate(740.625 0)"/>
+     <use xlink:href="#Georgia-6f" transform="translate(764.746094 0)"/>
+     <use xlink:href="#Georgia-66" transform="translate(818.652344 0)"/>
+     <use xlink:href="#Georgia-20" transform="translate(851.171875 0)"/>
+     <use xlink:href="#Georgia-32" transform="translate(875.292969 0)"/>
+     <use xlink:href="#Georgia-30" transform="translate(931.152344 0)"/>
+     <use xlink:href="#Georgia-30" transform="translate(992.529297 0)"/>
+     <use xlink:href="#Georgia-20" transform="translate(1053.90625 0)"/>
+     <use xlink:href="#Georgia-6c" transform="translate(1078.027344 0)"/>
+     <use xlink:href="#Georgia-61" transform="translate(1106.640625 0)"/>
+     <use xlink:href="#Georgia-62" transform="translate(1157.03125 0)"/>
+     <use xlink:href="#Georgia-65" transform="translate(1213.037109 0)"/>
+     <use xlink:href="#Georgia-6c" transform="translate(1261.376953 0)"/>
+     <use xlink:href="#Georgia-2d" transform="translate(1289.990234 0)"/>
+     <use xlink:href="#Georgia-73" transform="translate(1327.392578 0)"/>
+     <use xlink:href="#Georgia-68" transform="translate(1370.605469 0)"/>
+     <use xlink:href="#Georgia-75" transform="translate(1428.808594 0)"/>
+     <use xlink:href="#Georgia-66" transform="translate(1486.328125 0)"/>
+     <use xlink:href="#Georgia-66" transform="translate(1518.847656 0)"/>
+     <use xlink:href="#Georgia-6c" transform="translate(1551.367188 0)"/>
+     <use xlink:href="#Georgia-65" transform="translate(1579.980469 0)"/>
+     <use xlink:href="#Georgia-64" transform="translate(1628.320312 0)"/>
+     <use xlink:href="#Georgia-20" transform="translate(1685.742188 0)"/>
+     <use xlink:href="#Georgia-77" transform="translate(1709.863281 0)"/>
+     <use xlink:href="#Georgia-61" transform="translate(1783.59375 0)"/>
+     <use xlink:href="#Georgia-6c" transform="translate(1833.984375 0)"/>
+     <use xlink:href="#Georgia-6b" transform="translate(1862.597656 0)"/>
+     <use xlink:href="#Georgia-2d" transform="translate(1916.162109 0)"/>
+     <use xlink:href="#Georgia-66" transform="translate(1953.564453 0)"/>
+     <use xlink:href="#Georgia-6f" transform="translate(1986.083984 0)"/>
+     <use xlink:href="#Georgia-72" transform="translate(2039.990234 0)"/>
+     <use xlink:href="#Georgia-77" transform="translate(2080.957031 0)"/>
+     <use xlink:href="#Georgia-61" transform="translate(2154.6875 0)"/>
+     <use xlink:href="#Georgia-72" transform="translate(2205.078125 0)"/>
+     <use xlink:href="#Georgia-64" transform="translate(2246.044922 0)"/>
+     <use xlink:href="#Georgia-20" transform="translate(2303.466797 0)"/>
+     <use xlink:href="#Georgia-72" transform="translate(2327.587891 0)"/>
+     <use xlink:href="#Georgia-75" transform="translate(2368.554688 0)"/>
+     <use xlink:href="#Georgia-6e" transform="translate(2426.074219 0)"/>
+     <use xlink:href="#Georgia-73" transform="translate(2485.15625 0)"/>
+     <use xlink:href="#Georgia-20" transform="translate(2528.369141 0)"/>
+     <use xlink:href="#Georgia-76" transform="translate(2552.490234 0)"/>
+     <use xlink:href="#Georgia-73" transform="translate(2602.148438 0)"/>
+     <use xlink:href="#Georgia-20" transform="translate(2645.361328 0)"/>
+     <use xlink:href="#Georgia-6f" transform="translate(2669.482422 0)"/>
+     <use xlink:href="#Georgia-62" transform="translate(2723.388672 0)"/>
+     <use xlink:href="#Georgia-73" transform="translate(2779.394531 0)"/>
+     <use xlink:href="#Georgia-65" transform="translate(2822.607422 0)"/>
+     <use xlink:href="#Georgia-72" transform="translate(2870.947266 0)"/>
+     <use xlink:href="#Georgia-76" transform="translate(2911.914062 0)"/>
+     <use xlink:href="#Georgia-65" transform="translate(2961.572266 0)"/>
+     <use xlink:href="#Georgia-64" transform="translate(3009.912109 0)"/>
+     <use xlink:href="#Georgia-20" transform="translate(3067.333984 0)"/>
+     <use xlink:href="#Georgia-61" transform="translate(3091.455078 0)"/>
+     <use xlink:href="#Georgia-63" transform="translate(3141.845703 0)"/>
+     <use xlink:href="#Georgia-63" transform="translate(3187.255859 0)"/>
+     <use xlink:href="#Georgia-75" transform="translate(3232.666016 0)"/>
+     <use xlink:href="#Georgia-72" transform="translate(3290.185547 0)"/>
+     <use xlink:href="#Georgia-61" transform="translate(3331.152344 0)"/>
+     <use xlink:href="#Georgia-63" transform="translate(3381.542969 0)"/>
+     <use xlink:href="#Georgia-79" transform="translate(3426.953125 0)"/>
+     <use xlink:href="#Georgia-20" transform="translate(3476.171875 0)"/>
+     <use xlink:href="#Georgia-28" transform="translate(3500.292969 0)"/>
+     <use xlink:href="#Georgia-6f" transform="translate(3537.792969 0)"/>
+     <use xlink:href="#Georgia-66" transform="translate(3591.699219 0)"/>
+     <use xlink:href="#Georgia-66" transform="translate(3624.21875 0)"/>
+     <use xlink:href="#Georgia-20" transform="translate(3656.738281 0)"/>
+     <use xlink:href="#Georgia-63" transform="translate(3680.859375 0)"/>
+     <use xlink:href="#Georgia-68" transform="translate(3726.269531 0)"/>
+     <use xlink:href="#Georgia-61" transform="translate(3784.472656 0)"/>
+     <use xlink:href="#Georgia-72" transform="translate(3834.863281 0)"/>
+     <use xlink:href="#Georgia-74" transform="translate(3875.830078 0)"/>
+     <use xlink:href="#Georgia-29" transform="translate(3910.351562 0)"/>
+    </g>
+   </g>
+   <g id="text_17">
+    <!-- ML Regime Detector Permutation Test -->
+    <g style="fill: #003366" transform="translate(44.624375 19.295) scale(0.16 -0.16)">
+     <defs>
+      <path id="Georgia-Bold-4d" d="M 6309 0 
+L 3906 0 
+L 3906 244 
+Q 4013 253 4167 275 
+Q 4322 297 4378 322 
+Q 4494 369 4544 450 
+Q 4594 531 4594 656 
+L 4594 3969 
+L 3069 72 
+L 2675 72 
+Q 2647 175 2536 481 
+Q 2425 788 2356 972 
+L 1234 4019 
+L 1234 1322 
+Q 1234 934 1286 732 
+Q 1338 531 1453 438 
+Q 1531 372 1732 312 
+Q 1934 253 2016 244 
+L 2016 0 
+L 109 0 
+L 109 244 
+Q 188 253 364 286 
+Q 541 319 653 400 
+Q 778 488 822 695 
+Q 866 903 866 1288 
+L 866 3484 
+Q 866 3684 816 3817 
+Q 766 3950 666 4028 
+Q 541 4125 409 4153 
+Q 278 4181 144 4191 
+L 144 4434 
+L 2184 4434 
+L 3278 1506 
+L 4200 3884 
+Q 4247 4016 4290 4197 
+Q 4334 4378 4338 4434 
+L 6303 4434 
+L 6303 4191 
+Q 6203 4184 6093 4165 
+Q 5984 4147 5884 4116 
+Q 5763 4075 5723 3987 
+Q 5684 3900 5684 3794 
+L 5684 653 
+Q 5684 541 5723 464 
+Q 5763 388 5884 331 
+Q 5947 303 6089 278 
+Q 6231 253 6309 244 
+L 6309 0 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-4c" d="M 4388 1422 
+L 4300 0 
+L 216 0 
+L 216 244 
+Q 325 253 472 273 
+Q 619 294 666 313 
+Q 778 356 822 434 
+Q 866 513 866 634 
+L 866 3763 
+Q 866 3875 831 3948 
+Q 797 4022 666 4081 
+Q 569 4125 433 4151 
+Q 297 4178 216 4191 
+L 216 4434 
+L 2650 4434 
+L 2650 4191 
+Q 2550 4181 2414 4164 
+Q 2278 4147 2178 4116 
+Q 2056 4075 2015 3989 
+Q 1975 3903 1975 3794 
+L 1975 878 
+Q 1975 672 2003 553 
+Q 2031 434 2113 378 
+Q 2194 319 2339 301 
+Q 2484 284 2741 284 
+Q 2991 284 3227 314 
+Q 3463 344 3566 444 
+Q 3725 603 3892 892 
+Q 4059 1181 4159 1422 
+L 4388 1422 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-20" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-52" d="M 5306 0 
+L 3606 0 
+Q 3166 675 2873 1075 
+Q 2581 1475 2147 2000 
+L 1975 2000 
+L 1975 653 
+Q 1975 541 2017 462 
+Q 2059 384 2178 331 
+Q 2238 306 2364 279 
+Q 2491 253 2581 244 
+L 2581 0 
+L 216 0 
+L 216 244 
+Q 306 253 454 270 
+Q 603 288 666 313 
+Q 784 363 825 439 
+Q 866 516 866 634 
+L 866 3763 
+Q 866 3875 831 3950 
+Q 797 4025 666 4081 
+Q 566 4122 430 4150 
+Q 294 4178 216 4191 
+L 216 4434 
+L 2703 4434 
+Q 3538 4434 3970 4173 
+Q 4403 3913 4403 3384 
+Q 4403 2919 4136 2636 
+Q 3869 2353 3322 2194 
+Q 3534 1919 3817 1556 
+Q 4100 1194 4406 816 
+Q 4503 694 4670 517 
+Q 4838 341 4966 300 
+Q 5038 278 5148 262 
+Q 5259 247 5306 244 
+L 5306 0 
+z
+M 3178 3297 
+Q 3178 3741 2929 3945 
+Q 2681 4150 2222 4150 
+L 1975 4150 
+L 1975 2294 
+L 2213 2294 
+Q 2672 2294 2925 2534 
+Q 3178 2775 3178 3297 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-65" d="M 3541 747 
+Q 3431 569 3276 411 
+Q 3122 253 2925 141 
+Q 2716 22 2502 -39 
+Q 2288 -100 2009 -100 
+Q 1547 -100 1211 31 
+Q 875 163 656 384 
+Q 438 606 330 907 
+Q 222 1209 222 1563 
+Q 222 1881 339 2173 
+Q 456 2466 672 2694 
+Q 884 2916 1207 3053 
+Q 1531 3191 1931 3191 
+Q 2369 3191 2650 3084 
+Q 2931 2978 3116 2791 
+Q 3294 2613 3375 2370 
+Q 3456 2128 3456 1863 
+L 3456 1659 
+L 1344 1659 
+Q 1344 1019 1591 684 
+Q 1838 350 2375 350 
+Q 2669 350 2903 511 
+Q 3138 672 3303 919 
+L 3541 747 
+z
+M 2347 1934 
+Q 2347 2122 2328 2319 
+Q 2309 2516 2263 2641 
+Q 2209 2788 2117 2863 
+Q 2025 2938 1884 2938 
+Q 1644 2938 1500 2694 
+Q 1356 2450 1344 1922 
+L 2347 1934 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-67" d="M 3681 2750 
+L 2994 2750 
+Q 3116 2613 3177 2459 
+Q 3238 2306 3238 2141 
+Q 3238 1925 3122 1736 
+Q 3006 1547 2819 1428 
+Q 2628 1306 2372 1237 
+Q 2116 1169 1816 1169 
+L 1306 1169 
+Q 1269 1141 1223 1080 
+Q 1178 1019 1178 963 
+Q 1178 825 1287 772 
+Q 1397 719 1684 713 
+Q 1969 706 2259 689 
+Q 2550 672 2675 669 
+Q 2856 659 3034 595 
+Q 3213 531 3344 428 
+Q 3488 319 3581 148 
+Q 3675 -22 3675 -244 
+Q 3675 -481 3561 -690 
+Q 3447 -900 3213 -1053 
+Q 2966 -1213 2620 -1300 
+Q 2275 -1388 1766 -1388 
+Q 944 -1388 516 -1188 
+Q 88 -988 88 -588 
+Q 88 -341 319 -181 
+Q 550 -22 1038 -6 
+L 1038 31 
+Q 750 128 589 289 
+Q 428 450 428 663 
+Q 428 794 492 884 
+Q 556 975 656 1044 
+Q 744 1103 869 1145 
+Q 994 1188 1078 1213 
+L 1078 1247 
+Q 656 1403 457 1628 
+Q 259 1853 259 2178 
+Q 259 2638 682 2913 
+Q 1106 3188 1756 3188 
+Q 1969 3188 2167 3152 
+Q 2366 3116 2469 3088 
+L 3681 3088 
+L 3681 2750 
+z
+M 2216 2153 
+Q 2216 2519 2100 2731 
+Q 1984 2944 1744 2944 
+Q 1622 2944 1531 2886 
+Q 1441 2828 1384 2719 
+Q 1331 2613 1312 2470 
+Q 1294 2328 1294 2178 
+Q 1294 1838 1412 1619 
+Q 1531 1400 1750 1400 
+Q 1975 1400 2095 1597 
+Q 2216 1794 2216 2153 
+z
+M 2741 -472 
+Q 2741 -366 2681 -261 
+Q 2622 -156 2416 -91 
+Q 2303 -72 2045 -65 
+Q 1788 -59 1338 -59 
+Q 1228 -153 1154 -281 
+Q 1081 -409 1081 -591 
+Q 1081 -669 1125 -762 
+Q 1169 -856 1263 -938 
+Q 1372 -1028 1506 -1079 
+Q 1641 -1131 1913 -1131 
+Q 2316 -1131 2528 -975 
+Q 2741 -819 2741 -472 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-69" d="M 2156 0 
+L 181 0 
+L 181 228 
+Q 263 234 341 243 
+Q 419 253 475 275 
+Q 575 313 615 383 
+Q 656 453 656 569 
+L 656 2388 
+Q 656 2497 606 2580 
+Q 556 2663 481 2713 
+Q 425 2750 311 2784 
+Q 197 2819 103 2828 
+L 103 3056 
+L 1634 3138 
+L 1681 3091 
+L 1681 609 
+Q 1681 500 1728 423 
+Q 1775 347 1863 309 
+Q 1925 281 2000 259 
+Q 2075 238 2156 228 
+L 2156 0 
+z
+M 1700 4263 
+Q 1700 4025 1517 3858 
+Q 1334 3691 1084 3691 
+Q 831 3691 648 3858 
+Q 466 4025 466 4263 
+Q 466 4500 648 4669 
+Q 831 4838 1084 4838 
+Q 1338 4838 1519 4669 
+Q 1700 4500 1700 4263 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-6d" d="M 6391 0 
+L 4528 0 
+L 4528 228 
+Q 4597 238 4672 244 
+Q 4747 250 4797 275 
+Q 4866 306 4884 379 
+Q 4903 453 4903 569 
+L 4903 2028 
+Q 4903 2350 4789 2511 
+Q 4675 2672 4463 2672 
+Q 4328 2672 4223 2630 
+Q 4119 2588 4031 2525 
+Q 3941 2459 3891 2393 
+Q 3841 2328 3806 2281 
+L 3806 603 
+Q 3806 491 3832 420 
+Q 3859 350 3931 309 
+Q 3981 281 4045 259 
+Q 4109 238 4181 228 
+L 4181 0 
+L 2397 0 
+L 2397 228 
+Q 2456 234 2540 243 
+Q 2625 253 2666 275 
+Q 2731 309 2751 375 
+Q 2772 441 2772 569 
+L 2772 2028 
+Q 2772 2350 2658 2511 
+Q 2544 2672 2331 2672 
+Q 2197 2672 2092 2630 
+Q 1988 2588 1900 2525 
+Q 1809 2459 1759 2393 
+Q 1709 2328 1675 2281 
+L 1675 603 
+Q 1675 494 1703 422 
+Q 1731 350 1803 309 
+Q 1853 281 1917 259 
+Q 1981 238 2053 228 
+L 2053 0 
+L 181 0 
+L 181 228 
+Q 263 234 341 243 
+Q 419 253 475 275 
+Q 575 313 612 383 
+Q 650 453 650 569 
+L 650 2388 
+Q 650 2488 597 2583 
+Q 544 2678 469 2731 
+Q 413 2769 327 2794 
+Q 241 2819 138 2828 
+L 138 3056 
+L 1628 3138 
+L 1675 3091 
+L 1675 2650 
+L 1688 2650 
+Q 1775 2728 1895 2836 
+Q 2016 2944 2122 3009 
+Q 2238 3084 2419 3134 
+Q 2600 3184 2816 3184 
+Q 3172 3184 3411 3029 
+Q 3650 2875 3750 2619 
+L 3778 2619 
+Q 3869 2703 4000 2817 
+Q 4131 2931 4241 3000 
+Q 4363 3078 4552 3131 
+Q 4741 3184 4956 3184 
+Q 5428 3184 5683 2906 
+Q 5938 2628 5938 2116 
+L 5938 597 
+Q 5938 481 5972 411 
+Q 6006 341 6097 303 
+Q 6147 281 6220 259 
+Q 6294 238 6391 228 
+L 6391 0 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-44" d="M 4209 3978 
+Q 4616 3713 4866 3270 
+Q 5116 2828 5116 2188 
+Q 5116 1625 4892 1208 
+Q 4669 791 4300 525 
+Q 3925 259 3448 129 
+Q 2972 0 2450 0 
+L 216 0 
+L 216 244 
+Q 316 247 466 262 
+Q 616 278 666 300 
+Q 778 347 822 426 
+Q 866 506 866 619 
+L 866 3763 
+Q 866 3869 825 3955 
+Q 784 4041 666 4094 
+Q 547 4147 414 4165 
+Q 281 4184 209 4191 
+L 209 4434 
+L 2569 4434 
+Q 2947 4434 3378 4337 
+Q 3809 4241 4209 3978 
+z
+M 3572 800 
+Q 3725 1050 3795 1395 
+Q 3866 1741 3866 2191 
+Q 3866 2631 3772 2993 
+Q 3678 3356 3497 3613 
+Q 3316 3869 3045 4009 
+Q 2775 4150 2431 4150 
+Q 2322 4150 2183 4145 
+Q 2044 4141 1975 4138 
+L 1975 772 
+Q 1975 659 2004 573 
+Q 2034 488 2106 422 
+Q 2178 356 2283 320 
+Q 2388 284 2556 284 
+Q 2909 284 3162 415 
+Q 3416 547 3572 800 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-74" d="M 2506 144 
+Q 2306 56 2078 -14 
+Q 1850 -84 1522 -84 
+Q 1034 -84 798 153 
+Q 563 391 563 831 
+L 563 2750 
+L 0 2750 
+L 0 3088 
+L 575 3088 
+L 575 4034 
+L 1591 4034 
+L 1591 3088 
+L 2466 3088 
+L 2466 2750 
+L 1597 2750 
+L 1597 1038 
+Q 1597 672 1698 519 
+Q 1800 366 2063 366 
+Q 2147 366 2297 378 
+Q 2447 391 2506 406 
+L 2506 144 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-63" d="M 1966 -100 
+Q 1531 -100 1198 26 
+Q 866 153 650 372 
+Q 434 594 328 897 
+Q 222 1200 222 1556 
+Q 222 1881 351 2175 
+Q 481 2469 703 2691 
+Q 931 2919 1270 3055 
+Q 1609 3191 2019 3191 
+Q 2594 3191 2928 2973 
+Q 3263 2756 3263 2388 
+Q 3263 2163 3144 2025 
+Q 3025 1888 2734 1888 
+Q 2500 1888 2342 2000 
+Q 2184 2113 2184 2294 
+Q 2184 2447 2234 2597 
+Q 2284 2747 2294 2825 
+Q 2259 2881 2206 2911 
+Q 2153 2941 2041 2941 
+Q 1900 2941 1784 2875 
+Q 1669 2809 1569 2644 
+Q 1472 2488 1414 2225 
+Q 1356 1963 1356 1594 
+Q 1356 1038 1617 697 
+Q 1878 356 2241 356 
+Q 2588 356 2792 511 
+Q 2997 666 3156 950 
+L 3391 788 
+Q 3294 597 3159 439 
+Q 3025 281 2838 159 
+Q 2641 31 2437 -34 
+Q 2234 -100 1966 -100 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-6f" d="M 3372 2731 
+Q 3603 2516 3725 2216 
+Q 3847 1916 3847 1566 
+Q 3847 1219 3726 911 
+Q 3606 603 3375 384 
+Q 3128 150 2786 25 
+Q 2444 -100 2003 -100 
+Q 1622 -100 1301 9 
+Q 981 119 734 338 
+Q 497 547 359 855 
+Q 222 1163 222 1544 
+Q 222 1919 342 2211 
+Q 463 2503 703 2731 
+Q 934 2950 1273 3070 
+Q 1613 3191 2031 3191 
+Q 2469 3191 2801 3070 
+Q 3134 2950 3372 2731 
+z
+M 2572 566 
+Q 2641 741 2673 991 
+Q 2706 1241 2706 1572 
+Q 2706 1791 2675 2072 
+Q 2644 2353 2581 2516 
+Q 2506 2713 2373 2825 
+Q 2241 2938 2038 2938 
+Q 1816 2938 1683 2816 
+Q 1550 2694 1478 2500 
+Q 1413 2322 1388 2083 
+Q 1363 1844 1363 1584 
+Q 1363 1244 1384 1020 
+Q 1406 797 1491 572 
+Q 1563 378 1697 265 
+Q 1831 153 2038 153 
+Q 2225 153 2359 258 
+Q 2494 363 2572 566 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-72" d="M 3294 2528 
+Q 3294 2291 3147 2111 
+Q 3000 1931 2759 1931 
+Q 2531 1931 2373 2047 
+Q 2216 2163 2216 2388 
+Q 2216 2497 2231 2558 
+Q 2247 2619 2259 2672 
+Q 2116 2666 1956 2572 
+Q 1797 2478 1675 2322 
+L 1675 606 
+Q 1675 497 1709 425 
+Q 1744 353 1825 313 
+Q 1894 278 2048 254 
+Q 2203 231 2272 228 
+L 2272 0 
+L 181 0 
+L 181 228 
+Q 259 234 339 245 
+Q 419 256 475 275 
+Q 575 309 612 381 
+Q 650 453 650 569 
+L 650 2388 
+Q 650 2500 597 2589 
+Q 544 2678 469 2731 
+Q 413 2769 327 2794 
+Q 241 2819 138 2828 
+L 138 3056 
+L 1628 3138 
+L 1675 3091 
+L 1675 2638 
+L 1688 2638 
+Q 1903 2888 2145 3030 
+Q 2388 3172 2650 3172 
+Q 2941 3172 3117 2992 
+Q 3294 2813 3294 2528 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-50" d="M 4372 3325 
+Q 4372 2950 4217 2679 
+Q 4063 2409 3791 2241 
+Q 3509 2066 3148 1987 
+Q 2788 1909 2338 1909 
+L 1975 1909 
+L 1975 663 
+Q 1975 550 2017 467 
+Q 2059 384 2178 334 
+Q 2241 309 2381 281 
+Q 2522 253 2619 244 
+L 2619 0 
+L 216 0 
+L 216 244 
+Q 306 253 456 270 
+Q 606 288 666 313 
+Q 788 363 827 434 
+Q 866 506 866 634 
+L 866 3763 
+Q 866 3872 828 3951 
+Q 791 4031 666 4084 
+Q 578 4122 433 4151 
+Q 288 4181 216 4191 
+L 216 4434 
+L 2663 4434 
+Q 3522 4434 3947 4161 
+Q 4372 3888 4372 3325 
+z
+M 3153 3166 
+Q 3153 3666 2951 3908 
+Q 2750 4150 2234 4150 
+L 1975 4150 
+L 1975 2203 
+L 2106 2203 
+Q 2619 2203 2886 2439 
+Q 3153 2675 3153 3166 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-75" d="M 4259 66 
+L 2769 -25 
+L 2722 19 
+L 2722 428 
+L 2703 428 
+Q 2597 331 2495 239 
+Q 2394 147 2253 72 
+Q 2094 -13 1951 -53 
+Q 1809 -94 1538 -94 
+Q 1066 -94 814 190 
+Q 563 475 563 994 
+L 563 2400 
+Q 563 2522 516 2598 
+Q 469 2675 391 2734 
+Q 328 2781 228 2801 
+Q 128 2822 47 2828 
+L 47 3056 
+L 1563 3138 
+L 1597 3091 
+L 1597 1013 
+Q 1597 691 1720 537 
+Q 1844 384 2059 384 
+Q 2281 384 2457 500 
+Q 2634 616 2716 747 
+L 2716 2431 
+Q 2716 2538 2675 2622 
+Q 2634 2706 2556 2759 
+Q 2500 2797 2395 2809 
+Q 2291 2822 2181 2828 
+L 2181 3056 
+L 3697 3138 
+L 3744 3091 
+L 3744 678 
+Q 3744 569 3787 492 
+Q 3831 416 3916 363 
+Q 3975 325 4070 311 
+Q 4166 297 4259 294 
+L 4259 66 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-61" d="M 3753 66 
+Q 3616 6 3428 -44 
+Q 3241 -94 3031 -94 
+Q 2647 -94 2465 20 
+Q 2284 134 2219 347 
+L 2200 347 
+Q 2094 241 1995 166 
+Q 1897 91 1784 38 
+Q 1638 -31 1502 -64 
+Q 1366 -97 1122 -97 
+Q 759 -97 503 117 
+Q 247 331 247 684 
+Q 247 888 303 1030 
+Q 359 1172 463 1281 
+Q 556 1381 679 1447 
+Q 803 1513 950 1569 
+Q 1231 1672 1625 1783 
+Q 2019 1894 2200 1981 
+L 2200 2281 
+Q 2200 2359 2187 2487 
+Q 2175 2616 2134 2703 
+Q 2091 2803 1997 2872 
+Q 1903 2941 1750 2941 
+Q 1613 2941 1520 2902 
+Q 1428 2863 1372 2822 
+Q 1381 2759 1425 2631 
+Q 1469 2503 1469 2384 
+Q 1469 2331 1441 2251 
+Q 1413 2172 1359 2125 
+Q 1288 2063 1198 2028 
+Q 1109 1994 925 1994 
+Q 663 1994 528 2120 
+Q 394 2247 394 2450 
+Q 394 2625 533 2764 
+Q 672 2903 872 2994 
+Q 1069 3088 1325 3139 
+Q 1581 3191 1800 3191 
+Q 2103 3191 2356 3155 
+Q 2609 3119 2813 3006 
+Q 3006 2897 3120 2689 
+Q 3234 2481 3234 2147 
+Q 3234 1794 3220 1309 
+Q 3206 825 3206 672 
+Q 3206 531 3248 450 
+Q 3291 369 3378 328 
+Q 3431 303 3545 298 
+Q 3659 294 3753 294 
+L 3753 66 
+z
+M 2200 1694 
+Q 2025 1634 1853 1557 
+Q 1681 1481 1572 1397 
+Q 1456 1309 1390 1173 
+Q 1325 1038 1325 853 
+Q 1325 609 1436 500 
+Q 1547 391 1709 391 
+Q 1881 391 1992 461 
+Q 2103 531 2188 634 
+L 2200 1694 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-6e" d="M 4306 0 
+L 2425 0 
+L 2425 228 
+Q 2484 234 2568 243 
+Q 2653 253 2697 275 
+Q 2763 309 2791 375 
+Q 2819 441 2819 569 
+L 2819 2031 
+Q 2819 2350 2701 2511 
+Q 2584 2672 2356 2672 
+Q 2231 2672 2123 2634 
+Q 2016 2597 1913 2525 
+Q 1822 2463 1767 2397 
+Q 1713 2331 1675 2281 
+L 1675 603 
+Q 1675 494 1706 420 
+Q 1738 347 1809 309 
+Q 1859 281 1934 259 
+Q 2009 238 2081 228 
+L 2081 0 
+L 181 0 
+L 181 228 
+Q 259 234 339 245 
+Q 419 256 475 275 
+Q 575 309 612 381 
+Q 650 453 650 569 
+L 650 2388 
+Q 650 2484 600 2578 
+Q 550 2672 469 2731 
+Q 413 2769 327 2794 
+Q 241 2819 138 2828 
+L 138 3056 
+L 1628 3138 
+L 1675 3091 
+L 1675 2638 
+L 1688 2638 
+Q 1775 2716 1900 2825 
+Q 2025 2934 2131 3003 
+Q 2247 3078 2434 3131 
+Q 2622 3184 2834 3184 
+Q 3344 3184 3598 2895 
+Q 3853 2606 3853 2128 
+L 3853 597 
+Q 3853 481 3887 412 
+Q 3922 344 4016 303 
+Q 4066 281 4139 259 
+Q 4213 238 4306 228 
+L 4306 0 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-54" d="M 4338 3166 
+L 4097 3166 
+Q 4000 3450 3786 3775 
+Q 3572 4100 3391 4125 
+Q 3291 4138 3144 4147 
+Q 2997 4156 2891 4156 
+L 2744 4156 
+L 2744 678 
+Q 2744 566 2784 480 
+Q 2825 394 2944 344 
+Q 3016 316 3167 286 
+Q 3319 256 3425 244 
+L 3425 0 
+L 953 0 
+L 953 244 
+Q 1044 253 1208 270 
+Q 1372 288 1431 313 
+Q 1553 363 1593 447 
+Q 1634 531 1634 647 
+L 1634 4156 
+L 1488 4156 
+Q 1381 4156 1234 4147 
+Q 1088 4138 988 4125 
+Q 806 4100 592 3775 
+Q 378 3450 281 3166 
+L 41 3166 
+L 41 4434 
+L 4338 4434 
+L 4338 3166 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-73" d="M 1628 -106 
+Q 1325 -106 1036 -17 
+Q 747 72 588 172 
+L 494 -41 
+L 250 -41 
+L 209 1125 
+L 438 1125 
+Q 484 984 593 807 
+Q 703 631 844 491 
+Q 991 350 1180 253 
+Q 1369 156 1584 156 
+Q 1869 156 2008 267 
+Q 2147 378 2147 609 
+Q 2147 734 2084 815 
+Q 2022 897 1913 956 
+Q 1791 1019 1645 1062 
+Q 1500 1106 1288 1169 
+Q 1075 1231 923 1295 
+Q 772 1359 609 1497 
+Q 469 1619 384 1791 
+Q 300 1963 300 2200 
+Q 300 2641 670 2912 
+Q 1041 3184 1641 3184 
+Q 1925 3184 2164 3126 
+Q 2403 3069 2566 3000 
+L 2631 3184 
+L 2869 3184 
+L 2919 2119 
+L 2697 2119 
+Q 2588 2444 2322 2680 
+Q 2056 2916 1750 2916 
+Q 1509 2916 1371 2816 
+Q 1234 2716 1234 2538 
+Q 1234 2300 1436 2194 
+Q 1638 2088 2000 1994 
+Q 2559 1850 2818 1601 
+Q 3078 1353 3078 969 
+Q 3078 456 2676 175 
+Q 2275 -106 1628 -106 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Georgia-Bold-4d"/>
+     <use xlink:href="#Georgia-Bold-4c" transform="translate(102.34375 0)"/>
+     <use xlink:href="#Georgia-Bold-20" transform="translate(170.898438 0)"/>
+     <use xlink:href="#Georgia-Bold-52" transform="translate(196.289062 0)"/>
+     <use xlink:href="#Georgia-Bold-65" transform="translate(276.025391 0)"/>
+     <use xlink:href="#Georgia-Bold-67" transform="translate(333.203125 0)"/>
+     <use xlink:href="#Georgia-Bold-69" transform="translate(390.869141 0)"/>
+     <use xlink:href="#Georgia-Bold-6d" transform="translate(426.220703 0)"/>
+     <use xlink:href="#Georgia-Bold-65" transform="translate(527.783203 0)"/>
+     <use xlink:href="#Georgia-Bold-20" transform="translate(584.960938 0)"/>
+     <use xlink:href="#Georgia-Bold-44" transform="translate(610.351562 0)"/>
+     <use xlink:href="#Georgia-Bold-65" transform="translate(693.75 0)"/>
+     <use xlink:href="#Georgia-Bold-74" transform="translate(750.927734 0)"/>
+     <use xlink:href="#Georgia-Bold-65" transform="translate(790.673828 0)"/>
+     <use xlink:href="#Georgia-Bold-63" transform="translate(847.851562 0)"/>
+     <use xlink:href="#Georgia-Bold-74" transform="translate(900.976562 0)"/>
+     <use xlink:href="#Georgia-Bold-6f" transform="translate(940.722656 0)"/>
+     <use xlink:href="#Georgia-Bold-72" transform="translate(1004.296875 0)"/>
+     <use xlink:href="#Georgia-Bold-20" transform="translate(1056.298828 0)"/>
+     <use xlink:href="#Georgia-Bold-50" transform="translate(1081.689453 0)"/>
+     <use xlink:href="#Georgia-Bold-65" transform="translate(1151.806641 0)"/>
+     <use xlink:href="#Georgia-Bold-72" transform="translate(1208.984375 0)"/>
+     <use xlink:href="#Georgia-Bold-6d" transform="translate(1260.986328 0)"/>
+     <use xlink:href="#Georgia-Bold-75" transform="translate(1362.548828 0)"/>
+     <use xlink:href="#Georgia-Bold-74" transform="translate(1430.224609 0)"/>
+     <use xlink:href="#Georgia-Bold-61" transform="translate(1469.970703 0)"/>
+     <use xlink:href="#Georgia-Bold-74" transform="translate(1529.541016 0)"/>
+     <use xlink:href="#Georgia-Bold-69" transform="translate(1569.287109 0)"/>
+     <use xlink:href="#Georgia-Bold-6f" transform="translate(1604.638672 0)"/>
+     <use xlink:href="#Georgia-Bold-6e" transform="translate(1668.212891 0)"/>
+     <use xlink:href="#Georgia-Bold-20" transform="translate(1737.207031 0)"/>
+     <use xlink:href="#Georgia-Bold-54" transform="translate(1762.597656 0)"/>
+     <use xlink:href="#Georgia-Bold-65" transform="translate(1831.005859 0)"/>
+     <use xlink:href="#Georgia-Bold-73" transform="translate(1888.183594 0)"/>
+     <use xlink:href="#Georgia-Bold-74" transform="translate(1939.453125 0)"/>
+    </g>
+   </g>
+   <g id="legend_1">
+    <g id="patch_36">
+     <path d="M 739.166094 107.771563 
+L 843.134375 107.771563 
+Q 844.934375 107.771563 844.934375 105.971563 
+L 844.934375 40.595 
+Q 844.934375 38.795 843.134375 38.795 
+L 739.166094 38.795 
+Q 737.366094 38.795 737.366094 40.595 
+L 737.366094 105.971563 
+Q 737.366094 107.771563 739.166094 107.771563 
+z
+" style="fill: #f4f6f8; opacity: 0.95; stroke: #cccccc; stroke-linejoin: miter"/>
+    </g>
+    <g id="patch_37">
+     <path d="M 740.966094 49.198438 
+L 758.966094 49.198438 
+L 758.966094 42.898438 
+L 740.966094 42.898438 
+z
+" style="fill: #2e6da4; opacity: 0.82; stroke: #2e6da4; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_18">
+     <!-- Null distribution -->
+     <g transform="translate(766.166094 49.198438) scale(0.09 -0.09)">
+      <use xlink:href="#Georgia-4e"/>
+      <use xlink:href="#Georgia-75" transform="translate(76.708984 0)"/>
+      <use xlink:href="#Georgia-6c" transform="translate(134.228516 0)"/>
+      <use xlink:href="#Georgia-6c" transform="translate(162.841797 0)"/>
+      <use xlink:href="#Georgia-20" transform="translate(191.455078 0)"/>
+      <use xlink:href="#Georgia-64" transform="translate(215.576172 0)"/>
+      <use xlink:href="#Georgia-69" transform="translate(272.998047 0)"/>
+      <use xlink:href="#Georgia-73" transform="translate(302.294922 0)"/>
+      <use xlink:href="#Georgia-74" transform="translate(345.507812 0)"/>
+      <use xlink:href="#Georgia-72" transform="translate(380.029297 0)"/>
+      <use xlink:href="#Georgia-69" transform="translate(420.996094 0)"/>
+      <use xlink:href="#Georgia-62" transform="translate(450.292969 0)"/>
+      <use xlink:href="#Georgia-75" transform="translate(506.298828 0)"/>
+      <use xlink:href="#Georgia-74" transform="translate(563.818359 0)"/>
+      <use xlink:href="#Georgia-69" transform="translate(598.339844 0)"/>
+      <use xlink:href="#Georgia-6f" transform="translate(627.636719 0)"/>
+      <use xlink:href="#Georgia-6e" transform="translate(681.542969 0)"/>
+     </g>
+    </g>
+    <g id="patch_38">
+     <path d="M 740.966094 62.45375 
+L 758.966094 62.45375 
+L 758.966094 56.15375 
+L 740.966094 56.15375 
+z
+" style="fill: #e8913a; opacity: 0.75; stroke: #e8913a; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_19">
+     <!-- p &lt; 0.05  (&gt;54%) -->
+     <g transform="translate(766.166094 62.45375) scale(0.09 -0.09)">
+      <defs>
+       <path id="Georgia-70" d="M 3041 2716 
+Q 3225 2497 3326 2208 
+Q 3428 1919 3428 1547 
+Q 3428 1181 3306 879 
+Q 3184 578 2984 366 
+Q 2775 150 2519 34 
+Q 2263 -81 1975 -81 
+Q 1697 -81 1519 -18 
+Q 1341 44 1228 128 
+L 1203 128 
+L 1203 -797 
+Q 1203 -909 1247 -984 
+Q 1291 -1059 1381 -1094 
+Q 1456 -1122 1595 -1148 
+Q 1734 -1175 1825 -1178 
+L 1825 -1388 
+L 103 -1388 
+L 103 -1178 
+Q 200 -1172 290 -1162 
+Q 381 -1153 453 -1131 
+Q 547 -1100 584 -1022 
+Q 622 -944 622 -838 
+L 622 2441 
+Q 622 2534 575 2621 
+Q 528 2709 453 2763 
+Q 397 2800 297 2820 
+Q 197 2841 103 2847 
+L 103 3050 
+L 1153 3119 
+L 1197 3081 
+L 1197 2734 
+L 1222 2728 
+Q 1384 2916 1625 3041 
+Q 1866 3166 2103 3166 
+Q 2391 3166 2630 3044 
+Q 2869 2922 3041 2716 
+z
+M 2531 500 
+Q 2656 694 2715 950 
+Q 2775 1206 2775 1522 
+Q 2775 1753 2725 1993 
+Q 2675 2234 2569 2413 
+Q 2463 2594 2291 2706 
+Q 2119 2819 1878 2819 
+Q 1647 2819 1484 2717 
+Q 1322 2616 1203 2475 
+L 1203 653 
+Q 1231 569 1295 478 
+Q 1359 388 1438 322 
+Q 1534 244 1646 195 
+Q 1759 147 1922 147 
+Q 2097 147 2259 239 
+Q 2422 331 2531 500 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-3c" d="M 3494 69 
+L 603 1572 
+L 603 1925 
+L 3494 3428 
+L 3494 3000 
+L 1091 1750 
+L 3494 497 
+L 3494 69 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-2e" d="M 1297 359 
+Q 1297 184 1170 60 
+Q 1044 -63 869 -63 
+Q 694 -63 567 60 
+Q 441 184 441 359 
+Q 441 534 567 661 
+Q 694 788 869 788 
+Q 1044 788 1170 661 
+Q 1297 534 1297 359 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-3e" d="M 3513 1572 
+L 622 69 
+L 622 497 
+L 3025 1750 
+L 622 3000 
+L 622 3428 
+L 3513 1925 
+L 3513 1572 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#Georgia-70"/>
+      <use xlink:href="#Georgia-20" transform="translate(57.128906 0)"/>
+      <use xlink:href="#Georgia-3c" transform="translate(81.25 0)"/>
+      <use xlink:href="#Georgia-20" transform="translate(145.556641 0)"/>
+      <use xlink:href="#Georgia-30" transform="translate(169.677734 0)"/>
+      <use xlink:href="#Georgia-2e" transform="translate(231.054688 0)"/>
+      <use xlink:href="#Georgia-30" transform="translate(258.007812 0)"/>
+      <use xlink:href="#Georgia-35" transform="translate(319.384766 0)"/>
+      <use xlink:href="#Georgia-20" transform="translate(372.216797 0)"/>
+      <use xlink:href="#Georgia-20" transform="translate(396.337891 0)"/>
+      <use xlink:href="#Georgia-28" transform="translate(420.458984 0)"/>
+      <use xlink:href="#Georgia-3e" transform="translate(457.958984 0)"/>
+      <use xlink:href="#Georgia-35" transform="translate(522.265625 0)"/>
+      <use xlink:href="#Georgia-34" transform="translate(575.097656 0)"/>
+      <use xlink:href="#Georgia-25" transform="translate(631.591797 0)"/>
+      <use xlink:href="#Georgia-29" transform="translate(713.330078 0)"/>
+     </g>
+    </g>
+    <g id="patch_39">
+     <path d="M 740.966094 75.709063 
+L 758.966094 75.709063 
+L 758.966094 69.409063 
+L 740.966094 69.409063 
+z
+" style="fill: #c0392b; opacity: 0.75; stroke: #c0392b; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_20">
+     <!-- p &lt; 0.01  (&gt;58%) -->
+     <g transform="translate(766.166094 75.709063) scale(0.09 -0.09)">
+      <defs>
+       <path id="Georgia-38" d="M 3491 1175 
+Q 3491 650 3037 272 
+Q 2584 -106 1847 -106 
+Q 1156 -106 740 241 
+Q 325 588 325 1134 
+Q 325 1538 570 1808 
+Q 816 2078 1297 2266 
+Q 900 2488 703 2753 
+Q 506 3019 506 3353 
+Q 506 3863 939 4206 
+Q 1372 4550 1975 4550 
+Q 2578 4550 2951 4225 
+Q 3325 3900 3325 3409 
+Q 3325 3094 3119 2811 
+Q 2913 2528 2513 2347 
+Q 3031 2125 3261 1856 
+Q 3491 1588 3491 1175 
+z
+M 2734 3444 
+Q 2734 3825 2507 4064 
+Q 2281 4303 1928 4303 
+Q 1575 4303 1350 4073 
+Q 1125 3844 1125 3503 
+Q 1125 3175 1381 2947 
+Q 1638 2719 2294 2459 
+Q 2528 2609 2631 2856 
+Q 2734 3103 2734 3444 
+z
+M 2866 1028 
+Q 2866 1225 2781 1373 
+Q 2697 1522 2538 1644 
+Q 2384 1763 2111 1892 
+Q 1838 2022 1519 2156 
+Q 1219 1994 1078 1742 
+Q 938 1491 938 1169 
+Q 938 709 1208 426 
+Q 1478 144 1928 144 
+Q 2359 144 2612 394 
+Q 2866 644 2866 1028 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#Georgia-70"/>
+      <use xlink:href="#Georgia-20" transform="translate(57.128906 0)"/>
+      <use xlink:href="#Georgia-3c" transform="translate(81.25 0)"/>
+      <use xlink:href="#Georgia-20" transform="translate(145.556641 0)"/>
+      <use xlink:href="#Georgia-30" transform="translate(169.677734 0)"/>
+      <use xlink:href="#Georgia-2e" transform="translate(231.054688 0)"/>
+      <use xlink:href="#Georgia-30" transform="translate(258.007812 0)"/>
+      <use xlink:href="#Georgia-31" transform="translate(319.384766 0)"/>
+      <use xlink:href="#Georgia-20" transform="translate(362.353516 0)"/>
+      <use xlink:href="#Georgia-20" transform="translate(386.474609 0)"/>
+      <use xlink:href="#Georgia-28" transform="translate(410.595703 0)"/>
+      <use xlink:href="#Georgia-3e" transform="translate(448.095703 0)"/>
+      <use xlink:href="#Georgia-35" transform="translate(512.402344 0)"/>
+      <use xlink:href="#Georgia-38" transform="translate(565.234375 0)"/>
+      <use xlink:href="#Georgia-25" transform="translate(624.853516 0)"/>
+      <use xlink:href="#Georgia-29" transform="translate(706.591797 0)"/>
+     </g>
+    </g>
+    <g id="line2d_26">
+     <path d="M 740.966094 85.814375 
+L 749.966094 85.814375 
+L 758.966094 85.814375 
+" style="fill: none; stroke-dasharray: 1.5,2.475; stroke-dashoffset: 0; stroke: #00539b; stroke-width: 1.5"/>
+    </g>
+    <g id="text_21">
+     <!-- Null mean (45.9%) -->
+     <g transform="translate(766.166094 88.964375) scale(0.09 -0.09)">
+      <defs>
+       <path id="Georgia-6d" d="M 5503 0 
+L 4000 0 
+L 4000 206 
+Q 4072 213 4145 219 
+Q 4219 225 4275 244 
+Q 4363 272 4405 342 
+Q 4447 413 4447 525 
+L 4447 2116 
+Q 4447 2441 4298 2617 
+Q 4150 2794 3928 2794 
+Q 3775 2794 3640 2747 
+Q 3506 2700 3394 2616 
+Q 3303 2547 3242 2467 
+Q 3181 2388 3150 2334 
+L 3150 556 
+Q 3150 447 3187 376 
+Q 3225 306 3316 269 
+Q 3388 241 3445 227 
+Q 3503 213 3597 206 
+L 3597 0 
+L 2125 0 
+L 2125 206 
+Q 2197 213 2264 219 
+Q 2331 225 2388 244 
+Q 2475 272 2517 342 
+Q 2559 413 2559 525 
+L 2559 2116 
+Q 2559 2441 2411 2617 
+Q 2263 2794 2041 2794 
+Q 1888 2794 1753 2745 
+Q 1619 2697 1506 2613 
+Q 1416 2544 1353 2458 
+Q 1291 2372 1259 2328 
+L 1259 563 
+Q 1259 456 1303 384 
+Q 1347 313 1434 275 
+Q 1500 244 1569 228 
+Q 1638 213 1722 206 
+L 1722 0 
+L 225 0 
+L 225 206 
+Q 297 213 373 219 
+Q 450 225 506 244 
+Q 594 272 636 342 
+Q 678 413 678 525 
+L 678 2441 
+Q 678 2541 633 2620 
+Q 588 2700 506 2756 
+Q 447 2794 359 2817 
+Q 272 2841 178 2847 
+L 178 3050 
+L 1209 3119 
+L 1253 3075 
+L 1253 2634 
+L 1275 2634 
+Q 1353 2713 1465 2819 
+Q 1578 2925 1675 2991 
+Q 1784 3066 1948 3116 
+Q 2113 3166 2303 3166 
+Q 2603 3166 2818 3005 
+Q 3034 2844 3128 2616 
+Q 3241 2725 3327 2808 
+Q 3413 2891 3553 2984 
+Q 3672 3066 3833 3116 
+Q 3994 3166 4191 3166 
+Q 4581 3166 4809 2909 
+Q 5038 2653 5038 2122 
+L 5038 556 
+Q 5038 447 5075 376 
+Q 5113 306 5203 269 
+Q 5275 241 5345 227 
+Q 5416 213 5503 206 
+L 5503 0 
+z
+" transform="scale(0.015625)"/>
+       <path id="Georgia-39" d="M 3300 1613 
+Q 3300 1069 3128 589 
+Q 2956 109 2634 -253 
+Q 2319 -609 1864 -845 
+Q 1409 -1081 847 -1156 
+L 791 -875 
+L 1072 -825 
+Q 1744 -613 2122 -172 
+Q 2500 269 2609 947 
+Q 2353 728 2098 626 
+Q 1844 525 1525 525 
+Q 1016 525 639 922 
+Q 263 1319 263 1922 
+Q 263 2569 698 3012 
+Q 1134 3456 1775 3456 
+Q 2472 3456 2886 2959 
+Q 3300 2463 3300 1613 
+z
+M 2638 1650 
+Q 2638 2381 2398 2795 
+Q 2159 3209 1769 3209 
+Q 1397 3209 1169 2889 
+Q 941 2569 941 2006 
+Q 941 1500 1173 1194 
+Q 1406 888 1797 888 
+Q 2041 888 2244 977 
+Q 2447 1066 2622 1263 
+Q 2622 1275 2626 1312 
+Q 2631 1350 2631 1419 
+Q 2631 1463 2634 1525 
+Q 2638 1588 2638 1650 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#Georgia-4e"/>
+      <use xlink:href="#Georgia-75" transform="translate(76.708984 0)"/>
+      <use xlink:href="#Georgia-6c" transform="translate(134.228516 0)"/>
+      <use xlink:href="#Georgia-6c" transform="translate(162.841797 0)"/>
+      <use xlink:href="#Georgia-20" transform="translate(191.455078 0)"/>
+      <use xlink:href="#Georgia-6d" transform="translate(215.576172 0)"/>
+      <use xlink:href="#Georgia-65" transform="translate(303.662109 0)"/>
+      <use xlink:href="#Georgia-61" transform="translate(352.001953 0)"/>
+      <use xlink:href="#Georgia-6e" transform="translate(402.392578 0)"/>
+      <use xlink:href="#Georgia-20" transform="translate(461.474609 0)"/>
+      <use xlink:href="#Georgia-28" transform="translate(485.595703 0)"/>
+      <use xlink:href="#Georgia-34" transform="translate(523.095703 0)"/>
+      <use xlink:href="#Georgia-35" transform="translate(579.589844 0)"/>
+      <use xlink:href="#Georgia-2e" transform="translate(632.421875 0)"/>
+      <use xlink:href="#Georgia-39" transform="translate(659.375 0)"/>
+      <use xlink:href="#Georgia-25" transform="translate(715.966797 0)"/>
+      <use xlink:href="#Georgia-29" transform="translate(797.705078 0)"/>
+     </g>
+    </g>
+    <g id="line2d_27">
+     <path d="M 740.966094 99.069688 
+L 749.966094 99.069688 
+L 758.966094 99.069688 
+" style="fill: none; stroke: #1a3f5c; stroke-width: 2.2; stroke-linecap: square"/>
+    </g>
+    <g id="text_22">
+     <!-- Kernel density -->
+     <g transform="translate(766.166094 102.219688) scale(0.09 -0.09)">
+      <defs>
+       <path id="Georgia-4b" d="M 4609 0 
+L 3366 0 
+Q 3006 556 2567 1104 
+Q 2128 1653 1647 2169 
+L 1566 2169 
+L 1566 625 
+Q 1566 522 1605 440 
+Q 1644 359 1747 309 
+Q 1797 288 1933 256 
+Q 2069 225 2159 222 
+L 2159 0 
+L 319 0 
+L 319 222 
+Q 391 228 528 240 
+Q 666 253 722 278 
+Q 816 319 858 398 
+Q 900 478 900 591 
+L 900 3791 
+Q 900 3897 864 3975 
+Q 828 4053 722 4103 
+Q 638 4144 522 4175 
+Q 406 4206 319 4213 
+L 319 4434 
+L 2159 4434 
+L 2159 4213 
+Q 2072 4209 1940 4184 
+Q 1809 4159 1747 4138 
+Q 1641 4100 1603 4012 
+Q 1566 3925 1566 3822 
+L 1566 2291 
+L 1628 2291 
+Q 1909 2528 2181 2786 
+Q 2453 3044 2675 3300 
+Q 2922 3584 3036 3754 
+Q 3150 3925 3150 4056 
+Q 3150 4103 3092 4133 
+Q 3034 4163 2959 4181 
+Q 2872 4200 2803 4204 
+Q 2734 4209 2691 4213 
+L 2691 4434 
+L 4353 4434 
+L 4353 4213 
+Q 4344 4213 4312 4209 
+Q 4281 4206 4241 4203 
+Q 4197 4200 4153 4190 
+Q 4109 4181 4041 4169 
+Q 3931 4144 3814 4089 
+Q 3697 4034 3622 3953 
+Q 3300 3588 2950 3197 
+Q 2600 2806 2256 2484 
+Q 2731 1947 3042 1559 
+Q 3353 1172 3703 731 
+Q 3838 563 3972 461 
+Q 4106 359 4203 309 
+Q 4284 269 4406 247 
+Q 4528 225 4609 222 
+L 4609 0 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#Georgia-4b"/>
+      <use xlink:href="#Georgia-65" transform="translate(69.433594 0)"/>
+      <use xlink:href="#Georgia-72" transform="translate(117.773438 0)"/>
+      <use xlink:href="#Georgia-6e" transform="translate(158.740234 0)"/>
+      <use xlink:href="#Georgia-65" transform="translate(217.822266 0)"/>
+      <use xlink:href="#Georgia-6c" transform="translate(266.162109 0)"/>
+      <use xlink:href="#Georgia-20" transform="translate(294.775391 0)"/>
+      <use xlink:href="#Georgia-64" transform="translate(318.896484 0)"/>
+      <use xlink:href="#Georgia-65" transform="translate(376.318359 0)"/>
+      <use xlink:href="#Georgia-6e" transform="translate(424.658203 0)"/>
+      <use xlink:href="#Georgia-73" transform="translate(483.740234 0)"/>
+      <use xlink:href="#Georgia-69" transform="translate(526.953125 0)"/>
+      <use xlink:href="#Georgia-74" transform="translate(556.25 0)"/>
+      <use xlink:href="#Georgia-79" transform="translate(590.771484 0)"/>
+     </g>
+    </g>
+   </g>
+   <g id="text_23">
+    <g id="patch_40">
+     <path d="M 748.299912 160.441859 
+L 838.060068 160.441859 
+Q 839.960068 160.441859 839.960068 158.541859 
+L 839.960068 127.944141 
+Q 839.960068 126.044141 838.060068 126.044141 
+L 748.299912 126.044141 
+Q 746.399912 126.044141 746.399912 127.944141 
+L 746.399912 158.541859 
+Q 746.399912 160.441859 748.299912 160.441859 
+z
+" style="fill: #ffffff; opacity: 0.96; stroke: #00539b; stroke-width: 1.3; stroke-linejoin: miter"/>
+    </g>
+    <!-- Observed: 86.5% -->
+    <g style="fill: #003366" transform="translate(756.138896 135.125547) scale(0.095 -0.095)">
+     <defs>
+      <path id="Georgia-Bold-4f" d="M 4313 3941 
+Q 4641 3641 4833 3216 
+Q 5025 2791 5025 2247 
+Q 5025 1763 4862 1325 
+Q 4700 888 4394 572 
+Q 4072 244 3637 61 
+Q 3203 -122 2603 -122 
+Q 2119 -122 1687 37 
+Q 1256 197 928 500 
+Q 603 797 412 1222 
+Q 222 1647 222 2169 
+Q 222 2713 408 3155 
+Q 594 3597 919 3913 
+Q 1241 4222 1683 4389 
+Q 2125 4556 2625 4556 
+Q 3122 4556 3558 4393 
+Q 3994 4231 4313 3941 
+z
+M 3509 769 
+Q 3650 1053 3712 1412 
+Q 3775 1772 3775 2225 
+Q 3775 2609 3720 2973 
+Q 3666 3338 3534 3622 
+Q 3400 3906 3178 4078 
+Q 2956 4250 2625 4250 
+Q 2059 4250 1765 3714 
+Q 1472 3178 1472 2200 
+Q 1472 1784 1536 1415 
+Q 1600 1047 1738 772 
+Q 1878 494 2093 339 
+Q 2309 184 2625 184 
+Q 2934 184 3156 340 
+Q 3378 497 3509 769 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-62" d="M 3909 1528 
+Q 3909 825 3445 362 
+Q 2981 -100 2269 -100 
+Q 1994 -100 1795 -61 
+Q 1597 -22 1459 34 
+Q 1316 94 1230 151 
+Q 1144 209 1094 247 
+L 647 -159 
+L 463 -88 
+Q 478 141 489 408 
+Q 500 675 500 1128 
+L 500 4053 
+Q 500 4172 451 4273 
+Q 403 4375 322 4428 
+Q 263 4466 148 4494 
+Q 34 4522 -63 4528 
+L -63 4756 
+L 1481 4838 
+L 1528 4788 
+L 1528 2756 
+L 1547 2756 
+Q 1775 2978 2015 3081 
+Q 2256 3184 2497 3184 
+Q 3153 3184 3531 2737 
+Q 3909 2291 3909 1528 
+z
+M 2788 1491 
+Q 2788 1728 2752 1948 
+Q 2716 2169 2631 2338 
+Q 2547 2506 2409 2607 
+Q 2272 2709 2069 2709 
+Q 1878 2709 1753 2646 
+Q 1628 2584 1528 2463 
+L 1528 644 
+Q 1547 581 1598 479 
+Q 1650 378 1703 322 
+Q 1778 241 1862 198 
+Q 1947 156 2100 156 
+Q 2419 156 2603 504 
+Q 2788 853 2788 1491 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-76" d="M 3744 2872 
+Q 3603 2850 3470 2765 
+Q 3338 2681 3250 2503 
+Q 3031 2047 2820 1583 
+Q 2609 1119 2406 684 
+Q 2344 553 2264 347 
+Q 2184 141 2131 -28 
+L 1556 -28 
+Q 1197 806 942 1356 
+Q 688 1906 403 2538 
+Q 338 2684 198 2768 
+Q 59 2853 -84 2872 
+L -84 3100 
+L 1841 3100 
+L 1841 2872 
+Q 1734 2869 1590 2825 
+Q 1447 2781 1447 2713 
+Q 1447 2694 1459 2656 
+Q 1472 2619 1491 2572 
+Q 1591 2334 1792 1887 
+Q 1994 1441 2219 947 
+Q 2375 1288 2517 1614 
+Q 2659 1941 2869 2447 
+Q 2897 2522 2901 2569 
+Q 2906 2616 2906 2631 
+Q 2906 2688 2851 2730 
+Q 2797 2772 2722 2803 
+Q 2644 2834 2572 2850 
+Q 2500 2866 2453 2872 
+L 2453 3100 
+L 3744 3100 
+L 3744 2872 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-64" d="M 4222 66 
+L 2681 -25 
+L 2634 19 
+L 2634 306 
+L 2613 313 
+Q 2459 147 2198 23 
+Q 1938 -100 1672 -100 
+Q 1041 -100 631 369 
+Q 222 838 222 1581 
+Q 222 2241 680 2712 
+Q 1138 3184 1788 3184 
+Q 2044 3184 2269 3126 
+Q 2494 3069 2628 2991 
+L 2628 4013 
+Q 2628 4128 2581 4229 
+Q 2534 4331 2456 4388 
+Q 2359 4456 2214 4486 
+Q 2069 4516 1922 4528 
+L 1922 4756 
+L 3609 4838 
+L 3656 4788 
+L 3656 691 
+Q 3656 572 3695 490 
+Q 3734 409 3822 363 
+Q 3888 328 4014 312 
+Q 4141 297 4222 294 
+L 4222 66 
+z
+M 2628 622 
+L 2628 2388 
+Q 2606 2459 2567 2546 
+Q 2528 2634 2459 2713 
+Q 2397 2778 2292 2828 
+Q 2188 2878 2056 2878 
+Q 1744 2878 1544 2525 
+Q 1344 2172 1344 1528 
+Q 1344 1275 1380 1073 
+Q 1416 872 1506 706 
+Q 1597 541 1739 447 
+Q 1881 353 2081 353 
+Q 2272 353 2397 426 
+Q 2522 500 2628 622 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-3a" d="M 1794 2497 
+Q 1794 2250 1611 2069 
+Q 1428 1888 1178 1888 
+Q 925 1888 742 2067 
+Q 559 2247 559 2497 
+Q 559 2747 742 2930 
+Q 925 3113 1178 3113 
+Q 1428 3113 1611 2928 
+Q 1794 2744 1794 2497 
+z
+M 1794 519 
+Q 1794 272 1611 90 
+Q 1428 -91 1178 -91 
+Q 925 -91 742 89 
+Q 559 269 559 519 
+Q 559 769 742 951 
+Q 925 1134 1178 1134 
+Q 1428 1134 1611 950 
+Q 1794 766 1794 519 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-38" d="M 4003 1241 
+Q 4003 666 3489 275 
+Q 2975 -116 2091 -116 
+Q 1300 -116 812 218 
+Q 325 553 325 1075 
+Q 325 1478 586 1739 
+Q 847 2000 1409 2131 
+Q 959 2334 729 2643 
+Q 500 2953 500 3334 
+Q 500 3856 998 4209 
+Q 1497 4563 2231 4563 
+Q 2944 4563 3386 4250 
+Q 3828 3938 3828 3475 
+Q 3828 3119 3587 2876 
+Q 3347 2634 2869 2491 
+Q 3469 2275 3736 1961 
+Q 4003 1647 4003 1241 
+z
+M 2784 3481 
+Q 2784 3844 2623 4067 
+Q 2463 4291 2175 4291 
+Q 1903 4291 1725 4100 
+Q 1547 3909 1547 3613 
+Q 1547 3406 1625 3267 
+Q 1703 3128 1847 3025 
+Q 1978 2928 2217 2812 
+Q 2456 2697 2644 2603 
+Q 2713 2759 2748 2986 
+Q 2784 3213 2784 3481 
+z
+M 2953 925 
+Q 2953 1144 2859 1287 
+Q 2766 1431 2591 1547 
+Q 2416 1659 2145 1778 
+Q 1875 1897 1631 2019 
+Q 1528 1897 1450 1653 
+Q 1372 1409 1372 1138 
+Q 1372 678 1594 418 
+Q 1816 159 2178 159 
+Q 2541 159 2747 371 
+Q 2953 584 2953 925 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-36" d="M 3884 1447 
+Q 3884 784 3386 337 
+Q 2888 -109 2113 -109 
+Q 1303 -109 812 398 
+Q 322 906 322 1763 
+Q 322 2906 1094 3653 
+Q 1866 4400 3191 4556 
+L 3263 4247 
+L 2931 4191 
+Q 2553 4088 2298 3908 
+Q 2044 3728 1878 3497 
+Q 1719 3275 1628 2995 
+Q 1538 2716 1491 2444 
+Q 1763 2688 2030 2772 
+Q 2297 2856 2603 2856 
+Q 3141 2856 3512 2464 
+Q 3884 2072 3884 1447 
+z
+M 2728 1363 
+Q 2728 1856 2554 2147 
+Q 2381 2438 2091 2438 
+Q 1897 2438 1755 2372 
+Q 1613 2306 1469 2097 
+Q 1469 2081 1467 2042 
+Q 1466 2003 1463 1941 
+Q 1459 1872 1457 1812 
+Q 1456 1753 1456 1713 
+Q 1456 963 1639 564 
+Q 1822 166 2109 166 
+Q 2388 166 2558 478 
+Q 2728 791 2728 1363 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-2e" d="M 1669 519 
+Q 1669 272 1486 90 
+Q 1303 -91 1053 -91 
+Q 800 -91 617 89 
+Q 434 269 434 519 
+Q 434 769 617 951 
+Q 800 1134 1053 1134 
+Q 1303 1134 1486 950 
+Q 1669 766 1669 519 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-35" d="M 3013 1481 
+Q 3247 1325 3406 1061 
+Q 3566 797 3566 406 
+Q 3566 -281 3033 -717 
+Q 2500 -1153 1672 -1153 
+Q 1031 -1153 603 -878 
+Q 175 -603 175 -228 
+Q 175 -6 317 147 
+Q 459 300 697 300 
+Q 944 300 1101 167 
+Q 1259 34 1259 -188 
+Q 1259 -344 1206 -528 
+Q 1153 -713 1119 -809 
+Q 1194 -838 1294 -852 
+Q 1394 -866 1481 -866 
+Q 1659 -866 1831 -786 
+Q 2003 -706 2125 -553 
+Q 2266 -378 2337 -139 
+Q 2409 100 2409 403 
+Q 2409 844 2173 1126 
+Q 1938 1409 1563 1409 
+Q 1272 1409 1075 1292 
+Q 878 1175 722 984 
+L 478 1066 
+L 781 3366 
+L 3422 3366 
+L 3422 2503 
+L 1006 2503 
+L 878 1472 
+Q 1047 1578 1312 1675 
+Q 1578 1772 1938 1772 
+Q 2216 1772 2486 1711 
+Q 2756 1650 3013 1481 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-25" d="M 2719 3394 
+Q 2719 2872 2367 2548 
+Q 2016 2225 1503 2225 
+Q 984 2225 634 2548 
+Q 284 2872 284 3394 
+Q 284 3916 634 4239 
+Q 984 4563 1500 4563 
+Q 2016 4563 2367 4239 
+Q 2719 3916 2719 3394 
+z
+M 1891 3388 
+Q 1891 3819 1806 4076 
+Q 1722 4334 1497 4334 
+Q 1294 4334 1203 4092 
+Q 1113 3850 1113 3419 
+Q 1113 2969 1195 2711 
+Q 1278 2453 1509 2453 
+Q 1709 2453 1800 2695 
+Q 1891 2938 1891 3388 
+z
+M 5344 1059 
+Q 5344 538 4992 214 
+Q 4641 -109 4128 -109 
+Q 3609 -109 3259 214 
+Q 2909 538 2909 1059 
+Q 2909 1581 3259 1904 
+Q 3609 2228 4125 2228 
+Q 4641 2228 4992 1904 
+Q 5344 1581 5344 1059 
+z
+M 4516 1053 
+Q 4516 1484 4431 1742 
+Q 4347 2000 4122 2000 
+Q 3919 2000 3828 1758 
+Q 3738 1516 3738 1084 
+Q 3738 634 3820 376 
+Q 3903 119 4134 119 
+Q 4334 119 4425 361 
+Q 4516 603 4516 1053 
+z
+M 4919 4463 
+L 1222 0 
+L 713 0 
+L 4400 4463 
+L 4919 4463 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Georgia-Bold-4f"/>
+     <use xlink:href="#Georgia-Bold-62" transform="translate(81.982422 0)"/>
+     <use xlink:href="#Georgia-Bold-73" transform="translate(146.533203 0)"/>
+     <use xlink:href="#Georgia-Bold-65" transform="translate(197.802734 0)"/>
+     <use xlink:href="#Georgia-Bold-72" transform="translate(254.980469 0)"/>
+     <use xlink:href="#Georgia-Bold-76" transform="translate(306.982422 0)"/>
+     <use xlink:href="#Georgia-Bold-65" transform="translate(363.671875 0)"/>
+     <use xlink:href="#Georgia-Bold-64" transform="translate(420.849609 0)"/>
+     <use xlink:href="#Georgia-Bold-3a" transform="translate(487.158203 0)"/>
+     <use xlink:href="#Georgia-Bold-20" transform="translate(523.876953 0)"/>
+     <use xlink:href="#Georgia-Bold-38" transform="translate(549.267578 0)"/>
+     <use xlink:href="#Georgia-Bold-36" transform="translate(616.894531 0)"/>
+     <use xlink:href="#Georgia-Bold-2e" transform="translate(681.689453 0)"/>
+     <use xlink:href="#Georgia-Bold-35" transform="translate(714.501953 0)"/>
+     <use xlink:href="#Georgia-Bold-25" transform="translate(774.414062 0)"/>
+    </g>
+    <!-- (off chart) -->
+    <g style="fill: #003366" transform="translate(787.770927 145.803547) scale(0.095 -0.095)">
+     <defs>
+      <path id="Georgia-Bold-28" d="M 2650 -1025 
+Q 2222 -969 1811 -772 
+Q 1400 -575 1078 -219 
+Q 753 138 556 658 
+Q 359 1178 359 1881 
+Q 359 2584 556 3104 
+Q 753 3625 1078 3981 
+Q 1400 4334 1811 4532 
+Q 2222 4731 2650 4788 
+L 2650 4506 
+Q 2059 4397 1743 3745 
+Q 1428 3094 1428 1881 
+Q 1428 669 1743 17 
+Q 2059 -634 2650 -744 
+L 2650 -1025 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-66" d="M 3138 4309 
+Q 3138 4231 3113 4137 
+Q 3088 4044 3031 3978 
+Q 2966 3900 2884 3859 
+Q 2803 3819 2641 3819 
+Q 2394 3819 2253 3991 
+Q 2113 4163 1953 4563 
+Q 1828 4509 1750 4287 
+Q 1672 4066 1672 3334 
+L 1672 3088 
+L 2534 3088 
+L 2534 2750 
+L 1678 2750 
+L 1678 597 
+Q 1678 475 1734 408 
+Q 1791 341 1881 309 
+Q 1956 284 2078 261 
+Q 2200 238 2297 228 
+L 2297 0 
+L 188 0 
+L 188 228 
+Q 269 234 345 243 
+Q 422 253 481 275 
+Q 581 313 617 383 
+Q 653 453 653 569 
+L 653 2750 
+L 19 2750 
+L 19 3088 
+L 653 3088 
+Q 653 3422 750 3736 
+Q 847 4050 1050 4297 
+Q 1247 4541 1569 4691 
+Q 1891 4841 2325 4841 
+Q 2713 4841 2925 4694 
+Q 3138 4547 3138 4309 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-68" d="M 4244 0 
+L 2363 0 
+L 2363 228 
+Q 2425 234 2509 243 
+Q 2594 253 2634 275 
+Q 2700 309 2726 375 
+Q 2753 441 2753 569 
+L 2753 2031 
+Q 2753 2353 2633 2512 
+Q 2513 2672 2291 2672 
+Q 2166 2672 2058 2634 
+Q 1950 2597 1847 2525 
+Q 1756 2463 1701 2397 
+Q 1647 2331 1609 2281 
+L 1609 603 
+Q 1609 488 1637 420 
+Q 1666 353 1744 309 
+Q 1791 281 1867 259 
+Q 1944 238 2016 228 
+L 2016 0 
+L 116 0 
+L 116 228 
+Q 197 234 273 243 
+Q 350 253 409 275 
+Q 509 313 545 383 
+Q 581 453 581 569 
+L 581 4053 
+Q 581 4153 534 4265 
+Q 488 4378 403 4434 
+Q 341 4475 222 4498 
+Q 103 4522 9 4528 
+L 9 4756 
+L 1563 4838 
+L 1609 4788 
+L 1609 2638 
+L 1622 2638 
+Q 1741 2744 1836 2830 
+Q 1931 2916 2069 3003 
+Q 2184 3078 2370 3131 
+Q 2556 3184 2772 3184 
+Q 3278 3184 3533 2893 
+Q 3788 2603 3788 2128 
+L 3788 597 
+Q 3788 481 3822 412 
+Q 3856 344 3950 303 
+Q 4006 278 4075 259 
+Q 4144 241 4244 228 
+L 4244 0 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-29" d="M 2503 1881 
+Q 2503 1178 2306 658 
+Q 2109 138 1784 -219 
+Q 1463 -572 1052 -770 
+Q 641 -969 213 -1025 
+L 213 -744 
+Q 803 -634 1118 17 
+Q 1434 669 1434 1881 
+Q 1434 3094 1118 3745 
+Q 803 4397 213 4506 
+L 213 4788 
+Q 641 4731 1052 4532 
+Q 1463 4334 1784 3981 
+Q 2109 3625 2306 3104 
+Q 2503 2584 2503 1881 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Georgia-Bold-28"/>
+     <use xlink:href="#Georgia-Bold-6f" transform="translate(44.677734 0)"/>
+     <use xlink:href="#Georgia-Bold-66" transform="translate(108.251953 0)"/>
+     <use xlink:href="#Georgia-Bold-66" transform="translate(147.558594 0)"/>
+     <use xlink:href="#Georgia-Bold-20" transform="translate(186.865234 0)"/>
+     <use xlink:href="#Georgia-Bold-63" transform="translate(212.255859 0)"/>
+     <use xlink:href="#Georgia-Bold-68" transform="translate(265.380859 0)"/>
+     <use xlink:href="#Georgia-Bold-61" transform="translate(333.349609 0)"/>
+     <use xlink:href="#Georgia-Bold-72" transform="translate(392.919922 0)"/>
+     <use xlink:href="#Georgia-Bold-74" transform="translate(444.921875 0)"/>
+     <use xlink:href="#Georgia-Bold-29" transform="translate(484.667969 0)"/>
+    </g>
+    <!-- z = 7.74,  p &lt; 0.001 -->
+    <g style="fill: #003366" transform="translate(748.299912 156.481547) scale(0.095 -0.095)">
+     <defs>
+      <path id="Georgia-Bold-7a" d="M 3213 0 
+L 138 0 
+L 138 216 
+L 1931 2816 
+Q 1559 2816 1262 2806 
+Q 966 2797 794 2731 
+Q 734 2709 636 2504 
+Q 538 2300 481 2078 
+L 259 2078 
+L 259 3100 
+L 3166 3100 
+L 3166 2906 
+L 1366 284 
+Q 1441 284 1584 281 
+Q 1728 278 1859 278 
+Q 2013 278 2188 286 
+Q 2363 294 2459 306 
+Q 2588 322 2664 394 
+Q 2741 466 2784 566 
+Q 2825 656 2890 839 
+Q 2956 1022 2991 1166 
+L 3213 1166 
+L 3213 0 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-3d" d="M 3922 2188 
+L 578 2188 
+L 578 2697 
+L 3922 2697 
+L 3922 2188 
+z
+M 3922 894 
+L 578 894 
+L 578 1403 
+L 3922 1403 
+L 3922 894 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-37" d="M 3575 2994 
+L 1300 -1153 
+L 831 -1153 
+L 2938 2525 
+L 1506 2525 
+Q 1234 2525 1081 2522 
+Q 928 2519 800 2459 
+Q 697 2413 623 2242 
+Q 550 2072 506 1825 
+L 278 1825 
+L 278 3366 
+L 3575 3366 
+L 3575 2994 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-34" d="M 3941 31 
+L 3269 31 
+L 3269 -1153 
+L 2222 -1153 
+L 2222 31 
+L 153 31 
+L 153 606 
+L 2397 3447 
+L 3269 3447 
+L 3269 691 
+L 3941 691 
+L 3941 31 
+z
+M 2222 691 
+L 2222 2700 
+L 631 691 
+L 2222 691 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-2c" d="M 1684 166 
+Q 1684 -216 1365 -614 
+Q 1047 -1013 600 -1216 
+L 463 -994 
+Q 616 -913 752 -819 
+Q 888 -725 994 -600 
+Q 1103 -469 1167 -333 
+Q 1231 -197 1247 0 
+L 1072 0 
+Q 753 0 590 144 
+Q 428 288 428 541 
+Q 428 741 584 902 
+Q 741 1063 969 1063 
+Q 1319 1063 1501 823 
+Q 1684 584 1684 166 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-70" d="M 3988 1522 
+Q 3988 863 3547 391 
+Q 3106 -81 2431 -81 
+Q 2131 -81 1943 -20 
+Q 1756 41 1634 128 
+L 1609 128 
+L 1609 -750 
+Q 1609 -859 1657 -940 
+Q 1706 -1022 1794 -1059 
+Q 1878 -1094 2033 -1122 
+Q 2188 -1150 2291 -1156 
+L 2291 -1388 
+L 34 -1388 
+L 34 -1156 
+Q 113 -1150 231 -1133 
+Q 350 -1116 409 -1097 
+Q 509 -1063 545 -980 
+Q 581 -897 581 -791 
+L 581 2406 
+Q 572 2509 533 2587 
+Q 494 2666 409 2725 
+Q 347 2766 244 2792 
+Q 141 2819 41 2828 
+L 41 3056 
+L 1563 3138 
+L 1609 3097 
+L 1609 2750 
+L 1634 2744 
+Q 1841 2953 2092 3068 
+Q 2344 3184 2591 3184 
+Q 3238 3184 3613 2726 
+Q 3988 2269 3988 1522 
+z
+M 2866 1509 
+Q 2866 1744 2831 1958 
+Q 2797 2172 2709 2341 
+Q 2625 2509 2486 2609 
+Q 2347 2709 2147 2709 
+Q 1944 2709 1822 2639 
+Q 1700 2569 1609 2456 
+L 1609 684 
+Q 1628 622 1681 523 
+Q 1734 425 1788 366 
+Q 1866 281 1966 240 
+Q 2066 200 2184 200 
+Q 2494 200 2680 533 
+Q 2866 866 2866 1509 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-3c" d="M 3778 19 
+L 653 1581 
+L 653 2016 
+L 3778 3578 
+L 3778 2991 
+L 1322 1797 
+L 3778 606 
+L 3778 19 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-30" d="M 3700 2913 
+Q 3938 2663 4052 2342 
+Q 4166 2022 4166 1678 
+Q 4166 1269 4023 939 
+Q 3881 609 3634 381 
+Q 3375 144 3031 19 
+Q 2688 -106 2241 -106 
+Q 1769 -106 1408 41 
+Q 1047 188 806 428 
+Q 569 666 445 987 
+Q 322 1309 322 1678 
+Q 322 2044 439 2356 
+Q 556 2669 800 2922 
+Q 1038 3169 1403 3317 
+Q 1769 3466 2244 3466 
+Q 2734 3466 3100 3312 
+Q 3466 3159 3700 2913 
+z
+M 2819 584 
+Q 2909 794 2948 1051 
+Q 2988 1309 2988 1678 
+Q 2988 2009 2952 2275 
+Q 2916 2541 2831 2747 
+Q 2744 2959 2600 3075 
+Q 2456 3191 2247 3191 
+Q 2034 3191 1890 3077 
+Q 1747 2963 1656 2753 
+Q 1575 2563 1537 2286 
+Q 1500 2009 1500 1678 
+Q 1500 1331 1533 1087 
+Q 1566 844 1653 619 
+Q 1731 416 1878 291 
+Q 2025 166 2241 166 
+Q 2441 166 2587 278 
+Q 2734 391 2819 584 
+z
+" transform="scale(0.015625)"/>
+      <path id="Georgia-Bold-31" d="M 2956 0 
+L 378 0 
+L 378 238 
+Q 472 244 676 269 
+Q 881 294 956 319 
+Q 1050 350 1103 425 
+Q 1156 500 1156 631 
+L 1156 2613 
+L 366 2613 
+L 366 2909 
+L 538 2909 
+Q 809 2909 1007 2968 
+Q 1206 3028 1338 3113 
+Q 1472 3200 1558 3294 
+Q 1644 3388 1694 3459 
+L 2244 3459 
+Q 2234 3256 2225 2984 
+Q 2216 2713 2216 2497 
+L 2216 666 
+Q 2216 553 2264 470 
+Q 2313 388 2403 344 
+Q 2484 306 2675 275 
+Q 2866 244 2956 238 
+L 2956 0 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Georgia-Bold-7a"/>
+     <use xlink:href="#Georgia-Bold-20" transform="translate(52.539062 0)"/>
+     <use xlink:href="#Georgia-Bold-3d" transform="translate(77.929688 0)"/>
+     <use xlink:href="#Georgia-Bold-20" transform="translate(148.242188 0)"/>
+     <use xlink:href="#Georgia-Bold-37" transform="translate(173.632812 0)"/>
+     <use xlink:href="#Georgia-Bold-2e" transform="translate(229.052734 0)"/>
+     <use xlink:href="#Georgia-Bold-37" transform="translate(261.865234 0)"/>
+     <use xlink:href="#Georgia-Bold-34" transform="translate(317.285156 0)"/>
+     <use xlink:href="#Georgia-Bold-2c" transform="translate(382.226562 0)"/>
+     <use xlink:href="#Georgia-Bold-20" transform="translate(415.039062 0)"/>
+     <use xlink:href="#Georgia-Bold-20" transform="translate(440.429688 0)"/>
+     <use xlink:href="#Georgia-Bold-70" transform="translate(465.820312 0)"/>
+     <use xlink:href="#Georgia-Bold-20" transform="translate(531.591797 0)"/>
+     <use xlink:href="#Georgia-Bold-3c" transform="translate(556.982422 0)"/>
+     <use xlink:href="#Georgia-Bold-20" transform="translate(627.294922 0)"/>
+     <use xlink:href="#Georgia-Bold-30" transform="translate(652.685547 0)"/>
+     <use xlink:href="#Georgia-Bold-2e" transform="translate(722.802734 0)"/>
+     <use xlink:href="#Georgia-Bold-30" transform="translate(755.615234 0)"/>
+     <use xlink:href="#Georgia-Bold-30" transform="translate(825.732422 0)"/>
+     <use xlink:href="#Georgia-Bold-31" transform="translate(895.849609 0)"/>
+    </g>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="matplotlib.axis_3"/>
+   <g id="FillBetweenPolyCollection_1">
+    <defs>
+     <path id="m31d415ab4e" d="M 44.624375 -42.634219 
+L 44.624375 -43.56794 
+L 46.641443 -43.632583 
+L 48.65851 -43.699899 
+L 50.675578 -43.769861 
+L 52.692646 -43.842431 
+L 54.709713 -43.917561 
+L 56.726781 -43.995195 
+L 58.743849 -44.075269 
+L 60.760916 -44.157709 
+L 62.777984 -44.242434 
+L 64.795052 -44.329358 
+L 66.812119 -44.418386 
+L 68.829187 -44.509421 
+L 70.846255 -44.60236 
+L 72.863322 -44.697097 
+L 74.88039 -44.793527 
+L 76.897458 -44.89154 
+L 78.914525 -44.99103 
+L 80.931593 -45.091892 
+L 82.948661 -45.194026 
+L 84.965728 -45.297335 
+L 86.982796 -45.401728 
+L 88.999864 -45.507125 
+L 91.016931 -45.613451 
+L 93.033999 -45.720646 
+L 95.051067 -45.828661 
+L 97.068134 -45.93746 
+L 99.085202 -46.047023 
+L 101.10227 -46.157349 
+L 103.119337 -46.268452 
+L 105.136405 -46.380371 
+L 107.153473 -46.493162 
+L 109.17054 -46.606905 
+L 111.187608 -46.721707 
+L 113.204676 -46.837697 
+L 115.221743 -46.955031 
+L 117.238811 -47.073894 
+L 119.255879 -47.194498 
+L 121.272946 -47.317085 
+L 123.290014 -47.441925 
+L 125.307082 -47.569318 
+L 127.324149 -47.699593 
+L 129.341217 -47.83311 
+L 131.358285 -47.970254 
+L 133.375352 -48.111441 
+L 135.39242 -48.25711 
+L 137.409488 -48.407728 
+L 139.426555 -48.563781 
+L 141.443623 -48.725776 
+L 143.460691 -48.894238 
+L 145.477758 -49.069705 
+L 147.494826 -49.252723 
+L 149.511894 -49.443846 
+L 151.528961 -49.64363 
+L 153.546029 -49.852625 
+L 155.563097 -50.071374 
+L 157.580164 -50.300406 
+L 159.597232 -50.540231 
+L 161.6143 -50.791332 
+L 163.631367 -51.054162 
+L 165.648435 -51.329137 
+L 167.665503 -51.616631 
+L 169.68257 -51.91697 
+L 171.699638 -52.230424 
+L 173.716706 -52.557208 
+L 175.733773 -52.897472 
+L 177.750841 -53.251299 
+L 179.767909 -53.618701 
+L 181.784977 -53.999619 
+L 183.802044 -54.393918 
+L 185.819112 -54.801384 
+L 187.83618 -55.221732 
+L 189.853247 -55.654597 
+L 191.870315 -56.099543 
+L 193.887383 -56.556061 
+L 195.90445 -57.023578 
+L 197.921518 -57.501457 
+L 199.938586 -57.989007 
+L 201.955653 -58.485485 
+L 203.972721 -58.990111 
+L 205.989789 -59.502071 
+L 208.006856 -60.020527 
+L 210.023924 -60.544633 
+L 212.040992 -61.073538 
+L 214.058059 -61.606401 
+L 216.075127 -62.142403 
+L 218.092195 -62.680759 
+L 220.109262 -63.220726 
+L 222.12633 -63.761617 
+L 224.143398 -64.302813 
+L 226.160465 -64.843768 
+L 228.177533 -65.384024 
+L 230.194601 -65.923219 
+L 232.211668 -66.461089 
+L 234.228736 -66.997479 
+L 236.245804 -67.532348 
+L 238.262871 -68.065768 
+L 240.279939 -68.597931 
+L 242.297007 -69.129141 
+L 244.314074 -69.659822 
+L 246.331142 -70.190506 
+L 248.34821 -70.721831 
+L 250.365277 -71.254534 
+L 252.382345 -71.78944 
+L 254.399413 -72.327453 
+L 256.41648 -72.869545 
+L 258.433548 -73.416737 
+L 260.450616 -73.970093 
+L 262.467683 -74.530697 
+L 264.484751 -75.099637 
+L 266.501819 -75.677995 
+L 268.518886 -76.266819 
+L 270.535954 -76.867116 
+L 272.553022 -77.479825 
+L 274.570089 -78.105808 
+L 276.587157 -78.74583 
+L 278.604225 -79.400543 
+L 280.621292 -80.070475 
+L 282.63836 -80.756014 
+L 284.655428 -81.457401 
+L 286.672495 -82.174716 
+L 288.689563 -82.907875 
+L 290.706631 -83.656622 
+L 292.723698 -84.420526 
+L 294.740766 -85.198984 
+L 296.757834 -85.991216 
+L 298.774901 -86.796276 
+L 300.791969 -87.613049 
+L 302.809037 -88.440269 
+L 304.826104 -89.276521 
+L 306.843172 -90.120256 
+L 308.86024 -90.969804 
+L 310.877307 -91.823387 
+L 312.894375 -92.679139 
+L 314.911443 -93.535118 
+L 316.92851 -94.389327 
+L 318.945578 -95.239732 
+L 320.962646 -96.084276 
+L 322.979713 -96.920904 
+L 324.996781 -97.747575 
+L 327.013849 -98.562283 
+L 329.030916 -99.36307 
+L 331.047984 -100.148046 
+L 333.065052 -100.9154 
+L 335.082119 -101.663413 
+L 337.099187 -102.390473 
+L 339.116255 -103.095082 
+L 341.133322 -103.775866 
+L 343.15039 -104.431581 
+L 345.167458 -105.061121 
+L 347.184525 -105.663521 
+L 349.201593 -106.237956 
+L 351.218661 -106.783749 
+L 353.235728 -107.300366 
+L 355.252796 -107.787416 
+L 357.269864 -108.244647 
+L 359.286931 -108.671948 
+L 361.303999 -109.069338 
+L 363.321067 -109.436966 
+L 365.338134 -109.775106 
+L 367.355202 -110.084147 
+L 369.37227 -110.364592 
+L 371.389337 -110.617048 
+L 373.406405 -110.842225 
+L 375.423473 -111.040921 
+L 377.44054 -111.214024 
+L 379.457608 -111.362503 
+L 381.474676 -111.487398 
+L 383.491743 -111.589819 
+L 385.508811 -111.670936 
+L 387.525879 -111.731975 
+L 389.542946 -111.774208 
+L 391.560014 -111.79895 
+L 393.577082 -111.807552 
+L 395.594149 -111.801391 
+L 397.611217 -111.781866 
+L 399.628285 -111.750388 
+L 401.645352 -111.708375 
+L 403.66242 -111.657242 
+L 405.679488 -111.59839 
+L 407.696555 -111.533206 
+L 409.713623 -111.463043 
+L 411.730691 -111.389219 
+L 413.747758 -111.313004 
+L 415.764826 -111.235613 
+L 417.781894 -111.158192 
+L 419.798961 -111.081814 
+L 421.816029 -111.007468 
+L 423.833097 -110.936047 
+L 425.850164 -110.868346 
+L 427.867232 -110.805048 
+L 429.8843 -110.746722 
+L 431.901367 -110.693811 
+L 433.918435 -110.646634 
+L 435.935503 -110.605374 
+L 437.95257 -110.570081 
+L 439.969638 -110.540667 
+L 441.986706 -110.516904 
+L 444.003773 -110.498427 
+L 446.020841 -110.484736 
+L 448.037909 -110.475198 
+L 450.054977 -110.469051 
+L 452.072044 -110.465413 
+L 454.089112 -110.463286 
+L 456.10618 -110.461565 
+L 458.123247 -110.459052 
+L 460.140315 -110.45446 
+L 462.157383 -110.446432 
+L 464.17445 -110.433547 
+L 466.191518 -110.414338 
+L 468.208586 -110.387307 
+L 470.225653 -110.350934 
+L 472.242721 -110.303698 
+L 474.259789 -110.24409 
+L 476.276856 -110.170624 
+L 478.293924 -110.08186 
+L 480.310992 -109.976411 
+L 482.328059 -109.852962 
+L 484.345127 -109.71028 
+L 486.362195 -109.547228 
+L 488.379262 -109.362777 
+L 490.39633 -109.156016 
+L 492.413398 -108.926161 
+L 494.430465 -108.67256 
+L 496.447533 -108.394706 
+L 498.464601 -108.092233 
+L 500.481668 -107.764926 
+L 502.498736 -107.412719 
+L 504.515804 -107.035694 
+L 506.532871 -106.63408 
+L 508.549939 -106.208247 
+L 510.567007 -105.758705 
+L 512.584074 -105.286089 
+L 514.601142 -104.791157 
+L 516.61821 -104.274777 
+L 518.635277 -103.737913 
+L 520.652345 -103.181614 
+L 522.669413 -102.607004 
+L 524.68648 -102.015258 
+L 526.703548 -101.407597 
+L 528.720616 -100.785266 
+L 530.737683 -100.149521 
+L 532.754751 -99.501611 
+L 534.771819 -98.842766 
+L 536.788886 -98.174183 
+L 538.805954 -97.497008 
+L 540.823022 -96.812326 
+L 542.840089 -96.121152 
+L 544.857157 -95.424417 
+L 546.874225 -94.722962 
+L 548.891292 -94.017531 
+L 550.90836 -93.308767 
+L 552.925428 -92.597208 
+L 554.942495 -91.883287 
+L 556.959563 -91.167332 
+L 558.976631 -90.44957 
+L 560.993698 -89.730133 
+L 563.010766 -89.009059 
+L 565.027834 -88.286308 
+L 567.044901 -87.561764 
+L 569.061969 -86.835251 
+L 571.079037 -86.106543 
+L 573.096104 -85.375373 
+L 575.113172 -84.641454 
+L 577.13024 -83.904485 
+L 579.147307 -83.164167 
+L 581.164375 -82.420219 
+L 583.181443 -81.672386 
+L 585.19851 -80.920455 
+L 587.215578 -80.164268 
+L 589.232646 -79.403725 
+L 591.249713 -78.638803 
+L 593.266781 -77.869556 
+L 595.283849 -77.096126 
+L 597.300916 -76.318747 
+L 599.317984 -75.537747 
+L 601.335052 -74.753551 
+L 603.352119 -73.96668 
+L 605.369187 -73.17775 
+L 607.386255 -72.387471 
+L 609.403322 -71.596636 
+L 611.42039 -70.806122 
+L 613.437458 -70.016879 
+L 615.454525 -69.229922 
+L 617.471593 -68.446323 
+L 619.488661 -67.667198 
+L 621.505728 -66.893699 
+L 623.522796 -66.127002 
+L 625.539864 -65.368292 
+L 627.556931 -64.618758 
+L 629.573999 -63.879576 
+L 631.591067 -63.151897 
+L 633.608134 -62.436841 
+L 635.625202 -61.735481 
+L 637.64227 -61.048838 
+L 639.659337 -60.377868 
+L 641.676405 -59.723453 
+L 643.693473 -59.0864 
+L 645.71054 -58.467426 
+L 647.727608 -57.867159 
+L 649.744676 -57.286132 
+L 651.761743 -56.724779 
+L 653.778811 -56.183433 
+L 655.795879 -55.662325 
+L 657.812946 -55.161586 
+L 659.830014 -54.681246 
+L 661.847082 -54.221237 
+L 663.864149 -53.781396 
+L 665.881217 -53.361468 
+L 667.898285 -52.961112 
+L 669.915352 -52.579905 
+L 671.93242 -52.217349 
+L 673.949488 -51.872878 
+L 675.966555 -51.545862 
+L 677.983623 -51.235617 
+L 680.000691 -50.941413 
+L 682.017758 -50.66248 
+L 684.034826 -50.398014 
+L 686.051894 -50.147189 
+L 688.068961 -49.909162 
+L 690.086029 -49.683081 
+L 692.103097 -49.468092 
+L 694.120164 -49.263347 
+L 696.137232 -49.068008 
+L 698.1543 -48.881257 
+L 700.171367 -48.702299 
+L 702.188435 -48.530366 
+L 704.205503 -48.364727 
+L 706.22257 -48.204686 
+L 708.239638 -48.049589 
+L 710.256706 -47.898827 
+L 712.273773 -47.751837 
+L 714.290841 -47.608105 
+L 716.307909 -47.467166 
+L 718.324977 -47.328607 
+L 720.342044 -47.192063 
+L 722.359112 -47.057221 
+L 724.37618 -46.923818 
+L 726.393247 -46.791638 
+L 728.410315 -46.66051 
+L 730.427383 -46.530311 
+L 732.44445 -46.400955 
+L 734.461518 -46.272399 
+L 736.478586 -46.144635 
+L 738.495653 -46.017687 
+L 740.512721 -45.891609 
+L 742.529789 -45.766483 
+L 744.546856 -45.642411 
+L 746.563924 -45.519517 
+L 748.580992 -45.397938 
+L 750.598059 -45.277826 
+L 752.615127 -45.159341 
+L 754.632195 -45.04265 
+L 756.649262 -44.92792 
+L 758.66633 -44.815322 
+L 760.683398 -44.705022 
+L 762.700465 -44.597181 
+L 764.717533 -44.491954 
+L 766.734601 -44.389485 
+L 768.751668 -44.28991 
+L 770.768736 -44.19335 
+L 772.785804 -44.099915 
+L 774.802871 -44.009698 
+L 776.819939 -43.922779 
+L 778.837007 -43.839222 
+L 780.854074 -43.759075 
+L 782.871142 -43.682369 
+L 784.88821 -43.609122 
+L 786.905277 -43.539335 
+L 788.922345 -43.472995 
+L 790.939413 -43.410073 
+L 792.95648 -43.35053 
+L 794.973548 -43.294311 
+L 796.990616 -43.241352 
+L 799.007683 -43.191578 
+L 801.024751 -43.144904 
+L 803.041819 -43.101236 
+L 805.058886 -43.060474 
+L 807.075954 -43.022512 
+L 809.093022 -42.987239 
+L 811.110089 -42.954538 
+L 813.127157 -42.924292 
+L 815.144225 -42.89638 
+L 817.161292 -42.870682 
+L 819.17836 -42.847076 
+L 821.195428 -42.825441 
+L 823.212495 -42.805658 
+L 825.229563 -42.787611 
+L 827.246631 -42.771184 
+L 829.263698 -42.756266 
+L 831.280766 -42.742751 
+L 833.297834 -42.730534 
+L 835.314901 -42.719516 
+L 837.331969 -42.709601 
+L 839.349037 -42.700701 
+L 841.366104 -42.69273 
+L 843.383172 -42.685607 
+L 845.40024 -42.679256 
+L 847.417307 -42.673608 
+L 849.434375 -42.668595 
+L 849.434375 -42.634219 
+L 849.434375 -42.634219 
+L 847.417307 -42.634219 
+L 845.40024 -42.634219 
+L 843.383172 -42.634219 
+L 841.366104 -42.634219 
+L 839.349037 -42.634219 
+L 837.331969 -42.634219 
+L 835.314901 -42.634219 
+L 833.297834 -42.634219 
+L 831.280766 -42.634219 
+L 829.263698 -42.634219 
+L 827.246631 -42.634219 
+L 825.229563 -42.634219 
+L 823.212495 -42.634219 
+L 821.195428 -42.634219 
+L 819.17836 -42.634219 
+L 817.161292 -42.634219 
+L 815.144225 -42.634219 
+L 813.127157 -42.634219 
+L 811.110089 -42.634219 
+L 809.093022 -42.634219 
+L 807.075954 -42.634219 
+L 805.058886 -42.634219 
+L 803.041819 -42.634219 
+L 801.024751 -42.634219 
+L 799.007683 -42.634219 
+L 796.990616 -42.634219 
+L 794.973548 -42.634219 
+L 792.95648 -42.634219 
+L 790.939413 -42.634219 
+L 788.922345 -42.634219 
+L 786.905277 -42.634219 
+L 784.88821 -42.634219 
+L 782.871142 -42.634219 
+L 780.854074 -42.634219 
+L 778.837007 -42.634219 
+L 776.819939 -42.634219 
+L 774.802871 -42.634219 
+L 772.785804 -42.634219 
+L 770.768736 -42.634219 
+L 768.751668 -42.634219 
+L 766.734601 -42.634219 
+L 764.717533 -42.634219 
+L 762.700465 -42.634219 
+L 760.683398 -42.634219 
+L 758.66633 -42.634219 
+L 756.649262 -42.634219 
+L 754.632195 -42.634219 
+L 752.615127 -42.634219 
+L 750.598059 -42.634219 
+L 748.580992 -42.634219 
+L 746.563924 -42.634219 
+L 744.546856 -42.634219 
+L 742.529789 -42.634219 
+L 740.512721 -42.634219 
+L 738.495653 -42.634219 
+L 736.478586 -42.634219 
+L 734.461518 -42.634219 
+L 732.44445 -42.634219 
+L 730.427383 -42.634219 
+L 728.410315 -42.634219 
+L 726.393247 -42.634219 
+L 724.37618 -42.634219 
+L 722.359112 -42.634219 
+L 720.342044 -42.634219 
+L 718.324977 -42.634219 
+L 716.307909 -42.634219 
+L 714.290841 -42.634219 
+L 712.273773 -42.634219 
+L 710.256706 -42.634219 
+L 708.239638 -42.634219 
+L 706.22257 -42.634219 
+L 704.205503 -42.634219 
+L 702.188435 -42.634219 
+L 700.171367 -42.634219 
+L 698.1543 -42.634219 
+L 696.137232 -42.634219 
+L 694.120164 -42.634219 
+L 692.103097 -42.634219 
+L 690.086029 -42.634219 
+L 688.068961 -42.634219 
+L 686.051894 -42.634219 
+L 684.034826 -42.634219 
+L 682.017758 -42.634219 
+L 680.000691 -42.634219 
+L 677.983623 -42.634219 
+L 675.966555 -42.634219 
+L 673.949488 -42.634219 
+L 671.93242 -42.634219 
+L 669.915352 -42.634219 
+L 667.898285 -42.634219 
+L 665.881217 -42.634219 
+L 663.864149 -42.634219 
+L 661.847082 -42.634219 
+L 659.830014 -42.634219 
+L 657.812946 -42.634219 
+L 655.795879 -42.634219 
+L 653.778811 -42.634219 
+L 651.761743 -42.634219 
+L 649.744676 -42.634219 
+L 647.727608 -42.634219 
+L 645.71054 -42.634219 
+L 643.693473 -42.634219 
+L 641.676405 -42.634219 
+L 639.659337 -42.634219 
+L 637.64227 -42.634219 
+L 635.625202 -42.634219 
+L 633.608134 -42.634219 
+L 631.591067 -42.634219 
+L 629.573999 -42.634219 
+L 627.556931 -42.634219 
+L 625.539864 -42.634219 
+L 623.522796 -42.634219 
+L 621.505728 -42.634219 
+L 619.488661 -42.634219 
+L 617.471593 -42.634219 
+L 615.454525 -42.634219 
+L 613.437458 -42.634219 
+L 611.42039 -42.634219 
+L 609.403322 -42.634219 
+L 607.386255 -42.634219 
+L 605.369187 -42.634219 
+L 603.352119 -42.634219 
+L 601.335052 -42.634219 
+L 599.317984 -42.634219 
+L 597.300916 -42.634219 
+L 595.283849 -42.634219 
+L 593.266781 -42.634219 
+L 591.249713 -42.634219 
+L 589.232646 -42.634219 
+L 587.215578 -42.634219 
+L 585.19851 -42.634219 
+L 583.181443 -42.634219 
+L 581.164375 -42.634219 
+L 579.147307 -42.634219 
+L 577.13024 -42.634219 
+L 575.113172 -42.634219 
+L 573.096104 -42.634219 
+L 571.079037 -42.634219 
+L 569.061969 -42.634219 
+L 567.044901 -42.634219 
+L 565.027834 -42.634219 
+L 563.010766 -42.634219 
+L 560.993698 -42.634219 
+L 558.976631 -42.634219 
+L 556.959563 -42.634219 
+L 554.942495 -42.634219 
+L 552.925428 -42.634219 
+L 550.90836 -42.634219 
+L 548.891292 -42.634219 
+L 546.874225 -42.634219 
+L 544.857157 -42.634219 
+L 542.840089 -42.634219 
+L 540.823022 -42.634219 
+L 538.805954 -42.634219 
+L 536.788886 -42.634219 
+L 534.771819 -42.634219 
+L 532.754751 -42.634219 
+L 530.737683 -42.634219 
+L 528.720616 -42.634219 
+L 526.703548 -42.634219 
+L 524.68648 -42.634219 
+L 522.669413 -42.634219 
+L 520.652345 -42.634219 
+L 518.635277 -42.634219 
+L 516.61821 -42.634219 
+L 514.601142 -42.634219 
+L 512.584074 -42.634219 
+L 510.567007 -42.634219 
+L 508.549939 -42.634219 
+L 506.532871 -42.634219 
+L 504.515804 -42.634219 
+L 502.498736 -42.634219 
+L 500.481668 -42.634219 
+L 498.464601 -42.634219 
+L 496.447533 -42.634219 
+L 494.430465 -42.634219 
+L 492.413398 -42.634219 
+L 490.39633 -42.634219 
+L 488.379262 -42.634219 
+L 486.362195 -42.634219 
+L 484.345127 -42.634219 
+L 482.328059 -42.634219 
+L 480.310992 -42.634219 
+L 478.293924 -42.634219 
+L 476.276856 -42.634219 
+L 474.259789 -42.634219 
+L 472.242721 -42.634219 
+L 470.225653 -42.634219 
+L 468.208586 -42.634219 
+L 466.191518 -42.634219 
+L 464.17445 -42.634219 
+L 462.157383 -42.634219 
+L 460.140315 -42.634219 
+L 458.123247 -42.634219 
+L 456.10618 -42.634219 
+L 454.089112 -42.634219 
+L 452.072044 -42.634219 
+L 450.054977 -42.634219 
+L 448.037909 -42.634219 
+L 446.020841 -42.634219 
+L 444.003773 -42.634219 
+L 441.986706 -42.634219 
+L 439.969638 -42.634219 
+L 437.95257 -42.634219 
+L 435.935503 -42.634219 
+L 433.918435 -42.634219 
+L 431.901367 -42.634219 
+L 429.8843 -42.634219 
+L 427.867232 -42.634219 
+L 425.850164 -42.634219 
+L 423.833097 -42.634219 
+L 421.816029 -42.634219 
+L 419.798961 -42.634219 
+L 417.781894 -42.634219 
+L 415.764826 -42.634219 
+L 413.747758 -42.634219 
+L 411.730691 -42.634219 
+L 409.713623 -42.634219 
+L 407.696555 -42.634219 
+L 405.679488 -42.634219 
+L 403.66242 -42.634219 
+L 401.645352 -42.634219 
+L 399.628285 -42.634219 
+L 397.611217 -42.634219 
+L 395.594149 -42.634219 
+L 393.577082 -42.634219 
+L 391.560014 -42.634219 
+L 389.542946 -42.634219 
+L 387.525879 -42.634219 
+L 385.508811 -42.634219 
+L 383.491743 -42.634219 
+L 381.474676 -42.634219 
+L 379.457608 -42.634219 
+L 377.44054 -42.634219 
+L 375.423473 -42.634219 
+L 373.406405 -42.634219 
+L 371.389337 -42.634219 
+L 369.37227 -42.634219 
+L 367.355202 -42.634219 
+L 365.338134 -42.634219 
+L 363.321067 -42.634219 
+L 361.303999 -42.634219 
+L 359.286931 -42.634219 
+L 357.269864 -42.634219 
+L 355.252796 -42.634219 
+L 353.235728 -42.634219 
+L 351.218661 -42.634219 
+L 349.201593 -42.634219 
+L 347.184525 -42.634219 
+L 345.167458 -42.634219 
+L 343.15039 -42.634219 
+L 341.133322 -42.634219 
+L 339.116255 -42.634219 
+L 337.099187 -42.634219 
+L 335.082119 -42.634219 
+L 333.065052 -42.634219 
+L 331.047984 -42.634219 
+L 329.030916 -42.634219 
+L 327.013849 -42.634219 
+L 324.996781 -42.634219 
+L 322.979713 -42.634219 
+L 320.962646 -42.634219 
+L 318.945578 -42.634219 
+L 316.92851 -42.634219 
+L 314.911443 -42.634219 
+L 312.894375 -42.634219 
+L 310.877307 -42.634219 
+L 308.86024 -42.634219 
+L 306.843172 -42.634219 
+L 304.826104 -42.634219 
+L 302.809037 -42.634219 
+L 300.791969 -42.634219 
+L 298.774901 -42.634219 
+L 296.757834 -42.634219 
+L 294.740766 -42.634219 
+L 292.723698 -42.634219 
+L 290.706631 -42.634219 
+L 288.689563 -42.634219 
+L 286.672495 -42.634219 
+L 284.655428 -42.634219 
+L 282.63836 -42.634219 
+L 280.621292 -42.634219 
+L 278.604225 -42.634219 
+L 276.587157 -42.634219 
+L 274.570089 -42.634219 
+L 272.553022 -42.634219 
+L 270.535954 -42.634219 
+L 268.518886 -42.634219 
+L 266.501819 -42.634219 
+L 264.484751 -42.634219 
+L 262.467683 -42.634219 
+L 260.450616 -42.634219 
+L 258.433548 -42.634219 
+L 256.41648 -42.634219 
+L 254.399413 -42.634219 
+L 252.382345 -42.634219 
+L 250.365277 -42.634219 
+L 248.34821 -42.634219 
+L 246.331142 -42.634219 
+L 244.314074 -42.634219 
+L 242.297007 -42.634219 
+L 240.279939 -42.634219 
+L 238.262871 -42.634219 
+L 236.245804 -42.634219 
+L 234.228736 -42.634219 
+L 232.211668 -42.634219 
+L 230.194601 -42.634219 
+L 228.177533 -42.634219 
+L 226.160465 -42.634219 
+L 224.143398 -42.634219 
+L 222.12633 -42.634219 
+L 220.109262 -42.634219 
+L 218.092195 -42.634219 
+L 216.075127 -42.634219 
+L 214.058059 -42.634219 
+L 212.040992 -42.634219 
+L 210.023924 -42.634219 
+L 208.006856 -42.634219 
+L 205.989789 -42.634219 
+L 203.972721 -42.634219 
+L 201.955653 -42.634219 
+L 199.938586 -42.634219 
+L 197.921518 -42.634219 
+L 195.90445 -42.634219 
+L 193.887383 -42.634219 
+L 191.870315 -42.634219 
+L 189.853247 -42.634219 
+L 187.83618 -42.634219 
+L 185.819112 -42.634219 
+L 183.802044 -42.634219 
+L 181.784977 -42.634219 
+L 179.767909 -42.634219 
+L 177.750841 -42.634219 
+L 175.733773 -42.634219 
+L 173.716706 -42.634219 
+L 171.699638 -42.634219 
+L 169.68257 -42.634219 
+L 167.665503 -42.634219 
+L 165.648435 -42.634219 
+L 163.631367 -42.634219 
+L 161.6143 -42.634219 
+L 159.597232 -42.634219 
+L 157.580164 -42.634219 
+L 155.563097 -42.634219 
+L 153.546029 -42.634219 
+L 151.528961 -42.634219 
+L 149.511894 -42.634219 
+L 147.494826 -42.634219 
+L 145.477758 -42.634219 
+L 143.460691 -42.634219 
+L 141.443623 -42.634219 
+L 139.426555 -42.634219 
+L 137.409488 -42.634219 
+L 135.39242 -42.634219 
+L 133.375352 -42.634219 
+L 131.358285 -42.634219 
+L 129.341217 -42.634219 
+L 127.324149 -42.634219 
+L 125.307082 -42.634219 
+L 123.290014 -42.634219 
+L 121.272946 -42.634219 
+L 119.255879 -42.634219 
+L 117.238811 -42.634219 
+L 115.221743 -42.634219 
+L 113.204676 -42.634219 
+L 111.187608 -42.634219 
+L 109.17054 -42.634219 
+L 107.153473 -42.634219 
+L 105.136405 -42.634219 
+L 103.119337 -42.634219 
+L 101.10227 -42.634219 
+L 99.085202 -42.634219 
+L 97.068134 -42.634219 
+L 95.051067 -42.634219 
+L 93.033999 -42.634219 
+L 91.016931 -42.634219 
+L 88.999864 -42.634219 
+L 86.982796 -42.634219 
+L 84.965728 -42.634219 
+L 82.948661 -42.634219 
+L 80.931593 -42.634219 
+L 78.914525 -42.634219 
+L 76.897458 -42.634219 
+L 74.88039 -42.634219 
+L 72.863322 -42.634219 
+L 70.846255 -42.634219 
+L 68.829187 -42.634219 
+L 66.812119 -42.634219 
+L 64.795052 -42.634219 
+L 62.777984 -42.634219 
+L 60.760916 -42.634219 
+L 58.743849 -42.634219 
+L 56.726781 -42.634219 
+L 54.709713 -42.634219 
+L 52.692646 -42.634219 
+L 50.675578 -42.634219 
+L 48.65851 -42.634219 
+L 46.641443 -42.634219 
+L 44.624375 -42.634219 
+z
+" style="stroke: #1a3f5c; stroke-opacity: 0.08"/>
+    </defs>
+    <g clip-path="url(#pa69dad1a11)">
+     <use xlink:href="#m31d415ab4e" x="0" y="388.209219" style="fill: #1a3f5c; fill-opacity: 0.08; stroke: #1a3f5c; stroke-opacity: 0.08"/>
+    </g>
+   </g>
+   <g id="patch_41">
+    <path d="M 44.624375 345.575 
+L 44.624375 34.295 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_42">
+    <path d="M 44.624375 345.575 
+L 849.434375 345.575 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_28">
+    <path d="M 44.624375 344.641279 
+L 62.777984 343.966784 
+L 84.965728 342.911884 
+L 117.238811 341.135325 
+L 135.39242 339.952108 
+L 147.494826 338.956496 
+L 157.580164 337.908812 
+L 165.648435 336.880082 
+L 173.716706 335.65201 
+L 181.784977 334.209599 
+L 189.853247 332.554622 
+L 199.938586 330.220212 
+L 212.040992 327.135681 
+L 260.450616 314.239125 
+L 270.535954 311.342103 
+L 278.604225 308.808676 
+L 286.672495 306.034502 
+L 294.740766 303.010235 
+L 304.826104 298.932697 
+L 331.047984 288.061172 
+L 337.099187 285.818745 
+L 343.15039 283.777638 
+L 349.201593 281.971263 
+L 355.252796 280.421803 
+L 361.303999 279.139881 
+L 367.355202 278.125072 
+L 373.406405 277.366994 
+L 379.457608 276.846716 
+L 385.508811 276.538282 
+L 393.577082 276.401667 
+L 401.645352 276.500843 
+L 413.747758 276.896214 
+L 433.918435 277.562585 
+L 446.020841 277.724483 
+L 474.259789 277.965129 
+L 482.328059 278.356257 
+L 488.379262 278.846442 
+L 494.430465 279.536659 
+L 500.481668 280.444292 
+L 506.532871 281.575139 
+L 512.584074 282.92313 
+L 518.635277 284.471306 
+L 526.703548 286.801622 
+L 534.771819 289.366452 
+L 546.874225 293.486257 
+L 567.044901 300.647455 
+L 585.19851 307.288763 
+L 601.335052 313.455668 
+L 627.556931 323.59046 
+L 635.625202 326.473737 
+L 643.693473 329.122819 
+L 651.761743 331.48444 
+L 657.812946 333.047633 
+L 663.864149 334.427822 
+L 669.915352 335.629313 
+L 677.983623 336.973602 
+L 686.051894 338.06203 
+L 696.137232 339.141211 
+L 708.239638 340.15963 
+L 726.393247 341.417581 
+L 756.649262 343.281298 
+L 774.802871 344.199521 
+L 790.939413 344.799146 
+L 807.075954 345.186707 
+L 827.246631 345.438035 
+L 849.434375 345.540624 
+L 849.434375 345.540624 
+" clip-path="url(#pa69dad1a11)" style="fill: none; stroke: #1a3f5c; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa69dad1a11">
+   <rect x="44.624375" y="34.295" width="804.81" height="311.28"/>
+  </clipPath>
+ </defs>
+</svg>
