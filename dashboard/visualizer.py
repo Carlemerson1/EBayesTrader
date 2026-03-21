@@ -20,10 +20,13 @@ if not os.path.exists("model/model/prior.py"):
         with open(key_path, "w") as f:
             f.write(deploy_key)
         os.chmod(key_path, 0o600)
-        os.environ["GIT_SSH_COMMAND"] = f"ssh -i {key_path} -o StrictHostKeyChecking=no"
+        
+        env = os.environ.copy()
+        env["GIT_SSH_COMMAND"] = f"ssh -i {key_path} -o StrictHostKeyChecking=no -o IdentitiesOnly=yes"
+        
         result = subprocess.run(
             ["git", "submodule", "update", "--init", "--recursive"],
-            check=False, capture_output=True, text=True
+            check=False, capture_output=True, text=True, env=env
         )
         st.write("STDOUT:", result.stdout)
         st.write("STDERR:", result.stderr)
