@@ -633,3 +633,7 @@ if __name__ == "__main__":
     data = load_all_data()
     st.write("DEBUG history:", data['history'])
     st.write("DEBUG metrics:", data['metrics'])
+    from model.config.settings import AlpacaConfig
+    c = AlpacaConfig()
+    st.write("base_url:", c.base_url)
+    st.write("api_key set:", bool(c.api_key))
