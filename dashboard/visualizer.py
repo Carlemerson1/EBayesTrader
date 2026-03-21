@@ -634,6 +634,14 @@ if __name__ == "__main__":
     st.write("DEBUG history:", data['history'])
     st.write("DEBUG metrics:", data['metrics'])
     from model.config.settings import AlpacaConfig
-    c = AlpacaConfig()
-    st.write("base_url:", c.base_url)
-    st.write("api_key set:", bool(c.api_key))
+    import requests as _req
+    config = AlpacaConfig()
+    base = "https://paper-api.alpaca.markets"
+    headers = {
+        'APCA-API-KEY-ID': config.api_key,
+        'APCA-API-SECRET-KEY': config.secret_key,
+    }
+    params = {'period': '30D', 'timeframe': '1D', 'extended_hours': 'false'}
+    resp = _req.get(f"{base}/v2/account/portfolio/history", headers=headers, params=params)
+    st.write("Status:", resp.status_code)
+    st.write("Response:", resp.json())
