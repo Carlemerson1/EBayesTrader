@@ -4,34 +4,30 @@ dashboard/visualizer.py
 Professional trading dashboard for Bayesian hierarchical strategy.
 """
 # ============= QUERY SUBMODULE ===============
-
-import subprocess
-import os
-
-# Initialize private submodule on Streamlit Cloud
-if os.path.exists("/.streamlit") or os.environ.get("STREAMLIT_SHARING_MODE"):
-    deploy_key = st.secrets.get("ssh", {}).get("deploy_key", None)
-    if deploy_key:
-        # Write deploy key to temp file
-        key_path = "/tmp/deploy_key"
-        with open(key_path, "w") as f:
-            f.write(deploy_key)
-        os.chmod(key_path, 0o600)
-        
-        # Set SSH to use deploy key
-        os.environ["GIT_SSH_COMMAND"] = f"ssh -i {key_path} -o StrictHostKeyChecking=no"
-        
-        # Init and update submodule
-        subprocess.run(["git", "submodule", "update", "--init", "--recursive"], 
-                      check=True, capture_output=True)
-
-# ============= END QUERY SUBMODULE ===============
-
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
 import streamlit as st
+import subprocess
+import os
+
+# Initialize private submodule on Streamlit Cloud
+if not os.path.exists("model/model/prior.py"):
+    deploy_key = st.secrets.get("ssh", {}).get("deploy_key", None)
+    if deploy_key:
+        key_path = "/tmp/deploy_key"
+        with open(key_path, "w") as f:
+            f.write(deploy_key)
+        os.chmod(key_path, 0o600)
+        os.environ["GIT_SSH_COMMAND"] = f"ssh -i {key_path} -o StrictHostKeyChecking=no"
+        subprocess.run(
+            ["git", "submodule", "update", "--init", "--recursive"],
+            check=True, capture_output=True
+        )
+
+# ============= END QUERY SUBMODULE ===============
+
 import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
