@@ -4,9 +4,6 @@ dashboard/visualizer.py
 Professional trading dashboard for Bayesian hierarchical strategy.
 """
 # ============= QUERY SUBMODULE ===============
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).parent.parent))
 
 import streamlit as st
 import subprocess
@@ -31,12 +28,15 @@ if not os.path.exists("model/model/prior.py"):
 
 # ============= END QUERY SUBMODULE ===============
 
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent))
+
 import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 from pathlib import Path
-import sys
 
 # Add project root to path
 project_root = Path(__file__).parent.parent

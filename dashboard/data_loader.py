@@ -4,10 +4,6 @@ dashboard/data_loader.py
 Loads live and historical data for the dashboard.
 """
 
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).parent.parent))
-
 # =============== QUERY SUBMODULE ===============
 import streamlit as st
 import subprocess
@@ -35,6 +31,9 @@ for key in list(sys.modules.keys()):
         del sys.modules[key]
 
 # =============== END QUERY SUBMODULE ===============
+
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent))
 
 import pandas as pd
 import numpy as np
