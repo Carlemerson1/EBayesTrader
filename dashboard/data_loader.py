@@ -6,6 +6,7 @@ Loads live and historical data for the dashboard.
 
 import sys
 from pathlib import Path
+from turtle import st
 sys.path.append(str(Path(__file__).parent.parent))
 
 import pandas as pd
@@ -209,7 +210,14 @@ def get_portfolio_history_from_alpaca(days_back=30):
         if data.get('equity') and data.get('timestamp'):
             timestamps = pd.to_datetime(data['timestamp'], unit='s', utc=True)
             series = pd.Series(data['equity'], index=timestamps)
+
+            #DEBUG
+            st.write("Raw equity values:", data['equity'][:5])
+            st.write("Series before filter:", len(series))
+
             series = series[series > 0].dropna()
+
+            st.write("Series after filter:", len(series))
             return series
 
     except Exception as e:
