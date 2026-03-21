@@ -6,8 +6,30 @@ Loads live and historical data for the dashboard.
 
 import sys
 from pathlib import Path
-from turtle import st
 sys.path.append(str(Path(__file__).parent.parent))
+
+# =============== QUERY SUBMODULE ===============
+# 1. Init submodule
+if not os.path.exists("model/model/prior.py"):
+    deploy_key = st.secrets.get("ssh", {}).get("deploy_key", None)
+    if deploy_key:
+        key_path = "/tmp/deploy_key"
+        with open(key_path, "w") as f:
+            f.write(deploy_key)
+        os.chmod(key_path, 0o600)
+        env = os.environ.copy()
+        env["GIT_SSH_COMMAND"] = f"ssh -i {key_path} -o StrictHostKeyChecking=no -o IdentitiesOnly=yes"
+        subprocess.run(
+            ["git", "submodule", "update", "--init", "--recursive"],
+            check=False, capture_output=True, text=True, env=env
+        )
+
+# 2. Clear any cached failed model imports
+for key in list(sys.modules.keys()):
+    if key.startswith('model.'):
+        del sys.modules[key]
+
+# =============== END QUERY SUBMODULE ===============
 
 import pandas as pd
 import numpy as np
@@ -210,14 +232,7 @@ def get_portfolio_history_from_alpaca(days_back=30):
         if data.get('equity') and data.get('timestamp'):
             timestamps = pd.to_datetime(data['timestamp'], unit='s', utc=True)
             series = pd.Series(data['equity'], index=timestamps)
-
-            #DEBUG
-            st.write("Raw equity values:", data['equity'][:5])
-            st.write("Series before filter:", len(series))
-
             series = series[series > 0].dropna()
-
-            st.write("Series after filter:", len(series))
             return series
 
     except Exception as e:
