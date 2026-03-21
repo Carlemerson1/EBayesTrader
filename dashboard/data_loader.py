@@ -9,7 +9,12 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
 # =============== QUERY SUBMODULE ===============
-# 1. Init submodule
+import streamlit as st
+import subprocess
+import os
+import sys
+import importlib
+
 if not os.path.exists("model/model/prior.py"):
     deploy_key = st.secrets.get("ssh", {}).get("deploy_key", None)
     if deploy_key:
