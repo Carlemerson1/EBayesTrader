@@ -21,10 +21,13 @@ if not os.path.exists("model/model/prior.py"):
             f.write(deploy_key)
         os.chmod(key_path, 0o600)
         os.environ["GIT_SSH_COMMAND"] = f"ssh -i {key_path} -o StrictHostKeyChecking=no"
-        subprocess.run(
+        result = subprocess.run(
             ["git", "submodule", "update", "--init", "--recursive"],
-            check=True, capture_output=True
+            check=False, capture_output=True, text=True
         )
+        st.write("STDOUT:", result.stdout)
+        st.write("STDERR:", result.stderr)
+        st.write("Return code:", result.returncode)
 
 # ============= END QUERY SUBMODULE ===============
 
