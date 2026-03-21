@@ -28,9 +28,6 @@ if not os.path.exists("model/model/prior.py"):
             ["git", "submodule", "update", "--init", "--recursive"],
             check=False, capture_output=True, text=True, env=env
         )
-        st.write("STDOUT:", result.stdout)
-        st.write("STDERR:", result.stderr)
-        st.write("Return code:", result.returncode)
 
 # ============= END QUERY SUBMODULE ===============
 
@@ -633,3 +630,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+    data = load_all_data()
+    st.write("DEBUG history:", data['history'])
+    st.write("DEBUG metrics:", data['metrics'])
