@@ -3,6 +3,29 @@ dashboard/visualizer.py
 
 Professional trading dashboard for Bayesian hierarchical strategy.
 """
+# ============= QUERY SUBMODULE ===============
+
+import subprocess
+import os
+
+# Initialize private submodule on Streamlit Cloud
+if os.path.exists("/.streamlit") or os.environ.get("STREAMLIT_SHARING_MODE"):
+    deploy_key = st.secrets.get("ssh", {}).get("deploy_key", None)
+    if deploy_key:
+        # Write deploy key to temp file
+        key_path = "/tmp/deploy_key"
+        with open(key_path, "w") as f:
+            f.write(deploy_key)
+        os.chmod(key_path, 0o600)
+        
+        # Set SSH to use deploy key
+        os.environ["GIT_SSH_COMMAND"] = f"ssh -i {key_path} -o StrictHostKeyChecking=no"
+        
+        # Init and update submodule
+        subprocess.run(["git", "submodule", "update", "--init", "--recursive"], 
+                      check=True, capture_output=True)
+
+# ============= END QUERY SUBMODULE ===============
 
 import sys
 from pathlib import Path
@@ -21,7 +44,7 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 from execution.trader import AlpacaTrader
-from config.settings import AlpacaConfig, StrategyConfig, AGGRESSIVE_GROWTH_CONFIG
+from model.config.settings import AlpacaConfig, StrategyConfig, AGGRESSIVE_GROWTH_CONFIG
 from backtest.metrics import compute_drawdowns
 from dashboard.data_loader import (
     load_live_portfolio,

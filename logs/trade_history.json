@@ -262,5 +262,13 @@
   {
     "timestamp": "2026-03-16 10:11:05",
     "event": "Sold 80.0 shares of CVX"
+  },
+  {
+    "timestamp": "2026-03-19 21:31:17",
+    "event": "Rebalance cancelled by user."
+  },
+  {
+    "timestamp": "2026-03-19 21:36:26",
+    "event": "Rebalance cancelled by user."
   }
 ]

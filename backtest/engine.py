@@ -14,10 +14,10 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 
-from model.prior import estimate_prior, estimate_sector_priors
-from model.posterior import update_all_posteriors, update_all_posteriors_by_sector
-from model.signals import compute_all_signals
-from risk.manager import compute_portfolio_weights
+from model.model.prior import estimate_prior, estimate_sector_priors
+from model.model.posterior import update_all_posteriors, update_all_posteriors_by_sector
+from model.model.signals import compute_all_signals
+from model.risk.manager import compute_portfolio_weights
 
 @dataclass
 class BacktestConfig:
@@ -189,7 +189,7 @@ def run_backtest(
         # Scale portfolio weights by regime
         scaled_weights = {s: w * regime_scalar for s, w in portfolio_weights.weights.items()}
 
-        from risk.manager import apply_drawdown_protection
+        from model.risk.manager import apply_drawdown_protection
 
         # portfolio peak value for drawdown calc - we can use current portfolio value as proxy for peak, since we only reduce risk after we have already taken the drawdown hit. This is a simplification but should be fine for our purposes.
         peak_value = max(portfolio_values)  if portfolio_values else config.initial_capital

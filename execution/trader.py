@@ -17,7 +17,7 @@ from alpaca.trading.client import TradingClient
 from alpaca.trading.requests import MarketOrderRequest, GetOrdersRequest
 from alpaca.trading.enums import OrderSide, TimeInForce, QueryOrderStatus
 
-from config.settings import AlpacaConfig
+from model.config.settings import AlpacaConfig
 
 
 @dataclass
@@ -326,7 +326,7 @@ class AlpacaTrader:
 # -------------------------------------------------------
 
 if __name__ == "__main__":
-    from config.settings import AlpacaConfig
+    from model.config.settings import AlpacaConfig
 
     print("=== Alpaca Trader Test ===\n")
 

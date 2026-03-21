@@ -20,14 +20,14 @@ from datetime import datetime, timedelta
 # Data & modeling
 from data.fetcher import fetch_daily_bars
 from data.processor import compute_log_returns, clean_returns, get_rolling_window
-from model.prior import estimate_prior, estimate_sector_priors
-from model.posterior import update_all_posteriors, update_all_posteriors_by_sector
-from model.signals import compute_all_signals
-from risk.manager import compute_portfolio_weights
+from model.model.prior import estimate_prior, estimate_sector_priors
+from model.model.posterior import update_all_posteriors, update_all_posteriors_by_sector
+from model.model.signals import compute_all_signals
+from model.risk.manager import compute_portfolio_weights
 
 # Execution & config
 from execution.trader import AlpacaTrader
-from config.settings import (
+from model.config.settings import (
     StrategyConfig, AlpacaConfig,
     DEFAULT_CONFIG, CONSERVATIVE_CONFIG, AGGRESSIVE_GROWTH_CONFIG
 )

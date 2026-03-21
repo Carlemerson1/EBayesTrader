@@ -261,7 +261,7 @@ if __name__ == "__main__":
     
     print("Running backtest for metrics calculation...\n")
     
-    from config.settings import DEFAULT_CONFIG, AGGRESSIVE_GROWTH_CONFIG, TESTING_CONFIG
+    from model.config.settings import DEFAULT_CONFIG, AGGRESSIVE_GROWTH_CONFIG, TESTING_CONFIG
 
     #CURRENT CONFIG -- CHANGE THIS TO TEST DIFFERENT SETTINGS
     config = AGGRESSIVE_GROWTH_CONFIG

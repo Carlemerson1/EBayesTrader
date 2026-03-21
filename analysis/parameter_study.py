@@ -512,7 +512,7 @@ def main():
     args = parser.parse_args()
     
     # Load selected config
-    from config.settings import DEFAULT_CONFIG, CONSERVATIVE_CONFIG, AGGRESSIVE_GROWTH_CONFIG
+    from model.config.settings import DEFAULT_CONFIG, CONSERVATIVE_CONFIG, AGGRESSIVE_GROWTH_CONFIG
     
     config_map = {
         'DEFAULT_CONFIG': DEFAULT_CONFIG,

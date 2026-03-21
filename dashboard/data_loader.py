@@ -16,12 +16,12 @@ import json
 import csv
 
 from execution.trader import AlpacaTrader
-from config.settings import AlpacaConfig, StrategyConfig, AGGRESSIVE_GROWTH_CONFIG
+from model.config.settings import AlpacaConfig, StrategyConfig, AGGRESSIVE_GROWTH_CONFIG
 from data.fetcher import fetch_daily_bars
 from data.processor import compute_log_returns, clean_returns
-from model.prior import estimate_prior
-from model.posterior import update_all_posteriors
-from model.signals import compute_all_signals
+from model.model.prior import estimate_prior
+from model.model.posterior import update_all_posteriors
+from model.model.signals import compute_all_signals
 from backtest.metrics import compute_metrics, compute_drawdowns
 
 

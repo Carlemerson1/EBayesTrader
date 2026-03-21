@@ -27,9 +27,9 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 from data.fetcher import fetch_daily_bars
 from data.processor import compute_log_returns, clean_returns
-from model.prior import estimate_prior
-from model.posterior import update_all_posteriors
-from model.signals import compute_all_signals
+from model.model.prior import estimate_prior
+from model.model.posterior import update_all_posteriors
+from model.model.signals import compute_all_signals
 from backtest.engine import run_backtest, BacktestConfig
 from backtest.metrics import compute_metrics
 
@@ -565,7 +565,7 @@ def main():
     args = parser.parse_args()
 
     #CURRENT CONFIG -- CHANGE THIS TO TEST DIFFERENT SETTINGS
-    from config.settings import AGGRESSIVE_GROWTH_CONFIG
+    from model.config.settings import AGGRESSIVE_GROWTH_CONFIG
     config = AGGRESSIVE_GROWTH_CONFIG
     
     config = BacktestConfig(

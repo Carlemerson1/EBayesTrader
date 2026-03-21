@@ -20,7 +20,7 @@ from alpaca.data.historical import StockHistoricalDataClient
 from alpaca.data.requests import StockBarsRequest
 from alpaca.data.timeframe import TimeFrame
 
-load_dotenv(dotenv_path="config/.env") #usage os.getenv('ALPACA_API_KEY')
+load_dotenv(dotenv_path="model/config/.env") #usage os.getenv('ALPACA_API_KEY')
 
 def get_alpaca_client() -> StockHistoricalDataClient:
     """

@@ -18,9 +18,9 @@ import numpy as np, pandas as pd
 from datetime import datetime, timedelta
 
 #import model components to test
-from model.prior import estimate_prior, GroupPrior
-from model.posterior import update_posterior, AssetPosterior, update_all_posteriors
-from model.signals import compute_signal, TradingSignal
+from model.model.prior import estimate_prior, GroupPrior
+from model.model.posterior import update_posterior, AssetPosterior, update_all_posteriors
+from model.model.signals import compute_signal, TradingSignal
 
 class TestPriorEstimation:
     """

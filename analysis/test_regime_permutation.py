@@ -32,7 +32,7 @@ import numpy as np
 import pandas as pd
 from datetime import datetime
 from data.fetcher import fetch_daily_bars
-from risk.regime_detector_ml import ImprovedRegimeDetector
+from model.risk.regime_detector_ml import ImprovedRegimeDetector
 
 
 # ── helpers ───────────────────────────────────────────────────────────────────
